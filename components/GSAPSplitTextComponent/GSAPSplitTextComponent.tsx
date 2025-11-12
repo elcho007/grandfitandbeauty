@@ -9,6 +9,7 @@ type Props = {
 	delay?: number;
 	start?: string;
 	ease: gsap.EaseFunction | string;
+	className?: string;
 };
 
 const GSAPSplitTextComponent = ({
@@ -18,6 +19,7 @@ const GSAPSplitTextComponent = ({
 	delay = 0,
 	duration = 0.5,
 	ease = 'power2.in',
+	className = '',
 }: Props) => {
 	const splitWrapperRef = React.useRef<HTMLDivElement>(null);
 
@@ -25,12 +27,12 @@ const GSAPSplitTextComponent = ({
 		if (!splitWrapperRef.current) return;
 
 		const split = new SplitText(splitWrapperRef.current.children, {
-			type: 'words,chars',
-			mask: 'chars',
+			type: 'lines,words,chars',
+			mask: 'lines',
 			autoSplit: true,
 			onSplit: (self) => {
 				gsap.fromTo(
-					self.chars,
+					self.lines,
 					{ opacity: 0, yPercent: 100 },
 					{
 						opacity: 1,
@@ -53,7 +55,11 @@ const GSAPSplitTextComponent = ({
 			split.revert();
 		};
 	});
-	return <div ref={splitWrapperRef}>{children}</div>;
+	return (
+		<div ref={splitWrapperRef} className={className}>
+			{children}
+		</div>
+	);
 };
 
 export default GSAPSplitTextComponent;

@@ -1,6 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import FadeIn from '../FadeIn/FadeIn';
+import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
 
 type Props = {};
 
@@ -31,32 +33,35 @@ const dummyBlogPosts = [
 const Blog = (props: Props) => {
 	return (
 		<div className='bg-gray-950 h-screen w-full p-[5vw] text-[#939393] flex flex-col gap-8'>
-			<h2 className='text-4xl tracking-tighter uppercase font-semibold'>
-				Fitness Blog by Elvis Agović
-			</h2>
-			<div className='grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-4'>
-				{dummyBlogPosts.map((post) => (
-					<div
-						key={post.id}
-						className='blog-post w-full border border-dashed p-4 rounded-md aspect-square flex flex-col'>
-						<h3
-							style={{ fontFamily: 'Anton, sans-serif' }}
-							className='text-4xl tracking-tight mb-4'>
-							{post.title}
-						</h3>
-						<p>{post.excerpt}</p>
-						<div className='post-footer flex mt-auto justify-between items-center'>
-							<p className='date bg-gray-800 p-4 rounded-sm max-w-max mt-auto h-12 flex items-center text-xs'>
-								{post.date}
-							</p>
-							<Link
-								href={`/blog/${post.id}`}
-								className='text-[#939393] w-12 h-12 bg-gray-800 flex items-center justify-center rounded-full hover:underline'>
-								<ArrowRight />
-							</Link>
-						</div>
-					</div>
-				))}
+			<GSAPSplitTextComponent ease={'power2'}>
+				<h4 className='text-2xl tracking-tighter uppercase font-semibold'>
+					Fitness Blog by Elvis Agović
+				</h4>
+			</GSAPSplitTextComponent>
+			<div className='flex w-full '>
+				<FadeIn className='w-full grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-4'>
+					{dummyBlogPosts.map((post) => (
+						<Link
+							href={`/blog/${post.id}`}
+							key={post.id}
+							className='blog-post w-full border border-dashed p-4 rounded-md aspect-square flex flex-col'>
+							<h3
+								style={{ fontFamily: 'Anton, sans-serif' }}
+								className='text-4xl tracking-tight mb-4'>
+								{post.title}
+							</h3>
+							<p>{post.excerpt}</p>
+							<div className='post-footer flex mt-auto justify-between items-center'>
+								<p className='date bg-gray-800 p-4 rounded-sm max-w-max mt-auto h-12 flex items-center text-xs'>
+									{post.date}
+								</p>
+								<span className='text-[#939393] w-12 h-12 bg-gray-800 flex items-center justify-center rounded-full hover:underline'>
+									<ArrowRight />
+								</span>
+							</div>
+						</Link>
+					))}
+				</FadeIn>
 			</div>
 
 			<div className='pagination flex items-start mt-auto flex-col gap-4'>

@@ -34,6 +34,8 @@ const HeroComponent = (props: Props) => {
 	const prevBtnRef = React.useRef<HTMLButtonElement>(null);
 	const nextBtnRef = React.useRef<HTMLButtonElement>(null);
 	const titleRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+	const mainTitleRefs = React.useRef<(HTMLHeadingElement | null)[]>([]);
+	const subTitleRefs = React.useRef<(HTMLHeadingElement | null)[]>([]);
 
 	const [currentIndex, setCurrentIndex] = React.useState(0);
 	const [isAnimating, setIsAnimating] = React.useState(false);
@@ -41,7 +43,9 @@ const HeroComponent = (props: Props) => {
 	const [isMounted, setIsMounted] = React.useState(false);
 
 	const splitTextInstances = React.useRef<any[]>([]);
-	const carouselTextElements = React.useRef<HTMLDivElement[]>([]);
+	const carouselTextElements = React.useRef<
+		{ container: HTMLDivElement; words: Element[] }[]
+	>([]);
 
 	// Initialize custom ease once
 	React.useEffect(() => {
@@ -88,36 +92,69 @@ const HeroComponent = (props: Props) => {
 
 		// Initialize split text after fonts are ready
 		const initializeSplitText = () => {
-			titleRefs.current.forEach((titleRef, index) => {
-				if (titleRef) {
-					const splitText = new SplitText(titleRef, {
-						type: 'words',
-						wordsClass: 'word',
-					});
-					splitTextInstances.current[index] = splitText;
-					carouselTextElements.current[index] = titleRef;
-				}
-			});
+			// Process each slide
+			carouselSlides.forEach((_, index) => {
+				const titleContainer = titleRefs.current[index];
+				const mainTitle = mainTitleRefs.current[index];
+				const subTitle = subTitleRefs.current[index];
+				const description = titleContainer?.querySelector('.slide-description');
 
-			// Set initial state for ALL words to be blurred
-			carouselTextElements.current.forEach((slide, index) => {
-				const words = slide?.querySelectorAll('.word');
-				if (words) {
-					gsap.set(words, {
+				if (titleContainer) {
+					// Store all text elements for this slide
+					const textElements = [];
+
+					// Process main title
+					if (mainTitle) {
+						const mainTitleSplit = new SplitText(mainTitle, {
+							type: 'words',
+							wordsClass: 'word main-title-word',
+						});
+						textElements.push(...mainTitle.querySelectorAll('.word'));
+					}
+
+					// Process subtitle
+					if (subTitle) {
+						const subTitleSplit = new SplitText(subTitle, {
+							type: 'words',
+							wordsClass: 'word sub-title-word',
+						});
+						textElements.push(...subTitle.querySelectorAll('.word'));
+					}
+
+					// Process description
+					if (description) {
+						const descriptionSplit = new SplitText(description, {
+							type: 'words',
+							wordsClass: 'word description-word',
+						});
+						textElements.push(...description.querySelectorAll('.word'));
+					}
+
+					// Store all words for this slide
+					carouselTextElements.current[index] = {
+						container: titleContainer,
+						words: textElements,
+					};
+
+					// Set initial blur state for all words
+					gsap.set(textElements, {
 						filter: 'blur(75px)',
 						opacity: 0,
+						autoAlpha: 0,
 					});
 				}
 			});
 
-			// Then animate the first slide text to be visible
-			const initialSlideWords = titleRefs.current[0]?.querySelectorAll('.word');
-			if (initialSlideWords) {
-				gsap.to(initialSlideWords, {
+			// Initialize first slide text with animation
+			const firstSlideData = carouselTextElements.current[0];
+			if (firstSlideData && firstSlideData.words.length > 0) {
+				gsap.to(firstSlideData.words, {
 					filter: 'blur(0px)',
 					opacity: 1,
+					autoAlpha: 1,
 					duration: 2,
 					ease: 'power3.out',
+					delay: 0.5,
 				});
 			}
 		};
@@ -126,7 +163,7 @@ const HeroComponent = (props: Props) => {
 			document.fonts.ready.then(initializeSplitText);
 		} else {
 			// Fallback for environments without font loading API
-			setTimeout(initializeSplitText, 100);
+			setTimeout(initializeSplitText, 500);
 		}
 
 		return () => {
@@ -141,14 +178,21 @@ const HeroComponent = (props: Props) => {
 	const updateActiveTextSlide = React.useCallback((newIndex: number) => {
 		gsap.killTweensOf('.word');
 
-		carouselTextElements.current.forEach((slide, index) => {
-			const words = slide?.querySelectorAll('.word');
+		carouselTextElements.current.forEach((slideData, index) => {
+			const words = slideData?.words;
 			if (!words) return;
 
 			if (index !== newIndex) {
+				// Set inactive slides to blurred state
+				gsap.set(words, {
+					filter: 'blur(75px)',
+					opacity: 0,
+					autoAlpha: 0,
+				});
 				gsap.to(words, {
 					filter: 'blur(75px)',
 					opacity: 0,
+					autoAlpha: 0,
 					duration: 2.5,
 					ease: 'power1.out',
 					overwrite: true,
@@ -156,14 +200,23 @@ const HeroComponent = (props: Props) => {
 			}
 		});
 
-		const currentWords =
-			carouselTextElements.current[newIndex]?.querySelectorAll('.word');
-		if (currentWords) {
+		const currentSlideData = carouselTextElements.current[newIndex];
+		const currentWords = currentSlideData?.words;
+		if (currentWords && currentWords.length > 0) {
+			// Ensure starting from blurred state
+			gsap.set(currentWords, {
+				filter: 'blur(75px)',
+				opacity: 0,
+				autoAlpha: 0,
+			});
+
 			gsap.to(currentWords, {
 				filter: 'blur(0px)',
 				opacity: 1,
+				autoAlpha: 1,
 				duration: 2,
 				ease: 'power3.out',
+				delay: 0.2,
 				overwrite: true,
 				onComplete: () => {
 					gsap.set(currentWords, {
@@ -260,7 +313,7 @@ const HeroComponent = (props: Props) => {
 	}, [isAnimating, currentIndex, animateSlide]);
 
 	return (
-		<div className='w-full'>
+		<div className='w-full after after:content-[""] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-purple-600/50 after:mix-blend-multiply after:z-0'>
 			<div className='carousel' ref={carouselRef}>
 				<div className='carousel-images' ref={carouselImagesRef}></div>
 
@@ -274,20 +327,21 @@ const HeroComponent = (props: Props) => {
 						}}>
 						<h1
 							style={{ fontFamily: 'Anton, serif' }}
-							className='title text-6xl max-w-[20ch] leading-[1.2] tracking-tight'>
+							className='title text-6xl max-w-[20ch] leading-[1.2] tracking-tight'
+							ref={(el) => {
+								mainTitleRefs.current[index] = el;
+							}}>
 							GrandFit
 							<span className='heading-span tracking-tighter'>&Beauty</span>
 						</h1>
-						<h2 className='subTitle tracking-tight'>
+						<h2
+							className='subTitle tracking-tight'
+							ref={(el) => {
+								subTitleRefs.current[index] = el;
+							}}>
 							Centar za pokret, oblikovanje i njegu.
 						</h2>
-						<p
-							className='slide-description'
-							ref={(el) => {
-								titleRefs.current[index] = el;
-							}}>
-							{slide.title}
-						</p>
+						<p className='slide-description'>{slide.title}</p>
 					</div>
 				))}
 			</div>

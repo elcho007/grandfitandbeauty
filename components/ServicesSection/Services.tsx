@@ -157,13 +157,32 @@ const Services = (props: Props) => {
 					const degreesPerCard = 360 / total;
 					const topCardIndex =
 						Math.round(currentRotation / degreesPerCard) % total;
-					const activeCardIndex = (total - topCardIndex) % total;
+					const newTopCardIndex = (total - topCardIndex) % total;
+
+					// If there's a currently open card and the top card changed, close it
+					if (
+						activeCardIndex !== null &&
+						currentTopCardIndex !== newTopCardIndex
+					) {
+						const previousCardElement =
+							cardRefs.current[activeCardIndex]?.querySelector(
+								'.more-about-card'
+							);
+						if (previousCardElement) {
+							gsap.to(previousCardElement, {
+								top: '91%',
+								duration: 0.4,
+								ease: 'power2.inOut',
+							});
+						}
+						setActiveCardIndex(null);
+					}
 
 					// Update current top card index
-					setCurrentTopCardIndex(activeCardIndex);
+					setCurrentTopCardIndex(newTopCardIndex);
 
 					// Animate text change with SplitText
-					animateTextChange(allCards[activeCardIndex].title);
+					animateTextChange(allCards[newTopCardIndex].title);
 				},
 			});
 
@@ -182,6 +201,19 @@ const Services = (props: Props) => {
 	const handleShowMore = contextSafe((index: number) => {
 		// Only allow showing more info for the card that's currently at the top
 		if (index !== currentTopCardIndex) return;
+
+		// If there's already an active card and it's different, close it first
+		if (activeCardIndex !== null && activeCardIndex !== index) {
+			const previousCardElement =
+				cardRefs.current[activeCardIndex]?.querySelector('.more-about-card');
+			if (previousCardElement) {
+				gsap.to(previousCardElement, {
+					top: '91%',
+					duration: 0.3,
+					ease: 'power2.inOut',
+				});
+			}
+		}
 
 		setActiveCardIndex(index);
 
@@ -221,7 +253,7 @@ const Services = (props: Props) => {
 	return (
 		<div
 			ref={draggableWheelRef}
-			className='w-full h-[150vh] bg-[#dddddd] slider relative overflow-hidden pt-20'>
+			className='w-full h-[150vh] bg-[#939393] slider relative overflow-hidden pt-20'>
 			<h2 className='pl-[5vw] text-4xl tracking-tight font-semibold max-w-[40ch] mb-8'>
 				U GrandFit&Beauty nudimo vam širok spektar usluga i tretmana koji će vam
 				pomoći da izgledate i osjećate se najbolje.
@@ -242,8 +274,8 @@ const Services = (props: Props) => {
 						ref={(el) => {
 							cardRefs.current[index] = el;
 						}}
-						className='card overflow-hidden absolute top-0 left-0 w-[15%] max-w-[350px] aspect-[.75] bg-[#afafaf] flex flex-col items-center justify-between text-center p-2 rounded-xl'>
-						<div className='relative w-full h-[85%] rounded-lg overflow-hidden'>
+						className='card overflow-hidden absolute top-0 left-0 w-[15%] max-w-[350px] aspect-[.75] bg-[#af9659] flex flex-col items-center justify-between text-center rounded-xl'>
+						<div className='relative w-[96%] h-[75%] mt-1.5 rounded-lg overflow-hidden'>
 							<Image
 								src={card.image || '/images/gfb1.jpg'}
 								alt=''
@@ -267,11 +299,11 @@ const Services = (props: Props) => {
 						</div>
 
 						{/* More info card */}
-						<div className='more-about-card text-[12px] before:content-[""] before:left-[50%] before:transform before:translate-x-[-50%] before:h-16 before:rounded-2xl before:absolute before:inset-0 before:top-0 before:w-[80%] before:z-[-1] bg-[#afafaf] absolute inset-0 top-[91%] w-full h-full text-center z-10 font-semibold tracking-tight text-gray-700 flex flex-col pb-4'>
+						<div className='more-about-card text-[12px] before:content-[""] before:left-[50%] before:transform before:translate-x-[-50%] before:h-16 before:rounded-2xl before:absolute before:inset-0 before:top-0 before:w-[80%] before:z-[-1] bg-[#a7a7a7] absolute inset-0 top-[91%] w-full h-full text-center z-10 font-semibold tracking-tight text-[#806010] flex flex-col pb-4'>
 							<div className='flex justify-center items-center p-2 gap-4'>
 								<h3 className='font-bold text-sm'>{card.title}</h3>
 							</div>
-							<div className='text-xs p-4 text-left leading-relaxed'>
+							<div className='text-xs p-4 text-left leading-relaxed text-gray-800'>
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
 								est quis sapiente eius voluptatum dolore, eos iusto, possimus
 								corporis accusamus nam! Deserunt fugiat odit necessitatibus
@@ -297,7 +329,7 @@ const Services = (props: Props) => {
 				<span
 					style={{ fontFamily: 'Anton, sans-serif' }}
 					ref={textSpanRef}
-					className='text-[5vw] tracking-normal leading-[1.45] uppercase text-center flex justify-center text-[#939393]'></span>
+					className='text-[5vw] tracking-tight leading-[1.45] uppercase text-center flex justify-center text-[#a7a7a7]'></span>
 			</div>
 		</div>
 	);
