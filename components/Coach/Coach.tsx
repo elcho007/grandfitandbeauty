@@ -30,9 +30,9 @@ const Coach = (props: Props) => {
 	return (
 		<div
 			ref={coachRef}
-			className='after after-content-[""] after:block after:w-full after:h-full after:bg-black after:absolute after:top-0 after:left-0 after:z-0 after:opacity-40 relative z-10 w-full min-h-[130svh] bg-[url(/images/elvis.webp)] bg-size-[130%] bg-center content-end text-4xl font-bold text-white grid grid-cols-[5vw_repeat(12,1fr)_5vw] gap-4 pb-8'>
+			className='after after-content-[""] after:block after:w-full after:h-full after:bg-green-500 after:absolute after:top-0 after:left-0 after:z-10 after:opacity-10 after:mix-blend-difference relative z-10 w-full min-h-[130svh] bg-[url(/images/elvis.webp)] bg-size-[130%] bg-center content-end text-4xl font-bold text-white grid grid-cols-[5vw_repeat(12,1fr)_5vw] pb-8'>
 			<GSAPSplitTextComponent
-				className='col-start-2 col-end-13'
+				className='col-start-2 col-end-13 mb-4 relative z-20'
 				ease={'power2'}
 				start='top 80%'>
 				<h2
@@ -42,16 +42,16 @@ const Coach = (props: Props) => {
 				</h2>
 			</GSAPSplitTextComponent>
 			<GSAPSplitTextComponent
-				className='col-start-2 col-end-13'
+				className='col-start-2 col-end-13 mb-4 relative z-20'
 				ease={'power2'}
 				start='top 80%'
 				delay={0.1}>
-				<span className='flex justify-start text-right relative z-10'>
+				<span className='flex justify-start text-right relative z-20'>
 					Elvis Agović
 				</span>
 			</GSAPSplitTextComponent>
 
-			<div className='col-start-2 col-end-13 flex h-48 relative z-10 text-sm font-normal tracking-normal w-full'>
+			<div className='col-start-2 col-end-13 flex h-48 relative z-20 text-sm font-normal tracking-normal w-full'>
 				<FadeIn
 					duration={0.5}
 					stagger={0.05}
@@ -68,7 +68,7 @@ const Coach = (props: Props) => {
 				</FadeIn>
 			</div>
 
-			<div className=' col-start-2 col-end-13 relative z-10 flex'>
+			<div className=' col-start-2 col-end-13 relative z-20 flex mt-8'>
 				<GSAPSplitTextComponent ease={'power2'} start='top 90%' delay={0.25}>
 					<p
 						className='text-3xl font-light text-right'

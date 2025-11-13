@@ -6,7 +6,7 @@ type Props = {};
 
 const PriceCards = (props: Props) => {
 	return (
-		<div className='w-full h-screen bg-[#dddddd] flex justify-center items-center'>
+		<div className='w-full h-screen bg-[#171717] flex justify-center items-center'>
 			<div className='w-7xl mx-auto min-h-1/2 flex flex-col items-center gap-8'>
 				<GSAPSplitTextComponent ease={'power2'}>
 					<h2

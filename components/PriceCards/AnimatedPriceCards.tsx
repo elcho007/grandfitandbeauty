@@ -68,7 +68,7 @@ const AnimatedPriceCards = (props: Props) => {
 						ref={(el) => {
 							cardsRef.current[index] = el!;
 						}}
-						className='relative after:content-[""] after:absolute after:top-0 after:left-0 after:bg-[#283b35] after:w-full after:z-0 after:rounded-2xl after:h-[85%] border border-[#d5bb9a] price-card p-8 pb-2 mb-4 aspect-[.75] w-88 rounded-3xl bg-gray-950 flex flex-col '>
+						className='relative after:content-[""] after:absolute after:top-0 after:left-0 after:bg-[#283b35] after:w-full after:z-0 after:rounded-2xl after:h-[85%]  price-card p-8 pb-2 mb-4 aspect-[.75] w-88 rounded-3xl bg-gray-950 flex flex-col '>
 						<h3
 							className='relative text-[#d5bb9a] z-10 text-3xl font-normal mb-2 border-b border-[#d3b48ba8]'
 							style={{ fontFamily: 'Lora, serif' }}>

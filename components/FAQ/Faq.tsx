@@ -110,17 +110,17 @@ const Faq = (props: Props) => {
 	});
 
 	return (
-		<div className='w-full h-auto p-[5vw] bg-[#030712] text-[#dddddd] flex justify-between gap-8'>
-			<div className='flex flex-col gap-6'>
+		<div className='w-full h-[85vh]  bg-[#171717] text-gray-950 flex flex-col justify-center gap-8 items-center'>
+			<div className='flex w-3xl flex-col gap-6 items-center'>
 				<h3 className='text-4xl tracking-tight '>Najčešća pitanja</h3>
-				<p className='text-lg max-w-[45ch]'>
+				{/* <p className='text-lg max-w-[45ch] text-center'>
 					Često nam postavljate pitanja o našim uslugama. Ovdje smo da
 					odgovorimo na neka od najčešćih. Za sva dodatna pitanja slobodno nas
 					kontaktirajte.
-				</p>
+				</p> */}
 			</div>
 
-			<div className='faq-wrapper w-5xl flex flex-col gap-2'>
+			<div className='faq-wrapper grid grid-cols-1 gap-4 max-w-[90vw] mx-auto'>
 				{Array.from({ length: 5 }).map((_, index) => (
 					<div
 						onClick={() => handleOpenFAQ(index)}
@@ -128,7 +128,7 @@ const Faq = (props: Props) => {
 						ref={(el) => {
 							faqRefs.current[index] = el;
 						}}
-						className='faq-item p-4 border-b border-gray-300/20 pb-1 cursor-pointer bg-[#030712] hover:bg-[#040b1d] transition-colors duration-300 overflow-hidden'>
+						className='faq-item p-4 border-b border-gray-300/20 pb-1 cursor-pointer transition-colors duration-300 overflow-hidden'>
 						<div className='flex justify-between items-center'>
 							<h4
 								className='text-3xl mb-2'

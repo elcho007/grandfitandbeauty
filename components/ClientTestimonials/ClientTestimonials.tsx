@@ -246,14 +246,16 @@ const ClientTestimonials = (props: Props) => {
 	}, [maxPosition, cardWidth, updateProgressBar]);
 
 	return (
-		<div className='bg-[#030712] w-full h-[60vh] flex flex-col justify-center items-center gap-8 text-[#dadada] py-8'>
-			<h3>Pročitajte šta naši klijenti kažu</h3>
+		<div className='bg-[#f3bb20] w-full h-[60vh] flex flex-col justify-center items-center gap-8 text-gray-950 py-8'>
+			<h3 className='text-3xl tracking-tight'>
+				Pročitajte šta naši klijenti kažu
+			</h3>
 			<div className='flex flex-col justify-center max-w-6xl overflow-hidden mx-auto'>
 				<div ref={testimonialsWrapperRef} className='flex w-full gap-2'>
 					{testimonials.map((testimonial, index) => (
 						<div
 							key={index}
-							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-[#939393] rounded-lg flex flex-col'>
+							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-[#e9b012] rounded-lg flex flex-col'>
 							<div className='flex items-end gap-4 mb-8'>
 								<div className='relative w-16 h-16 rounded-full overflow-hidden'>
 									<Image
@@ -266,7 +268,7 @@ const ClientTestimonials = (props: Props) => {
 							</div>
 							<p className='text-sm '>{testimonial.feedback}</p>
 
-							<span className='bg-[#aaaaaa] p-2 text-[10px] text-gray-600 mt-auto flex max-w-max rounded-xs'>
+							<span className='bg-[#fccb41] p-2 text-[10px] text-gray-800 mt-auto flex max-w-max rounded-xs'>
 								{testimonial.date}
 							</span>
 						</div>
@@ -276,21 +278,21 @@ const ClientTestimonials = (props: Props) => {
 			<div className='flex items-center gap-2'>
 				<button
 					onClick={handlePrev}
-					className='bg-[#939393] text-[#dadada] p-2 rounded-full font-semibold hover:bg-[#aaaaaa] transition-colors duration-300'>
+					className='border border-[#ca980c] text-gray-950 p-2 rounded-full font-semibold hover:bg-[#e6b52e] transition-colors duration-300'>
 					<ArrowLeft />
 				</button>
 
 				<span
 					ref={progressBarWrapperRef}
-					className='w-40 h-2 bg-[#939393] rounded-full relative flex items-center'>
+					className='w-40 h-2 bg-[#e4ae1b] rounded-full relative flex items-center'>
 					<span
 						ref={progressBarRef}
-						className='w-12 h-1 bg-[#dadada] rounded-full'></span>
+						className='w-12 h-1 bg-[#fccb41] rounded-full mx-1'></span>
 				</span>
 
 				<button
 					onClick={handleNext}
-					className='bg-[#939393] text-[#dadada] p-2 rounded-full font-semibold hover:bg-[#aaaaaa] transition-colors duration-300'>
+					className='border border-[#ca980c] text-gray-950 p-2 rounded-full font-semibold hover:bg-[#e6b52e] transition-colors duration-300'>
 					<ArrowRight />
 				</button>
 			</div>

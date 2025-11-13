@@ -32,7 +32,7 @@ const dummyBlogPosts = [
 
 const Blog = (props: Props) => {
 	return (
-		<div className='bg-gray-950 h-screen w-full p-[5vw] text-[#939393] flex flex-col gap-8'>
+		<div className='bg-[#ce3333] h-screen w-full p-[5vw] text-gray-950 flex flex-col gap-8'>
 			<GSAPSplitTextComponent ease={'power2'}>
 				<h4 className='text-2xl tracking-tighter uppercase font-semibold'>
 					Fitness Blog by Elvis Agović
@@ -52,10 +52,10 @@ const Blog = (props: Props) => {
 							</h3>
 							<p>{post.excerpt}</p>
 							<div className='post-footer flex mt-auto justify-between items-center'>
-								<p className='date bg-gray-800 p-4 rounded-sm max-w-max mt-auto h-12 flex items-center text-xs'>
+								<p className='date bg-[#e24040] p-4 rounded-sm max-w-max mt-auto h-12 flex items-center text-xs'>
 									{post.date}
 								</p>
-								<span className='text-[#939393] w-12 h-12 bg-gray-800 flex items-center justify-center rounded-full hover:underline'>
+								<span className='text-gray-950 w-12 h-12 bg-[#e24040] flex items-center justify-center rounded-full hover:underline'>
 									<ArrowRight />
 								</span>
 							</div>
@@ -78,7 +78,7 @@ const Blog = (props: Props) => {
 				</span>
 
 				{dummyBlogPosts.length > 0 && (
-					<button className='text-[#939393] w-12 h-12 bg-gray-800 flex items-center justify-center rounded-full hover:underline'>
+					<button className='text-gray-950 w-12 h-12 bg-[#e24040] flex items-center justify-center rounded-full hover:underline'>
 						<ArrowRight />
 					</button>
 				)}

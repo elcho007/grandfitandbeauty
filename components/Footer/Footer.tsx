@@ -5,7 +5,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
 	return (
-		<div className='px-[5vw] bg-[#283b35] text-[#dddddd]'>
+		<div className='px-[5vw] bg-[#171717] text-[#dddddd]'>
 			<footer className='w-full py-8 grid grid-cols-1 md:grid-cols-3 gap-4'>
 				<div className='location flex gap-2 col-span-3 font-mono opacity-55'>
 					<span>Dubrovnik</span>
