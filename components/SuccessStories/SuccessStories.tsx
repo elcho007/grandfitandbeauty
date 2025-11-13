@@ -75,12 +75,11 @@ const SuccessStories = (props: Props) => {
 					<h3
 						className='text-xl tracking-tight  mb-2'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
-						Vec danas sa nama ispisite svoju pricu.
+						Ispišite svoju priču već danas.{' '}
 					</h3>
 					<p>
-						citat Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-						Corporis aliquam quidem dicta debitis dolore. Incidunt fuga voluptas
-						dolor adipisci impedit?
+						"Strength does not come from physical capacity. It comes from an
+						indomitable will." – Mahatma Gandhi
 					</p>
 				</div>
 				<div className='relative w-full h-[600px] col-span-3'>
@@ -97,11 +96,11 @@ const SuccessStories = (props: Props) => {
 							</span>
 						</div>
 						<div className='stat-item bg-[#03a554] text-white px-4 py-2 rounded-sm w-full flex gap-4 max-w-max text-sm'>
-							<span>Pocetna kilaza: </span>
+							<span>Početna kilaža: </span>
 							<span>{stories[activeStoryIndex].startWeight}</span>
 						</div>
 						<div className='stat-item bg-[#03a554] text-white px-4 py-2 rounded-sm w-full flex gap-4 max-w-max text-sm'>
-							<span>Kilaza nakon programa: </span>
+							<span>Kilaža nakon programa: </span>
 							<span>{stories[activeStoryIndex].endWeight}</span>
 						</div>
 						<div className='stat-item bg-[#03a554] text-white px-4 py-2 rounded-sm w-full flex gap-4 max-w-max text-sm'>
@@ -109,7 +108,7 @@ const SuccessStories = (props: Props) => {
 							<span>{stories[activeStoryIndex].duration}</span>
 						</div>
 						<div className='stat-item bg-[#03a554] text-white px-4 py-2 rounded-sm w-full flex gap-4 max-w-max text-sm'>
-							<span>Povecanje misicne mase: </span>
+							<span>Povećanje mišićne mase: </span>
 							<span>{stories[activeStoryIndex].misicnaMasa} kg</span>
 						</div>
 						<div className='stat-item bg-[#03a554] text-white px-4 py-2 rounded-sm w-full flex gap-4 max-w-max text-sm'>

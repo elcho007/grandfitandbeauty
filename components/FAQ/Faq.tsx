@@ -110,8 +110,10 @@ const Faq = (props: Props) => {
 	});
 
 	return (
-		<div className='w-full h-[85vh]  bg-[#171717] text-gray-950 flex flex-col justify-center gap-8 items-center'>
-			<div className='flex w-3xl flex-col gap-6 items-center'>
+		<div className='w-full h-[85vh] bg-[#171717] text-gray-50 flex flex-col justify-center gap-8 items-center'>
+			{' '}
+			<div className='flex max-w-3xl flex-col gap-6 items-center'>
+				{' '}
 				<h3 className='text-4xl tracking-tight '>Najčešća pitanja</h3>
 				{/* <p className='text-lg max-w-[45ch] text-center'>
 					Često nam postavljate pitanja o našim uslugama. Ovdje smo da
@@ -119,7 +121,6 @@ const Faq = (props: Props) => {
 					kontaktirajte.
 				</p> */}
 			</div>
-
 			<div className='faq-wrapper grid grid-cols-1 gap-4 max-w-[90vw] mx-auto'>
 				{Array.from({ length: 5 }).map((_, index) => (
 					<div

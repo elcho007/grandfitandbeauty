@@ -20,18 +20,19 @@ const GFBMarquee = (props: Props) => {
 
 		let currentScroll = 0;
 		let isScrollingDown = true;
+		const marqueeInner = marqueeRef.current.querySelector('.marquee__inner');
 		const arrows = marqueeRef.current.querySelectorAll('.arrow');
+		const parts = marqueeRef.current.querySelectorAll('.marquee__part');
 
 		// Create marquee animation
 		const tween = gsap
-			.to('.marquee__part', {
+			.to(parts, {
 				xPercent: -100,
 				repeat: -1,
 				duration: 5,
 				ease: 'linear',
 			})
 			.totalProgress(0.5);
-
 		// Initialize marquee position
 		//gsap.set('.marquee__inner', { xPercent: -50 });
 

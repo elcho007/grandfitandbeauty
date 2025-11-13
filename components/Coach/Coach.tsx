@@ -30,7 +30,8 @@ const Coach = (props: Props) => {
 	return (
 		<div
 			ref={coachRef}
-			className='after after-content-[""] after:block after:w-full after:h-full after:bg-green-500 after:absolute after:top-0 after:left-0 after:z-10 after:opacity-10 after:mix-blend-difference relative z-10 w-full min-h-[130svh] bg-[url(/images/elvis.webp)] bg-size-[130%] bg-center content-end text-4xl font-bold text-white grid grid-cols-[5vw_repeat(12,1fr)_5vw] pb-8'>
+			className='after:content-[""] after:block after:w-full after:h-full after:bg-green-500 after:absolute after:top-0 after:left-0 after:z-10 after:opacity-10 after:mix-blend-difference relative z-10 w-full min-h-[130svh] bg-[url(/images/elvis.webp)] bg-size-[130%] bg-center content-end text-4xl font-bold text-white grid grid-cols-[5vw_repeat(12,1fr)_5vw] pb-8'>
+			{' '}
 			<GSAPSplitTextComponent
 				className='col-start-2 col-end-13 mb-4 relative z-20'
 				ease={'power2'}
@@ -50,7 +51,6 @@ const Coach = (props: Props) => {
 					Elvis Agović
 				</span>
 			</GSAPSplitTextComponent>
-
 			<div className='col-start-2 col-end-13 flex h-48 relative z-20 text-sm font-normal tracking-normal w-full'>
 				<FadeIn
 					duration={0.5}
@@ -67,7 +67,6 @@ const Coach = (props: Props) => {
 					</div>
 				</FadeIn>
 			</div>
-
 			<div className=' col-start-2 col-end-13 relative z-20 flex mt-8'>
 				<GSAPSplitTextComponent ease={'power2'} start='top 90%' delay={0.25}>
 					<p
