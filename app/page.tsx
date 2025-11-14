@@ -19,8 +19,8 @@ export default function Home() {
 				<GFBMarquee />
 				<SuccessStories />
 				<Blog />
-				<PriceCards />
-				<Faq />
+				{/* <PriceCards />
+				<Faq /> */}
 			</main>
 		</div>
 	);

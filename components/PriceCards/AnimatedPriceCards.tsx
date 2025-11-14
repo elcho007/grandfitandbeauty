@@ -68,14 +68,14 @@ const AnimatedPriceCards = (props: Props) => {
 						ref={(el) => {
 							cardsRef.current[index] = el!;
 						}}
-						className='relative after:content-[""] after:absolute after:top-0 after:left-0 after:bg-[#283b35] after:w-full after:z-0 after:rounded-2xl after:h-[85%]  price-card p-8 pb-2 mb-4 aspect-[.75] w-88 rounded-3xl bg-gray-950 flex flex-col '>
+						className='relative after:content-[""] after:absolute after:top-0 after:left-0 after:bg-(--darkGreen) after:w-full after:z-0 after:rounded-2xl after:h-[85%]  price-card p-8 pb-2 mb-4 aspect-[.75] w-80 rounded-3xl bg-[#181818] flex flex-col '>
 						<h3
-							className='relative text-[#d5bb9a] z-10 text-3xl font-normal mb-2 border-b border-[#d3b48ba8]'
+							className='relative text-[#ceeec6] z-10 text-3xl font-normal mb-2 border-b border-[#ceeec6]/10'
 							style={{ fontFamily: 'Lora, serif' }}>
 							{card.title}
 						</h3>
 
-						<ul className=' list-disc list-outside relative z-10 mb-4 mt-4 text-[#d5bb9a]'>
+						<ul className=' list-disc list-outside relative z-10 mb-4 mt-4 text-[#ceeec6]'>
 							{card.features.map((feature, index) => (
 								<li key={index} className='mb-2'>
 									{feature}
@@ -84,7 +84,7 @@ const AnimatedPriceCards = (props: Props) => {
 						</ul>
 						<p
 							style={{ fontFamily: 'Lora, serif' }}
-							className='text-[#d5bb9a] relative z-10 font-bold mb-4 flex mt-auto text-4xl'>
+							className='text-[#ceeec6] relative z-10 font-bold mb-2 flex mt-auto text-4xl'>
 							{card.price}
 						</p>
 					</div>

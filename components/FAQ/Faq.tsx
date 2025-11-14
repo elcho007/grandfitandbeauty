@@ -110,11 +110,13 @@ const Faq = (props: Props) => {
 	});
 
 	return (
-		<div className='w-full h-[85vh] bg-[#171717] text-gray-50 flex flex-col justify-center gap-8 items-center'>
+		<div className='w-full h-[85vh] bg-(--green) text-[#ceeec6] flex flex-col justify-center gap-8 items-center'>
 			{' '}
 			<div className='flex max-w-3xl flex-col gap-6 items-center'>
 				{' '}
-				<h3 className='text-4xl tracking-tight '>Najčešća pitanja</h3>
+				<h3 className='text-3xl tracking-tight font-semibold max-w-[40ch]'>
+					Najčešća pitanja
+				</h3>
 				{/* <p className='text-lg max-w-[45ch] text-center'>
 					Često nam postavljate pitanja o našim uslugama. Ovdje smo da
 					odgovorimo na neka od najčešćih. Za sva dodatna pitanja slobodno nas
@@ -132,7 +134,7 @@ const Faq = (props: Props) => {
 						className='faq-item p-4 border-b border-gray-300/20 pb-1 cursor-pointer transition-colors duration-300 overflow-hidden'>
 						<div className='flex justify-between items-center'>
 							<h4
-								className='text-3xl mb-2'
+								className='text-xl mb-2'
 								style={{ fontFamily: 'Lora, serif' }}>
 								Pitanje {index + 1}?
 							</h4>

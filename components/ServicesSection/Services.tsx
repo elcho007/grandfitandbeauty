@@ -3,6 +3,7 @@ import React from 'react';
 import { gsap, useGSAP, Draggable, SplitText } from '../../lib/gsap';
 import Image from 'next/image';
 import { X } from 'lucide-react';
+import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
 
 const treninziCards = [
 	{ title: 'Grupne vježbe', image: '' },
@@ -253,11 +254,23 @@ const Services = (props: Props) => {
 	return (
 		<div
 			ref={draggableWheelRef}
-			className='w-full h-screen bg-[#f3bb20] slider relative overflow-hidden pt-20'>
-			<h2 className='pl-[5vw] text-4xl tracking-tight font-semibold max-w-[40ch] mb-8'>
-				U GrandFit&Beauty nudimo vam širok spektar usluga i tretmana koji će vam
-				pomoći da izgledate i osjećate se najbolje.
-			</h2>
+			className='w-full min-h-[130vh] bg-(--baseYellow) slider relative overflow-hidden pt-10'>
+			<GSAPSplitTextComponent ease={'expo'} start={'top 90%'} duration={1}>
+				<h2
+					className='pl-[5vw] text-[5vw] tracking-tight'
+					style={{ fontFamily: 'Anton, sans-serif' }}>
+					GrandFit&Beauty usluge
+				</h2>
+			</GSAPSplitTextComponent>
+			<h3 className='pl-[5vw] text-3xl tracking-tighter font-medium max-w-[40ch] mb-8'>
+				U{' '}
+				<span className='font-semibold'>
+					{' '}
+					GrandFit<span style={{ fontFamily: 'Lora, serif' }}>&Beauty </span>
+				</span>
+				nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
+				izgledate i osjećate se najbolje.
+			</h3>
 			<p className='text-base tracking-tight leading-[1.45] max-w-[75ch] pl-[5vw] mb-4'>
 				Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 				vam garantujemo najviši nivo usluge i profesionalnosti.
@@ -267,14 +280,14 @@ const Services = (props: Props) => {
 			</p>
 			<div
 				ref={wheelRef}
-				className='wheel z-10 absolute left-[50%] top-[50%] transform -translate-x-[50%] w-[300vw] h-[300vw] max-w-[1500px] max-h-[1500px] flex items-center justify-center'>
+				className='wheel z-10 absolute left-[50%] top-[60%] transform -translate-x-[50%] w-[300vw] h-[300vw] max-w-[1500px] max-h-[1500px] flex items-center justify-center'>
 				{allCards.map((card, index) => (
 					<div
 						key={index}
 						ref={(el) => {
 							cardRefs.current[index] = el;
 						}}
-						className='card overflow-hidden absolute top-0 left-0 w-[15%] max-w-[320px] aspect-[.75] bg-[#e43738] flex flex-col items-center justify-between text-center rounded-xl'>
+						className='card overflow-hidden absolute top-0 left-0 w-[15%] max-w-[320px] aspect-[.75] bg-(--darkerYellow) border border-(--red) flex flex-col items-center justify-between text-center rounded-xl'>
 						<div className='relative w-[96%] h-[75%] mt-1.5 rounded-lg overflow-hidden'>
 							<Image
 								src={card.image || '/images/gfb1.jpg'}
@@ -299,7 +312,7 @@ const Services = (props: Props) => {
 						</div>
 
 						{/* More info card */}
-						<div className='more-about-card text-[12px] before:content-[""] before:left-[50%] before:transform before:translate-x-[-50%] before:h-16 before:rounded-2xl before:absolute before:inset-0 before:top-0 before:w-[80%] before:z-[-1] bg-[#ce3333] absolute inset-0 top-[91%] w-full h-full text-center z-10 font-semibold tracking-tight text-[#fccb41] flex flex-col pb-4'>
+						<div className='more-about-card text-[12px] before:content-[""] before:left-[50%] before:transform before:translate-x-[-50%] before:h-16 before:rounded-2xl before:absolute before:inset-0 before:top-0 before:w-[80%] before:z-[-1] bg-(--red) absolute inset-0 top-[91%] w-full h-full text-center z-10 font-semibold tracking-tight text-(--baseYellow) flex flex-col pb-4'>
 							<div className='flex justify-center items-center p-2 gap-4'>
 								<h3 className='font-bold text-sm'>{card.title}</h3>
 							</div>

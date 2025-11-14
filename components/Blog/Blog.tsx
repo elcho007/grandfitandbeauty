@@ -32,9 +32,9 @@ const dummyBlogPosts = [
 
 const Blog = (props: Props) => {
 	return (
-		<div className='bg-[#ce3333] h-screen w-full p-[5vw] text-gray-950 flex flex-col gap-8'>
+		<div className='bg-[#0e0e0e] min-h-screen w-full p-[5vw] text-gray-950 flex flex-col gap-8'>
 			<GSAPSplitTextComponent ease={'power2'}>
-				<h4 className='text-2xl tracking-tighter uppercase font-semibold'>
+				<h4 className='text-2xl tracking-tighter uppercase font-semibold text-(--red)'>
 					Fitness Blog by Elvis Agović
 				</h4>
 			</GSAPSplitTextComponent>
@@ -44,18 +44,18 @@ const Blog = (props: Props) => {
 						<Link
 							href={`/blog/${post.id}`}
 							key={post.id}
-							className='blog-post w-full border border-dashed p-4 rounded-md aspect-square flex flex-col'>
-							<h3
+							className='blog-post w-full border border-(--red) border-dashed p-4 rounded-md aspect-square flex flex-col'>
+							<h5
 								style={{ fontFamily: 'Anton, sans-serif' }}
-								className='text-4xl tracking-tight mb-4'>
+								className='text-4xl tracking-tight mb-4 text-(--red)'>
 								{post.title}
-							</h3>
-							<p>{post.excerpt}</p>
+							</h5>
+							<p className='text-(--red)'>{post.excerpt}</p>
 							<div className='post-footer flex mt-auto justify-between items-center'>
-								<p className='date bg-[#e24040] p-4 rounded-sm max-w-max mt-auto h-12 flex items-center text-xs'>
+								<p className='date bg-(--red) p-4 rounded-sm max-w-max mt-auto h-12 flex items-center text-xs'>
 									{post.date}
 								</p>
-								<span className='text-gray-950 w-12 h-12 bg-[#e24040] flex items-center justify-center rounded-full hover:underline'>
+								<span className='text-gray-950 w-12 h-12 bg-(--red) flex items-center justify-center rounded-full hover:underline'>
 									<ArrowRight />
 								</span>
 							</div>
@@ -78,7 +78,7 @@ const Blog = (props: Props) => {
 				</span>
 
 				{dummyBlogPosts.length > 0 && (
-					<button className='text-gray-950 w-12 h-12 bg-[#e24040] flex items-center justify-center rounded-full hover:underline'>
+					<button className='text-gray-950 w-12 h-12 bg-(--red) flex items-center justify-center rounded-full hover:underline'>
 						<ArrowRight />
 					</button>
 				)}

@@ -1,11 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import { Inter } from 'next/font/google';
-const inter = Inter({
-	subsets: ['latin'],
-	weight: ['400', '700'],
-	variable: '--font-inter',
-});
 
 type Props = {
 	params: Promise<{ id: string }>;
@@ -34,7 +28,9 @@ const BlogPage = async ({ params }: Props) => {
 					</p>
 				</div>
 			</div>
-			<div className={`w-2xl ${inter.variable} px-8`}>
+			<div
+				className={`w-2xl  px-8`}
+				style={{ fontFamily: 'Roboto, sans-serif' }}>
 				<h2 className='mb-6 text-2xl tracking-tight font-semibold'>
 					Kako postići svoje fitness ciljeve
 				</h2>

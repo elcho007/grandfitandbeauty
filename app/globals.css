@@ -3,6 +3,14 @@
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
+	--baseYellow: #f3bb20;
+	--darkerYellow: #e9b012;
+	--lighterYellow: #fccb41;
+	--green: #03a554;
+	--darkGreen: #00554b;
+	--red: #ce3333;
+
+	--black: #0e0e0e;
 }
 
 @theme inline {
@@ -22,7 +30,6 @@
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 /* SplitText styling for proper word spacing */
@@ -94,7 +101,7 @@ body {
 .title,
 .subTitle {
 	color: #fff;
-	color: #f3bb20;
+	color: var(--baseYellow);
 }
 
 .heading-span {
@@ -114,8 +121,16 @@ body {
 	bottom: 20px;
 	padding-left: 5vw;
 	display: flex;
+	gap: 2rem;
 	justify-content: space-between;
 	z-index: 10;
+}
+
+.slide-description {
+	font-size: 1rem;
+	color: #fff;
+	letter-spacing: -0.015em;
+	max-width: 40ch;
 }
 
 .control-btn {
@@ -138,12 +153,12 @@ body {
 .control-btn svg {
 	width: 1.5rem;
 	height: 1.5rem;
-	stroke: #000;
+	stroke: var(--black);
 	transition: fill 200ms ease-in-out;
 }
 
 .control-btn:hover svg {
-	fill: #000;
+	fill: var(--black);
 }
 
 @media (max-width: 900px) {
@@ -174,7 +189,7 @@ body {
 /* 	Marquee styles */
 .marquee {
 	position: relative;
-	background: #171717;
+	background: var(--black);
 	color: #eee;
 	padding: 32px 0;
 	font-size: 40px;

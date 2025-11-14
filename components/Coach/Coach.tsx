@@ -70,7 +70,7 @@ const Coach = (props: Props) => {
 			<div className=' col-start-2 col-end-13 relative z-20 flex mt-8'>
 				<GSAPSplitTextComponent ease={'power2'} start='top 90%' delay={0.25}>
 					<p
-						className='text-3xl font-light text-right'
+						className='text-3xl font-semibold tracking-tighter text-right'
 						style={{ fontFamily: 'Lora, serif' }}>
 						Ne odustaj od sebe. Sjeti se zašto si krenuo.
 					</p>

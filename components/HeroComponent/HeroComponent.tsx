@@ -136,12 +136,31 @@ const HeroComponent = (props: Props) => {
 						words: textElements,
 					};
 
-					// Set initial blur state for all words
-					gsap.set(textElements, {
-						filter: 'blur(75px)',
-						opacity: 0,
-						autoAlpha: 0,
-					});
+					// Set initial state based on slide index
+					if (index === 0) {
+						// First slide: set words to blurred initially for animation
+						gsap.set(textElements, {
+							filter: 'blur(75px)',
+							opacity: 0,
+							autoAlpha: 0,
+						});
+						// Ensure container is visible
+						gsap.set(titleContainer, {
+							visibility: 'visible',
+							opacity: 1,
+						});
+					} else {
+						// Other slides: hide completely
+						gsap.set(textElements, {
+							filter: 'blur(75px)',
+							opacity: 0,
+							autoAlpha: 0,
+						});
+						gsap.set(titleContainer, {
+							visibility: 'hidden',
+							opacity: 0,
+						});
+					}
 				}
 			});
 
@@ -180,22 +199,25 @@ const HeroComponent = (props: Props) => {
 
 		carouselTextElements.current.forEach((slideData, index) => {
 			const words = slideData?.words;
-			if (!words) return;
+			const container = slideData?.container;
+			if (!words || !container) return;
 
 			if (index !== newIndex) {
-				// Set inactive slides to blurred state
+				// Hide inactive slide containers and blur words
+				gsap.set(container, {
+					visibility: 'hidden',
+					opacity: 0,
+				});
 				gsap.set(words, {
 					filter: 'blur(75px)',
 					opacity: 0,
 					autoAlpha: 0,
 				});
-				gsap.to(words, {
-					filter: 'blur(75px)',
-					opacity: 0,
-					autoAlpha: 0,
-					duration: 2.5,
-					ease: 'power1.out',
-					overwrite: true,
+			} else {
+				// Show active slide container
+				gsap.set(container, {
+					visibility: 'visible',
+					opacity: 1,
 				});
 			}
 		});
@@ -321,7 +343,9 @@ const HeroComponent = (props: Props) => {
 				{carouselSlides.map((slide, index) => (
 					<div
 						key={slide.title}
-						className='slide-title-container'
+						className={`slide-title-container ${
+							index === 0 ? 'slide-active' : 'slide-inactive'
+						}`}
 						ref={(el) => {
 							titleRefs.current[index] = el;
 						}}>
@@ -335,7 +359,7 @@ const HeroComponent = (props: Props) => {
 							<span className='heading-span tracking-tighter'>&Beauty</span>
 						</h1>
 						<h2
-							className='subTitle tracking-tight'
+							className='subTitle tracking-tighter font-medium'
 							ref={(el) => {
 								subTitleRefs.current[index] = el;
 							}}>

@@ -246,9 +246,9 @@ const ClientTestimonials = (props: Props) => {
 	}, [maxPosition, cardWidth, updateProgressBar]);
 
 	return (
-		<div className='bg-[#f3bb20] w-full h-[60vh] flex flex-col justify-center items-center gap-8 text-gray-950 py-8'>
-			<h3 className='text-3xl tracking-tight'>
-				Pročitajte šta naši klijenti kažu
+		<div className='bg-[#f3bb20] w-full min-h-[60vh] flex flex-col justify-center items-center gap-8 text-gray-950 py-8'>
+			<h3 className='text-3xl tracking-tighter font-medium max-w-[40ch]'>
+				Pročitajte šta kažu naši klijenti
 			</h3>
 			<div className='flex flex-col justify-center max-w-6xl overflow-hidden mx-auto'>
 				<div ref={testimonialsWrapperRef} className='flex w-full gap-2'>
