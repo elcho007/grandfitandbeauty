@@ -65,7 +65,7 @@ const Blog = (props: Props) => {
 			</div>
 
 			<div className='pagination flex items-start mt-auto flex-col gap-4'>
-				<span>
+				<span className='text-(--red)'>
 					Ukupno {dummyBlogPosts.length}
 					{dummyBlogPosts.length === 1
 						? ' post'

@@ -161,28 +161,76 @@ body {
 	fill: var(--black);
 }
 
+/* Services wheel responsive tweaks */
+
+.slider .wheel {
+	transition: width 0.4s ease, height 0.4s ease, top 0.4s ease;
+}
+
+.slider .wheel .card {
+	transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+	opacity: 0.9;
+	transform-origin: center;
+}
+
+.slider .wheel .card[data-active='true'] {
+	opacity: 1;
+	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+	transform: scale(1.05);
+	z-index: 8;
+}
+
+@media (max-width: 768px) {
+	.slider {
+		padding-bottom: 8rem;
+	}
+
+	.slider .wheel {
+		top: 62%;
+	}
+
+	.slider .wheel .card .more-about-card {
+		font-size: 0.78rem;
+	}
+}
+
 @media (max-width: 900px) {
 	.slide-title-container {
 		width: 100%;
-		padding: 0 2rem;
+		padding: 0 5vw;
+		padding-bottom: 15vh;
 	}
 
 	.slider-controls {
-		top: 65%;
-		width: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		justify-content: center;
+		top: 90%;
+		width: 90vw;
+		left: 5vw;
+
+		justify-content: flex-start;
 		gap: 1rem;
+		height: 60px;
+		padding-left: 0;
 	}
 
 	.control-btn {
 		padding: 1rem;
+		height: 100%;
+		width: 60px;
 	}
 
 	.control-btn svg {
 		width: 1rem;
 		height: 1rem;
+	}
+
+	.slide-title-container .title {
+		line-height: 1.1;
+		margin-bottom: 1rem;
+	}
+
+	.subTitle {
+		max-width: 15ch;
+		line-height: 1.1;
 	}
 }
 

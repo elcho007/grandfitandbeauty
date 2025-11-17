@@ -351,7 +351,7 @@ const HeroComponent = (props: Props) => {
 						}}>
 						<h1
 							style={{ fontFamily: 'Anton, serif' }}
-							className='title text-6xl max-w-[20ch] leading-[1.2] tracking-tight'
+							className='title text-6xl max-w-[20ch] leading-[1.1] xl:leading-[1.2] tracking-tight'
 							ref={(el) => {
 								mainTitleRefs.current[index] = el;
 							}}>

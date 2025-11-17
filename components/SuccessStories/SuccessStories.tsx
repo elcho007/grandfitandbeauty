@@ -62,13 +62,13 @@ const SuccessStories = (props: Props) => {
 	return (
 		<div className='w-full min-h-screen bg-[#f3bb20] p-[5vw] flex flex-col gap-8'>
 			<div className='grid grid-cols-4 gap-8 w-full'>
-				<div className='col-span-1 w-full flex flex-col'>
+				<div className='col-span-full md:col-span-1 w-full flex flex-col'>
 					<GSAPSplitTextComponent
 						ease={'expo'}
 						start={'top bottom'}
 						duration={1}>
 						<h3
-							className='text-[3.5vw] mb-4 tracking-tight'
+							className='text-3xl md:text-[3.5vw] mb-4 tracking-tight'
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							Uspješne priče
 						</h3>
@@ -93,7 +93,7 @@ const SuccessStories = (props: Props) => {
 						indomitable will." – Mahatma Gandhi
 					</p>
 				</div>
-				<div className='relative w-full h-[600px] col-start-2 col-span-3 border '>
+				<div className='relative w-full h-[600px] col-start-1 col-span-full md:col-start-2 md:col-span-3 border '>
 					<Image
 						src={stories[activeStoryIndex].image}
 						alt='Workout Image'
@@ -130,10 +130,10 @@ const SuccessStories = (props: Props) => {
 				</div>
 			</div>
 			<div className='grid grid-cols-4 gap-8 w-full'>
-				<div className='flex gap-2 col-span-3 col-start-2 w-full justify-end overflow-hidden'>
+				<div className='flex gap-2 col-span-full col-start-1 md:col-span-3 md:col-start-2 w-full justify-end overflow-hidden'>
 					<div
 						onClick={() => handleActiveStoryChange(0)}
-						className='w-48 h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+						className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 						<Image
 							src={'/images/story1.jpg'}
 							fill
@@ -143,7 +143,7 @@ const SuccessStories = (props: Props) => {
 					</div>
 					<div
 						onClick={() => handleActiveStoryChange(1)}
-						className='w-48 h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+						className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 						<Image
 							src={'/images/story2.jpg'}
 							fill
@@ -153,7 +153,7 @@ const SuccessStories = (props: Props) => {
 					</div>
 					<div
 						onClick={() => handleActiveStoryChange(2)}
-						className='w-48 h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+						className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 						<Image
 							src={'/images/story3.jpg'}
 							fill
@@ -163,7 +163,7 @@ const SuccessStories = (props: Props) => {
 					</div>
 					<div
 						onClick={() => handleActiveStoryChange(3)}
-						className='w-48 h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+						className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 						<Image
 							src={'/images/story4.jpg'}
 							fill

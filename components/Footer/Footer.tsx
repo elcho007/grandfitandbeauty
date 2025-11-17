@@ -7,9 +7,9 @@ const Footer = (props: Props) => {
 	return (
 		<div className='px-[5vw] bg-(--red) text-(--black)'>
 			<footer className='w-full py-8 grid grid-cols-1 md:grid-cols-3 gap-4'>
-				<div className='location flex gap-2 col-span-3 font-mono opacity-55'>
+				<div className='location text-xs flex gap-2 col-span-3 font-mono opacity-55 text-[#ff6b6b]'>
+					{' '}
 					<span>Dubrovnik</span>
-
 					{/* current time */}
 					<span>
 						{new Date().toLocaleTimeString('hr-HR', {
@@ -36,10 +36,10 @@ const Footer = (props: Props) => {
 					</a>
 				</div>
 
-				<div className='flex gap-4'>
+				<div className='flex gap-4 col-start-1'>
 					<div className='text-sm'>
 						<p>Kontakt</p>
-						<span className='max-w-[15ch]'>
+						<span className='flex max-w-[15ch]'>
 							Radnička 46, Dubrovnik, Croatia 20 000
 						</span>
 					</div>
@@ -48,7 +48,7 @@ const Footer = (props: Props) => {
 				<div className='col-start-1 col-span-3'>
 					<span
 						style={{ fontFamily: 'Anton, serif' }}
-						className='text-[6vw] max-w-[20ch] leading-[1.2] tracking-tight'>
+						className='text-5xl md:text-[6vw] max-w-[20ch] leading-[1.2] tracking-tight'>
 						GrandFit
 						<span className='heading-span tracking-tighter'>&Beauty</span>
 					</span>

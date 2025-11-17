@@ -257,12 +257,12 @@ const Services = (props: Props) => {
 			className='w-full min-h-[130vh] bg-(--baseYellow) slider relative overflow-hidden pt-10'>
 			<GSAPSplitTextComponent ease={'expo'} start={'top 90%'} duration={1}>
 				<h2
-					className='pl-[5vw] text-[5vw] tracking-tight'
+					className='pl-[5vw] text-3xl xl:text-[5vw] tracking-tight mb-4'
 					style={{ fontFamily: 'Anton, sans-serif' }}>
 					GrandFit&Beauty usluge
 				</h2>
 			</GSAPSplitTextComponent>
-			<h3 className='pl-[5vw] text-3xl tracking-tighter font-medium max-w-[40ch] mb-8'>
+			<h3 className='pl-[5vw] text-2xl xl:text-3xl tracking-tighter font-medium max-w-[40ch] mb-8'>
 				U{' '}
 				<span className='font-semibold'>
 					{' '}
@@ -271,23 +271,24 @@ const Services = (props: Props) => {
 				nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 				izgledate i osjećate se najbolje.
 			</h3>
-			<p className='text-base tracking-tight leading-[1.45] max-w-[75ch] pl-[5vw] mb-4'>
+			<p className='text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] pl-[5vw] mb-2'>
 				Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 				vam garantujemo najviši nivo usluge i profesionalnosti.
 			</p>
-			<p className='text-base tracking-tight leading-[1.45] max-w-[75ch] pl-[5vw]'>
+			<p className='text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] pl-[5vw]'>
 				Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 			</p>
 			<div
 				ref={wheelRef}
-				className='wheel z-10 absolute left-[50%] top-[60%] transform -translate-x-[50%] w-[300vw] h-[300vw] max-w-[1500px] max-h-[1500px] flex items-center justify-center'>
+				className='wheel z-10 absolute left-[50%] top-[62%] md:top-[75%] xl:top-[60%] transform -translate-x-[50%] w-[480vw] h-[480vw] sm:w-[380vw] sm:h-[380vw] md:w-[190vw] md:h-[190vw] xl:w-[1500px] xl:h-[1500px] max-w-[1500px] max-h-[1500px] flex items-center justify-center'>
 				{allCards.map((card, index) => (
 					<div
 						key={index}
+						data-active={currentTopCardIndex === index}
 						ref={(el) => {
 							cardRefs.current[index] = el;
 						}}
-						className='card overflow-hidden absolute top-0 left-0 w-[15%] max-w-[320px] aspect-[.75] bg-(--darkerYellow) border border-(--red) flex flex-col items-center justify-between text-center rounded-xl'>
+						className='card overflow-hidden absolute top-0 left-0 w-[315px] h-[455px] sm:w-[20%] sm:h-auto sm:aspect-[.75] xl:w-[15%] xl:max-w-[320px] bg-(--darkerYellow) border border-(--red) flex flex-col items-center justify-between text-center rounded-xl transition-all duration-500 ease-out'>
 						<div className='relative w-[96%] h-[75%] mt-1.5 rounded-lg overflow-hidden'>
 							<Image
 								src={card.image || '/images/gfb1.jpg'}
@@ -342,7 +343,7 @@ const Services = (props: Props) => {
 				<span
 					style={{ fontFamily: 'Anton, sans-serif' }}
 					ref={textSpanRef}
-					className='text-[4vw] tracking-tight leading-[1.45] uppercase text-center flex justify-center text-black/10'></span>
+					className=' text-3xl md:text-[4vw] tracking-tight leading-[1.45] uppercase text-center flex justify-center text-black/10'></span>
 			</div>
 		</div>
 	);

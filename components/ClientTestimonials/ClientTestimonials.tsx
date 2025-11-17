@@ -104,8 +104,11 @@ const ClientTestimonials = (props: Props) => {
 				setContainerWidth(wrapper.clientWidth);
 
 				// Calculate max position (total scrollable distance)
+				// Account for 5vw margin from right edge
+				const viewportWidth = window.innerWidth;
+				const rightMargin = viewportWidth * 0.05; // 5vw
 				const totalWidth = testimonials.length * cardWidthWithGap - gap;
-				const maxPos = Math.max(0, totalWidth - wrapper.clientWidth);
+				const maxPos = Math.max(0, totalWidth - (viewportWidth - rightMargin));
 				setMaxPosition(maxPos);
 			}
 		};
@@ -120,18 +123,9 @@ const ClientTestimonials = (props: Props) => {
 		(position: number) => {
 			if (!progressBarRef.current || !progressBarWrapperRef.current) return;
 
-			// Calculate how many cards are visible
-			const visibleCards = Math.ceil(containerWidth / cardWidth);
-			// Calculate how many cards have been scrolled past the left edge
-			const scrolledCards = position / cardWidth;
-			// Total cards that are "consumed" (scrolled past + visible)
-			const consumedCards = Math.min(
-				scrolledCards + visibleCards,
-				testimonials.length
-			);
-			// Progress as percentage of total cards
-			const progress =
-				testimonials.length > 0 ? consumedCards / testimonials.length : 0;
+			// Progress based on position relative to maxPosition
+			// When position = maxPosition, progress = 100%
+			const progress = maxPosition > 0 ? position / maxPosition : 0;
 
 			const progressBarWidth =
 				progressBarWrapperRef.current.clientWidth * progress;
@@ -142,7 +136,7 @@ const ClientTestimonials = (props: Props) => {
 				ease: 'power2.out',
 			});
 		},
-		[containerWidth, cardWidth]
+		[maxPosition]
 	);
 
 	// Initialize progress bar when dimensions are ready
@@ -246,10 +240,10 @@ const ClientTestimonials = (props: Props) => {
 	}, [maxPosition, cardWidth, updateProgressBar]);
 
 	return (
-		<div className='bg-[#f3bb20] w-full min-h-[60vh] flex flex-col justify-center items-center gap-8 text-gray-950 py-8'>
-			<h3 className='text-3xl tracking-tighter font-medium max-w-[40ch]'>
+		<div className='bg-[#f3bb20] w-full min-h-[60vh] flex flex-col justify-center items-center gap-8 text-gray-950 py-8 overflow-hidden'>
+			<h4 className='text-2xl tracking-tighter font-semibold max-w-[40ch]'>
 				Pročitajte šta kažu naši klijenti
-			</h3>
+			</h4>
 			<div className='flex flex-col justify-center max-w-6xl overflow-hidden mx-auto'>
 				<div ref={testimonialsWrapperRef} className='flex w-full gap-2'>
 					{testimonials.map((testimonial, index) => (
