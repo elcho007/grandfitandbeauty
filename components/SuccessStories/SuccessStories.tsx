@@ -61,8 +61,8 @@ const SuccessStories = (props: Props) => {
 
 	return (
 		<div className='w-full min-h-screen bg-[#f3bb20] p-[5vw] flex flex-col gap-8'>
-			<div className='grid grid-cols-4 gap-8 w-full'>
-				<div className='col-span-full md:col-span-1 w-full flex flex-col'>
+			<div className='grid grid-cols-4 gap-8 w-full bg-gray-200'>
+				<div className='col-span-full md:col-span-1 w-full flex flex-col bg-gray-200 p-4'>
 					<GSAPSplitTextComponent
 						ease={'expo'}
 						start={'top bottom'}

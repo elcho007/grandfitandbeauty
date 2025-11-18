@@ -114,7 +114,7 @@ const Faq = (props: Props) => {
 			{' '}
 			<div className='flex max-w-3xl flex-col gap-6 items-center'>
 				{' '}
-				<h3 className='text-3xl tracking-tight font-semibold max-w-[40ch]'>
+				<h3 className='text-7xl tracking-tight font-semibold max-w-[40ch]'>
 					Najčešća pitanja
 				</h3>
 				{/* <p className='text-lg max-w-[45ch] text-center'>
@@ -131,20 +131,20 @@ const Faq = (props: Props) => {
 						ref={(el) => {
 							faqRefs.current[index] = el;
 						}}
-						className='faq-item p-4 border-b border-gray-300/20 pb-1 cursor-pointer transition-colors duration-300 overflow-hidden'>
+						className='faq-item before before:content-[""] after after:absolute after:content-[""] after:w-full after:h-full after:left-0 after:top-0 before:absolute before:w-full before:h-full before:bg-(--darkGreen) bg-(--green) after:bg-(--green) z-10 border border-(--darkGreen) before:-top-2 before:-left-2 p-4 pb-1 cursor-pointer transition-colors duration-300 relative'>
 						<div className='flex justify-between items-center'>
 							<h4
-								className='text-xl mb-2'
+								className='text-xl mb-2 text-white relative z-10'
 								style={{ fontFamily: 'Lora, serif' }}>
 								Pitanje {index + 1}?
 							</h4>
-							<X size={16} className='opacity-50' />
+							<X size={16} className='opacity-50 text-white z-10' />
 						</div>
 						<div
 							ref={(el) => {
 								contentRefs.current[index] = el;
 							}}
-							className='faq-content-hidden overflow-hidden'
+							className='faq-content-hidden overflow-hidden z-10 relative'
 							style={{ height: 0 }}>
 							<p className='text-base pb-4 max-w-[65ch]'>
 								Lorem, ipsum dolor sit amet consectetur adipisicing elit.

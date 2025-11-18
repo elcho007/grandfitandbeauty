@@ -1,32 +1,41 @@
 'use client';
 import React from 'react';
-import { gsap, useGSAP, Draggable, SplitText } from '../../lib/gsap';
+import { gsap, useGSAP, CustomEase, SplitText } from '../../lib/gsap';
 import Image from 'next/image';
-import { X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
+import { text } from 'stream/consumers';
 
 const treninziCards = [
-	{ title: 'Grupne vježbe', image: '' },
-	{ title: 'Individualne vježbe', image: '' },
-	{ title: 'Djeca', image: '' },
-	{ title: 'Rehabilitacija', image: '' },
-	{ title: 'Sportaši', image: '/images/sportasi.png' },
-	{ title: 'Aq8 EMS sistem treninga', image: '' },
-	{ title: 'Bodyspace sistem treninga', image: '' },
+	{ title: 'Grupne vježbe', image: '', text: '' },
+	{ title: 'Individualne vježbe', image: '', text: '' },
+	{ title: 'Djeca', image: '', text: '' },
+	{ title: 'Rehabilitacija', image: '', text: '' },
+	{ title: 'Sportaši', image: '/images/sportasi.png', text: '' },
+	{ title: 'Aq8 EMS sistem treninga', image: '', text: '' },
+	{
+		title: 'Bodyspace sistem treninga',
+		image: '',
+		text: 'Kombinira vakuum tehnologiju i infracrveno grijanje kako bi potaknuo ubrzano topljenje masnih naslaga, oblikovanje tijela i poboljšanje cirkulacije.Idealno za ubrzavanje metabolizma, smanjenje celulita i vidljive rezultate u kraćem vremenu.',
+	},
 ];
 
 const beautyCards = [
-	{ title: 'Masaža', image: '' },
-	{ title: 'Maderoterapija', image: '' },
-	{ title: 'Linfomodeling', image: '/images/linfomodeling.png' },
-	{ title: 'Hydrafacial', image: '' },
-	{ title: 'Tesla', image: '/images/tesla.png' },
-	{ title: 'Rf tretman', image: '' },
+	{ title: 'Masaža', image: '', text: '' },
+	{ title: 'Maderoterapija', image: '', text: '' },
+	{ title: 'Linfomodeling', image: '/images/linfomodeling.png', text: '' },
+	{ title: 'Hydrafacial', image: '', text: '' },
+	{
+		title: 'Tesla',
+		image: '/images/tesla.png',
+		text: 'Funkcionira tako da elektromagnetsko polje prolazi kroz cijelu kožu i masnoću područja koje se tretira, da bi se učinkovito stimulirali mišići pružajući najintenzivnije kontinuirane kontrakcije, što je idealno za rast mišića, ali i umiranje masnih stanica.Tretman je ugodan i nema nelagode. Traje 30 minuta i ne zahtijeva oporavak, a dva do tri tretmana tjedno trebaju biti dovoljna da većina ljudi postigne sjajan rezultat. Obično se preporučuje šest tretmana uslijed kojih se već vide promjene na izgledu mišića.',
+	},
+	{ title: 'Rf tretman', image: '', text: '' },
 ];
 
 const generalCards = [
-	{ title: 'Bazen', image: '/images/bazen.png' },
-	{ title: 'Teretana', image: '' },
+	{ title: 'Bazen', image: '/images/bazen.png', text: '' },
+	{ title: 'Teretana', image: '', text: '' },
 ];
 
 const allCards = [...treninziCards, ...beautyCards, ...generalCards];
@@ -40,16 +49,18 @@ const Services = (props: Props) => {
 	const textSpanRef = React.useRef<HTMLSpanElement>(null);
 	const splitTextRef = React.useRef<any>(null);
 	const cardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+	const titleRef = React.useRef<HTMLDivElement>(null);
+	const textRef = React.useRef<HTMLDivElement>(null);
 
 	const { contextSafe } = useGSAP();
 
-	const [activeCardIndex, setActiveCardIndex] = React.useState<number | null>(
-		null
-	);
+	const [activeCardIndex, setActiveCardIndex] = React.useState<number>(0);
+	const [prevCardIndex, setPrevCardIndex] = React.useState<number>(0);
 	const [currentTopCardIndex, setCurrentTopCardIndex] =
 		React.useState<number>(0);
+	const [direction, setDirection] = React.useState<'next' | 'prev'>('next');
 
-	useGSAP(
+	/* useGSAP(
 		() => {
 			if (!wheelRef.current || !draggableWheelRef.current) return;
 
@@ -249,20 +260,105 @@ const Services = (props: Props) => {
 				},
 			});
 		}
-	});
+	}); */
+
+	useGSAP(() => {
+		if (!wheelRef.current) return;
+
+		CustomEase.create(
+			'hop',
+			'M0,0 C0.071,0.505 0.192,0.726 0.318,0.852 0.45,0.984 0.504,1 1,1'
+		);
+
+		const cards = wheelRef.current.querySelectorAll('.card');
+		const exitX = direction === 'next' ? -100 : 100;
+		const enterX = direction === 'next' ? 100 : -100;
+
+		cards.forEach((card, index) => {
+			if (index === activeCardIndex) {
+				// Animate in the new active card from the appropriate direction
+				const splitText = new SplitText(textRef.current, {
+					type: 'words,chars',
+					mask: 'words',
+				});
+				const splitTitle = new SplitText(titleRef.current, {
+					type: 'words,chars',
+					mask: 'words',
+				});
+				gsap.set(card, { zIndex: 2, visibility: 'visible' });
+				gsap.set(splitTitle.chars, { opacity: 0, yPercent: 100 });
+				gsap.set(splitText.words, { opacity: 0, yPercent: 100 });
+
+				gsap.fromTo(
+					splitText.words,
+					{
+						yPercent: 100,
+						opacity: 0,
+					},
+					{
+						opacity: 1,
+						yPercent: 0,
+						duration: 0.35,
+						stagger: { amount: 0.25 },
+						ease: 'hop',
+						delay: 0.2,
+					}
+				);
+				gsap.fromTo(
+					splitTitle.chars,
+					{
+						yPercent: 100,
+						opacity: 0,
+					},
+					{
+						opacity: 1,
+						yPercent: 0,
+						duration: 0.5,
+						stagger: { amount: 0.15 },
+						ease: 'hop',
+						delay: 0.1,
+					}
+				);
+				gsap.fromTo(
+					card,
+					{ xPercent: enterX },
+					{ xPercent: 0, duration: 0.95, ease: 'hop' }
+				);
+			} else if (index === prevCardIndex) {
+				// Animate out the previous active card in the same direction
+				gsap.set(card, { zIndex: 1, visibility: 'visible' });
+				gsap.to(card, {
+					xPercent: exitX,
+					duration: 0.95,
+					ease: 'hop',
+				});
+			} else {
+				// Keep other cards completely hidden
+				gsap.set(card, {
+					xPercent: enterX,
+					zIndex: 0,
+					visibility: 'hidden',
+				});
+			}
+		});
+	}, [activeCardIndex, direction, prevCardIndex]);
 
 	return (
 		<div
 			ref={draggableWheelRef}
-			className='w-full min-h-[130vh] bg-(--baseYellow) slider relative overflow-hidden pt-10'>
-			<GSAPSplitTextComponent ease={'expo'} start={'top 90%'} duration={1}>
+			className='w-full min-h-[110vh] bg-(--baseYellow) slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center'>
+			<GSAPSplitTextComponent
+				ease={'expo'}
+				start={'top 90%'}
+				duration={1}
+				className='col-span-5'>
 				<h2
-					className='pl-[5vw] text-3xl xl:text-[5vw] tracking-tight mb-4'
+					className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max'
 					style={{ fontFamily: 'Anton, sans-serif' }}>
 					GrandFit&Beauty usluge
 				</h2>
 			</GSAPSplitTextComponent>
-			<h3 className='pl-[5vw] text-2xl xl:text-3xl tracking-tighter font-medium max-w-[40ch] mb-8'>
+			<h3 className='col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[40ch] max-h-max'>
 				U{' '}
 				<span className='font-semibold'>
 					{' '}
@@ -271,79 +367,93 @@ const Services = (props: Props) => {
 				nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 				izgledate i osjećate se najbolje.
 			</h3>
-			<p className='text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] pl-[5vw] mb-2'>
+			<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
 				Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 				vam garantujemo najviši nivo usluge i profesionalnosti.
 			</p>
-			<p className='text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] pl-[5vw]'>
+			<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
 				Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 			</p>
-			<div
-				ref={wheelRef}
-				className='wheel z-10 absolute left-[50%] top-[62%] md:top-[75%] xl:top-[60%] transform -translate-x-[50%] w-[480vw] h-[480vw] sm:w-[380vw] sm:h-[380vw] md:w-[190vw] md:h-[190vw] xl:w-[1500px] xl:h-[1500px] max-w-[1500px] max-h-[1500px] flex items-center justify-center'>
-				{allCards.map((card, index) => (
-					<div
-						key={index}
-						data-active={currentTopCardIndex === index}
-						ref={(el) => {
-							cardRefs.current[index] = el;
-						}}
-						className='card overflow-hidden absolute top-0 left-0 w-[315px] h-[455px] sm:w-[20%] sm:h-auto sm:aspect-[.75] xl:w-[15%] xl:max-w-[320px] bg-(--darkerYellow) border border-(--red) flex flex-col items-center justify-between text-center rounded-xl transition-all duration-500 ease-out'>
-						<div className='relative w-[96%] h-[75%] mt-1.5 rounded-lg overflow-hidden'>
-							<Image
-								src={card.image || '/images/gfb1.jpg'}
-								alt=''
-								fill
-								className='object-cover'
-							/>
-							{/* Click overlay for interaction - only visible when card is at top */}
-							{currentTopCardIndex === index && (
-								<button
-									onClick={(e) => {
-										e.stopPropagation();
-										handleShowMore(index);
-									}}
-									className='absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white font-semibold text-sm backdrop-blur-sm'>
-									Detalji
-								</button>
-							)}
+			<div className='col-span-12 col-start-1 mt-16 flex bg-gray-200 w-full h-[650px] justify-between overflow-hidden relative'>
+				<span
+					className='text-xl absolute top-0 left-0 pl-4 pt-4 text-gray-950'
+					style={{ fontFamily: 'Anton, sans-serif' }}>
+					{activeCardIndex + 1}/{allCards.length}
+				</span>
+				<div className='flex flex-col justify-end col-span-5 col-start-1 gap-4 p-4'>
+					<h3
+						ref={titleRef}
+						className='text-3xl md:text-7xl tracking-tight font-medium leading-tight'
+						style={{ fontFamily: 'Anton, sans-serif' }}>
+						{allCards[activeCardIndex].title}
+					</h3>
+					{/* More info card */}
+					<div className='more-about-card w-full flex flex-col pb-4'>
+						<div
+							ref={textRef}
+							className='text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[60ch]'>
+							{allCards[activeCardIndex].text ||
+								'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est quis sapiente eius voluptatum dolore, eos iusto, possimus corporis accusamus nam! Deserunt fugiat odit necessitatibus repudiandae nemo fuga sequi, perferendis hic amet est eligendi ipsa perspiciatis soluta.'}
 						</div>
-						<div className='text-[14px] text-center font-normal tracking-tight text-gray-700 pt-1'>
-							{card.title}
-						</div>
-
-						{/* More info card */}
-						<div className='more-about-card text-[12px] before:content-[""] before:left-[50%] before:transform before:translate-x-[-50%] before:h-16 before:rounded-2xl before:absolute before:inset-0 before:top-0 before:w-[80%] before:z-[-1] bg-(--red) absolute inset-0 top-[91%] w-full h-full text-center z-10 font-semibold tracking-tight text-(--baseYellow) flex flex-col pb-4'>
-							<div className='flex justify-center items-center p-2 gap-4'>
-								<h3 className='font-bold text-sm'>{card.title}</h3>
+					</div>
+				</div>
+				<div
+					ref={wheelRef}
+					className='wheel z-10 w-1/2 h-full flex items-center justify-between gap-4 relative'>
+					<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
+						{allCards.map((card, index) => (
+							<div
+								key={index}
+								data-active={activeCardIndex === index}
+								ref={(el) => {
+									cardRefs.current[index] = el;
+								}}
+								className='card absolute w-full h-full overflow-hidden bg-(--darkerYellow) flex flex-col items-center justify-between text-center'>
+								<div className='relative w-full h-full overflow-hidden'>
+									<Image
+										src={card.image || '/images/gfb1.jpg'}
+										alt=''
+										fill
+										className='object-cover'
+									/>
+								</div>
 							</div>
-							<div className='text-xs p-4 text-left leading-relaxed font-light text-[#faf1d9]'>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-								est quis sapiente eius voluptatum dolore, eos iusto, possimus
-								corporis accusamus nam! Deserunt fugiat odit necessitatibus
-								repudiandae nemo fuga sequi, perferendis hic amet est eligendi
-								ipsa perspiciatis soluta.
-							</div>
-
+						))}
+					</div>
+					<div className='card-content absolute z-20 col-start-1 w-68 flex bottom-0 left-0 text-white'>
+						<div className='flex gap-4 h-32 max-w-max'>
 							<button
 								onClick={(e) => {
-									e.stopPropagation();
-									handleHideMore();
+									e.preventDefault();
+									setPrevCardIndex(activeCardIndex);
+									setDirection('prev');
+									setActiveCardIndex(() => {
+										// using modulo make it loop around
+										return (
+											(activeCardIndex - 1 + allCards.length) % allCards.length
+										);
+									});
 								}}
-								className='text-sm mt-auto font-medium text-[#fccb41]'>
-								{activeCardIndex !== null &&
-									activeCardIndex === index &&
-									'Zatvori'}
+								className='aspect-square border border-white border-dashed flex items-center justify-center'>
+								<ArrowLeft size={32} />
+							</button>
+							<button
+								onClick={(e) => {
+									e.preventDefault();
+									setPrevCardIndex(activeCardIndex);
+									setDirection('next');
+									setActiveCardIndex(() => {
+										return (
+											(activeCardIndex + 1 + allCards.length) % allCards.length
+										);
+									});
+								}}
+								className='aspect-square border border-dashed border-white flex items-center justify-center'>
+								<ArrowRight size={32} />
 							</button>
 						</div>
 					</div>
-				))}
-			</div>
-			<div className='absolute bottom-0 left-[50%] transform -translate-x-[50%] mb-10 z-0'>
-				<span
-					style={{ fontFamily: 'Anton, sans-serif' }}
-					ref={textSpanRef}
-					className=' text-3xl md:text-[4vw] tracking-tight leading-[1.45] uppercase text-center flex justify-center text-black/10'></span>
+				</div>
 			</div>
 		</div>
 	);

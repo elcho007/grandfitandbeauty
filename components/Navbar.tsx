@@ -113,8 +113,8 @@ const Navbar = (props: Props) => {
 	});
 
 	return (
-		<div className='relative h-20 w-full z-30'>
-			<nav className='flex items-center justify-between px-[5vw] mx-auto h-20 bg-black text-white relative z-2'>
+		<div className='absolute h-20 w-full z-30'>
+			<nav className='flex items-center justify-between px-[5vw] mx-auto h-20 bg-transparent  text-white z-20 relative w-full'>
 				<div>
 					<Image src={Logo} alt='Logo' width={50} height={50} />
 				</div>

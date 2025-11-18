@@ -7,6 +7,7 @@ import HeroComponent from '@/components/HeroComponent/HeroComponent';
 import PriceCards from '@/components/PriceCards/PriceCards';
 import Services from '@/components/ServicesSection/Services';
 import SuccessStories from '@/components/SuccessStories/SuccessStories';
+import VideoComponent from '@/components/VideoComponent/VideoComponent';
 
 export default function Home() {
 	return (
@@ -18,9 +19,10 @@ export default function Home() {
 				<ClientTestimonials />
 				<GFBMarquee />
 				<SuccessStories />
+				<VideoComponent />
+				<PriceCards />
 				<Blog />
-				{/* <PriceCards />
-				<Faq /> */}
+				<Faq />
 			</main>
 		</div>
 	);

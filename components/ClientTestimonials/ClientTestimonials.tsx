@@ -249,7 +249,7 @@ const ClientTestimonials = (props: Props) => {
 					{testimonials.map((testimonial, index) => (
 						<div
 							key={index}
-							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-[#e9b012] rounded-lg flex flex-col'>
+							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-[#e9b012] flex flex-col'>
 							<div className='flex items-end gap-4 mb-8'>
 								<div className='relative w-16 h-16 rounded-full overflow-hidden'>
 									<Image

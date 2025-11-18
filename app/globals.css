@@ -39,7 +39,7 @@ body {
 .carousel {
 	position: relative;
 	width: 100vw;
-	height: calc(100svh - 80px);
+	height: 100svh;
 	overflow: hidden;
 }
 
@@ -163,19 +163,13 @@ body {
 
 /* Services wheel responsive tweaks */
 
-.slider .wheel {
-	transition: width 0.4s ease, height 0.4s ease, top 0.4s ease;
-}
-
 .slider .wheel .card {
-	transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
-	opacity: 0.9;
+	opacity: 1;
 	transform-origin: center;
 }
 
 .slider .wheel .card[data-active='true'] {
 	opacity: 1;
-	box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
 	transform: scale(1.05);
 	z-index: 8;
 }

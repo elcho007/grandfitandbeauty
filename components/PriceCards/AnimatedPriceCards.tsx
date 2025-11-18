@@ -68,14 +68,14 @@ const AnimatedPriceCards = (props: Props) => {
 						ref={(el) => {
 							cardsRef.current[index] = el!;
 						}}
-						className='relative after:content-[""] after:absolute after:top-0 after:left-0 after:bg-(--darkGreen) after:w-full after:z-0 after:rounded-2xl after:h-[85%]  price-card p-8 pb-2 mb-4 aspect-[.75] w-80 rounded-3xl bg-[#181818] flex flex-col '>
+						className='relative after:content-[""] after:absolute after:-top-2 after:-left-2 after:bg-(--green) after:w-full after:z-0 after:h-full price-card p-8 pb-2 mb-4 aspect-[.75] w-80 bg-gray-200 flex flex-col'>
 						<h3
-							className='relative text-[#ceeec6] z-10 text-3xl font-normal mb-2 border-b border-[#ceeec6]/10'
+							className='relative text-[#f3f3f3] z-10 text-3xl font-normal mb-2 border-b border-[#ceeec6]/10'
 							style={{ fontFamily: 'Lora, serif' }}>
 							{card.title}
 						</h3>
 
-						<ul className=' list-disc list-outside relative z-10 mb-4 mt-4 text-[#ceeec6]'>
+						<ul className='list-disc list-outside relative z-10 mb-4 mt-4 text-[#f3f3f3]'>
 							{card.features.map((feature, index) => (
 								<li key={index} className='mb-2'>
 									{feature}
@@ -84,7 +84,7 @@ const AnimatedPriceCards = (props: Props) => {
 						</ul>
 						<p
 							style={{ fontFamily: 'Lora, serif' }}
-							className='text-[#ceeec6] relative z-10 font-bold mb-2 flex mt-auto text-4xl'>
+							className='text-[#f3f3f3] relative z-10 font-bold mb-2 flex mt-auto text-4xl'>
 							{card.price}
 						</p>
 					</div>
