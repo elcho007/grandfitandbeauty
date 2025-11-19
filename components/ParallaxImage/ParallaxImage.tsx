@@ -16,6 +16,8 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ src, alt }) => {
 	const currentTranslateY = useRef(0);
 	const targetTranslateY = useRef(0);
 	const rafId = useRef<number | null>(null);
+	const isAnimating = useRef(false);
+	const startAnimationRef = useRef<(() => void) | null>(null);
 
 	useEffect(() => {
 		const updateBounds = () => {
@@ -28,7 +30,21 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ src, alt }) => {
 			}
 		};
 
-		updateBounds();
+		const handleImageLoad = () => {
+			updateBounds();
+		};
+
+		const imageElement = imageRef.current;
+
+		// Add load listener for when image finishes loading
+		if (imageElement) {
+			imageElement.addEventListener('load', handleImageLoad);
+			// If image is already loaded (cached), update bounds immediately
+			if (imageElement.complete) {
+				updateBounds();
+			}
+		}
+
 		window.addEventListener('resize', updateBounds);
 
 		const animate = () => {
@@ -43,15 +59,28 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ src, alt }) => {
 					Math.abs(currentTranslateY.current - targetTranslateY.current) > 0.01
 				) {
 					imageRef.current.style.transform = `translateY(${currentTranslateY.current}px) scale(1.25)`;
+					rafId.current = requestAnimationFrame(animate);
+				} else {
+					isAnimating.current = false;
+					rafId.current = null;
 				}
 			}
-			rafId.current = requestAnimationFrame(animate);
 		};
 
-		animate();
+		const startAnimation = () => {
+			if (!isAnimating.current) {
+				isAnimating.current = true;
+				animate();
+			}
+		};
+
+		startAnimationRef.current = startAnimation;
 
 		return () => {
 			window.removeEventListener('resize', updateBounds);
+			if (imageElement) {
+				imageElement.removeEventListener('load', handleImageLoad);
+			}
 			if (rafId.current) {
 				cancelAnimationFrame(rafId.current);
 			}
@@ -62,6 +91,7 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ src, alt }) => {
 		if (!bounds.current) return;
 		const relativeScroll = scroll - bounds.current.top;
 		targetTranslateY.current = relativeScroll * 0.2;
+		startAnimationRef.current?.();
 	});
 
 	return (

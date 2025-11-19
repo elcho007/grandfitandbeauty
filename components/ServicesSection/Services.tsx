@@ -2,9 +2,8 @@
 import React from 'react';
 import { gsap, useGSAP, CustomEase, SplitText } from '../../lib/gsap';
 import Image from 'next/image';
-import { ArrowLeft, ArrowRight, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
-import { text } from 'stream/consumers';
 
 const treninziCards = [
 	{ title: 'Grupne vježbe', image: '', text: '' },
@@ -40,24 +39,17 @@ const generalCards = [
 
 const allCards = [...treninziCards, ...beautyCards, ...generalCards];
 
-type Props = {};
-
-const Services = (props: Props) => {
+const Services = () => {
 	const wheelRef = React.useRef<HTMLDivElement>(null);
 	const draggableWheelRef = React.useRef<HTMLDivElement>(null);
 
-	const textSpanRef = React.useRef<HTMLSpanElement>(null);
-	const splitTextRef = React.useRef<any>(null);
 	const cardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 	const titleRef = React.useRef<HTMLDivElement>(null);
 	const textRef = React.useRef<HTMLDivElement>(null);
 
-	const { contextSafe } = useGSAP();
-
 	const [activeCardIndex, setActiveCardIndex] = React.useState<number>(0);
 	const [prevCardIndex, setPrevCardIndex] = React.useState<number>(0);
-	const [currentTopCardIndex, setCurrentTopCardIndex] =
-		React.useState<number>(0);
+
 	const [direction, setDirection] = React.useState<'next' | 'prev'>('next');
 
 	/* useGSAP(
@@ -271,12 +263,12 @@ const Services = (props: Props) => {
 		);
 
 		const cards = wheelRef.current.querySelectorAll('.card');
-		const exitX = direction === 'next' ? -100 : 100;
-		const enterX = direction === 'next' ? 100 : -100;
+
+		const splitInstances: SplitText[] = [];
 
 		cards.forEach((card, index) => {
 			if (index === activeCardIndex) {
-				// Animate in the new active card from the appropriate direction
+				// Animate in the new active card with clip path reveal
 				const splitText = new SplitText(textRef.current, {
 					type: 'words,chars',
 					mask: 'words',
@@ -285,9 +277,42 @@ const Services = (props: Props) => {
 					type: 'words,chars',
 					mask: 'words',
 				});
+
+				splitInstances.push(splitText, splitTitle);
 				gsap.set(card, { zIndex: 2, visibility: 'visible' });
 				gsap.set(splitTitle.chars, { opacity: 0, yPercent: 100 });
 				gsap.set(splitText.words, { opacity: 0, yPercent: 100 });
+
+				// Clip path animation - reveal from appropriate direction
+				const cardImage = card.querySelector('img');
+				if (cardImage) {
+					gsap.fromTo(
+						cardImage,
+						{
+							x: direction === 'next' ? 500 : -500,
+						},
+						{
+							x: 0,
+							duration: 1.5,
+							ease: 'hop',
+						}
+					);
+				}
+
+				gsap.fromTo(
+					card,
+					{
+						clipPath:
+							direction === 'next'
+								? 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)'
+								: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+					},
+					{
+						clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+						duration: 1.5,
+						ease: 'hop',
+					}
+				);
 
 				gsap.fromTo(
 					splitText.words,
@@ -301,7 +326,7 @@ const Services = (props: Props) => {
 						duration: 0.35,
 						stagger: { amount: 0.25 },
 						ease: 'hop',
-						delay: 0.2,
+						delay: 0.4,
 					}
 				);
 				gsap.fromTo(
@@ -316,146 +341,162 @@ const Services = (props: Props) => {
 						duration: 0.5,
 						stagger: { amount: 0.15 },
 						ease: 'hop',
-						delay: 0.1,
+						delay: 0.3,
 					}
 				);
-				gsap.fromTo(
-					card,
-					{ xPercent: enterX },
-					{ xPercent: 0, duration: 0.95, ease: 'hop' }
-				);
 			} else if (index === prevCardIndex) {
-				// Animate out the previous active card in the same direction
+				// Animate out the previous active card with clip path
+				const cardImage = card.querySelector('img');
+				if (cardImage) {
+					gsap.to(cardImage, {
+						x: direction === 'next' ? -500 : 500,
+						duration: 1.5,
+						ease: 'hop',
+					});
+				}
+
 				gsap.set(card, { zIndex: 1, visibility: 'visible' });
 				gsap.to(card, {
-					xPercent: exitX,
-					duration: 0.95,
+					clipPath:
+						direction === 'next'
+							? 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
+							: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
+					duration: 1.5,
 					ease: 'hop',
 				});
 			} else {
 				// Keep other cards completely hidden
 				gsap.set(card, {
-					xPercent: enterX,
+					clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
 					zIndex: 0,
 					visibility: 'hidden',
 				});
 			}
 		});
+		return () => {
+			splitInstances.forEach((split) => split.revert());
+		};
 	}, [activeCardIndex, direction, prevCardIndex]);
 
 	return (
-		<div
-			ref={draggableWheelRef}
-			className='w-full min-h-[110vh] bg-(--baseYellow) slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center'>
-			<GSAPSplitTextComponent
-				ease={'expo'}
-				start={'top 90%'}
-				duration={1}
-				className='col-span-5'>
-				<h2
-					className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max'
-					style={{ fontFamily: 'Anton, sans-serif' }}>
-					GrandFit&Beauty usluge
-				</h2>
-			</GSAPSplitTextComponent>
-			<h3 className='col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[40ch] max-h-max'>
-				U{' '}
-				<span className='font-semibold'>
-					{' '}
-					GrandFit<span style={{ fontFamily: 'Lora, serif' }}>&Beauty </span>
-				</span>
-				nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
-				izgledate i osjećate se najbolje.
-			</h3>
-			<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
-				Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
-				vam garantujemo najviši nivo usluge i profesionalnosti.
-			</p>
-			<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
-				Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
-			</p>
-			<div className='col-span-12 col-start-1 mt-16 flex bg-gray-200 w-full h-[650px] justify-between overflow-hidden relative'>
-				<span
-					className='text-xl absolute top-0 left-0 pl-4 pt-4 text-gray-950'
-					style={{ fontFamily: 'Anton, sans-serif' }}>
-					{activeCardIndex + 1}/{allCards.length}
-				</span>
-				<div className='flex flex-col justify-end col-span-5 col-start-1 gap-4 p-4'>
-					<h3
-						ref={titleRef}
-						className='text-3xl md:text-7xl tracking-tight font-medium leading-tight'
+		<>
+			<div
+				ref={draggableWheelRef}
+				className='w-full min-h-[110vh] bg-gray-200 slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center'>
+				<GSAPSplitTextComponent
+					ease={'expo'}
+					start={'top 90%'}
+					duration={1}
+					className='col-span-5'>
+					<h2
+						className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
-						{allCards[activeCardIndex].title}
-					</h3>
-					{/* More info card */}
-					<div className='more-about-card w-full flex flex-col pb-4'>
-						<div
-							ref={textRef}
-							className='text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[60ch]'>
-							{allCards[activeCardIndex].text ||
-								'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est quis sapiente eius voluptatum dolore, eos iusto, possimus corporis accusamus nam! Deserunt fugiat odit necessitatibus repudiandae nemo fuga sequi, perferendis hic amet est eligendi ipsa perspiciatis soluta.'}
+						GrandFit&Beauty usluge
+					</h2>
+				</GSAPSplitTextComponent>
+				<h3 className='col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[40ch] max-h-max'>
+					U{' '}
+					<span className='font-semibold'>
+						{' '}
+						GrandFit<span style={{ fontFamily: 'Lora, serif' }}>&Beauty </span>
+					</span>
+					nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
+					izgledate i osjećate se najbolje.
+				</h3>
+				<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
+					Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
+					vam garantujemo najviši nivo usluge i profesionalnosti.
+				</p>
+				<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
+					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
+				</p>
+				<div className='col-span-12 col-start-1 mt-16 flex bg-gray-300 w-full h-[650px] justify-between overflow-hidden relative'>
+					<span
+						className='text-xl absolute top-0 left-0 pl-8 pt-2 text-gray-950'
+						style={{ fontFamily: 'Anton, sans-serif' }}>
+						{activeCardIndex + 1}/{allCards.length}
+					</span>
+					<div className='flex flex-col justify-center col-span-5 col-start-1 gap-4 p-8'>
+						<h3
+							ref={titleRef}
+							className='text-3xl md:text-7xl tracking-tight font-medium leading-tight'
+							style={{ fontFamily: 'Anton, sans-serif' }}>
+							{allCards[activeCardIndex].title}
+						</h3>
+						{/* More info card */}
+						<div className='more-about-card w-full flex flex-col pb-4'>
+							<div
+								ref={textRef}
+								className='text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[60ch]'>
+								{allCards[activeCardIndex].text ||
+									'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est quis sapiente eius voluptatum dolore, eos iusto, possimus corporis accusamus nam! Deserunt fugiat odit necessitatibus repudiandae nemo fuga sequi, perferendis hic amet est eligendi ipsa perspiciatis soluta.'}
+							</div>
+						</div>
+						<div className='card-content absolute  left-8 z-20 col-start-1 w-68 flex bottom-2 text-black'>
+							<div className='flex gap-4 h-32 max-w-max'>
+								<button
+									aria-label='Previous service'
+									onClick={(e) => {
+										e.preventDefault();
+										setPrevCardIndex(activeCardIndex);
+										setDirection('prev');
+										setActiveCardIndex(() => {
+											// using modulo make it loop around
+											return (
+												(activeCardIndex - 1 + allCards.length) %
+												allCards.length
+											);
+										});
+									}}
+									className='aspect-square border border-black border-dashed flex items-center justify-center'>
+									<ArrowLeft size={32} />
+								</button>
+								<button
+									aria-label='Next service'
+									onClick={(e) => {
+										e.preventDefault();
+										setPrevCardIndex(activeCardIndex);
+										setDirection('next');
+										setActiveCardIndex(() => {
+											return (
+												(activeCardIndex + 1 + allCards.length) %
+												allCards.length
+											);
+										});
+									}}
+									className='aspect-square border border-dashed border-black flex items-center justify-center'>
+									<ArrowRight size={32} />
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div
-					ref={wheelRef}
-					className='wheel z-10 w-1/2 h-full flex items-center justify-between gap-4 relative'>
-					<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
-						{allCards.map((card, index) => (
-							<div
-								key={index}
-								data-active={activeCardIndex === index}
-								ref={(el) => {
-									cardRefs.current[index] = el;
-								}}
-								className='card absolute w-full h-full overflow-hidden bg-(--darkerYellow) flex flex-col items-center justify-between text-center'>
-								<div className='relative w-full h-full overflow-hidden'>
-									<Image
-										src={card.image || '/images/gfb1.jpg'}
-										alt=''
-										fill
-										className='object-cover'
-									/>
+					<div
+						ref={wheelRef}
+						className='wheel z-10 w-1/2 h-full flex items-center justify-between gap-4 relative'>
+						<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
+							{allCards.map((card, index) => (
+								<div
+									key={index}
+									data-active={activeCardIndex === index}
+									ref={(el) => {
+										cardRefs.current[index] = el;
+									}}
+									className='card absolute w-full h-full overflow-hidden bg-(--darkerYellow) flex flex-col items-center justify-between text-center'>
+									<div className='relative w-full h-full overflow-hidden'>
+										<Image
+											src={card.image || '/images/gfb1.jpg'}
+											alt=''
+											fill
+											className='object-cover'
+										/>
+									</div>
 								</div>
-							</div>
-						))}
-					</div>
-					<div className='card-content absolute z-20 col-start-1 w-68 flex bottom-0 left-0 text-white'>
-						<div className='flex gap-4 h-32 max-w-max'>
-							<button
-								onClick={(e) => {
-									e.preventDefault();
-									setPrevCardIndex(activeCardIndex);
-									setDirection('prev');
-									setActiveCardIndex(() => {
-										// using modulo make it loop around
-										return (
-											(activeCardIndex - 1 + allCards.length) % allCards.length
-										);
-									});
-								}}
-								className='aspect-square border border-white border-dashed flex items-center justify-center'>
-								<ArrowLeft size={32} />
-							</button>
-							<button
-								onClick={(e) => {
-									e.preventDefault();
-									setPrevCardIndex(activeCardIndex);
-									setDirection('next');
-									setActiveCardIndex(() => {
-										return (
-											(activeCardIndex + 1 + allCards.length) % allCards.length
-										);
-									});
-								}}
-								className='aspect-square border border-dashed border-white flex items-center justify-center'>
-								<ArrowRight size={32} />
-							</button>
+							))}
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
