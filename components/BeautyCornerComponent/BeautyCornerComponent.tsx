@@ -276,7 +276,7 @@ const BeautyCornerComponent: React.FC = () => {
 							}`}>
 							<header className='flex items-start flex-col justify-between gap-2'>
 								<span className='text-xs uppercase tracking-[0.3em] text-gray-500'>
-									Treatman
+									Tretman
 								</span>
 								<h4 className='text-2xl font-semibold tracking-tight'>
 									{card.title}

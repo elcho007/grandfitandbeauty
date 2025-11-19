@@ -485,11 +485,11 @@ const Services = () => {
 									<div className='relative w-full h-full overflow-hidden'>
 										<Image
 											src={card.image || '/images/gfb1.jpg'}
-											alt=''
+											alt={card.title || 'Service image'}
 											fill
 											className='object-cover'
 										/>
-									</div>
+									</div>{' '}
 								</div>
 							))}
 						</div>

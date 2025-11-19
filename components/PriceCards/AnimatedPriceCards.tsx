@@ -1,5 +1,5 @@
 'use client';
-import React, { use } from 'react';
+import React from 'react';
 import FadeIn from '../FadeIn/FadeIn';
 import { Check } from 'lucide-react';
 

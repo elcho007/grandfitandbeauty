@@ -32,7 +32,8 @@ const dummyBlogPosts = [
 
 const Blog = (props: Props) => {
 	return (
-		<div className='bg-gray-950 min-h-screen w-full p-[5vw] text-gray-950 flex flex-col gap-8'>
+		<div className='bg-gray-950 min-h-screen w-full p-[5vw] text-gray-200 flex flex-col gap-8'>
+			{' '}
 			<GSAPSplitTextComponent ease={'power2'}>
 				<h4 className='text-2xl tracking-tighter uppercase font-semibold text-gray-200'>
 					Fitness Blog by Elvis Agović
@@ -63,7 +64,6 @@ const Blog = (props: Props) => {
 					))}
 				</FadeIn>
 			</div>
-
 			<div className='pagination flex items-start mt-auto flex-col gap-4'>
 				<span className='text-gray-200'>
 					Ukupno {dummyBlogPosts.length}

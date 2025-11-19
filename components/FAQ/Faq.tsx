@@ -115,7 +115,7 @@ const Faq = () => {
 					scrollTrigger: {
 						trigger: faqRef.current,
 						start: 'bottom bottom',
-						end: 'bottom cengter',
+						end: 'bottom center',
 						scrub: true,
 					},
 				}
