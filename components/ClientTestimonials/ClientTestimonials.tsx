@@ -278,17 +278,17 @@ const ClientTestimonials = (props: Props) => {
 						className='w-12 h-1 bg-gray-600 rounded mx-1'></span>
 				</span>
 			</div>
-			<div className='flex items-center gap-2 md:gap-4'>
+			<div className='flex items-center gap-2 md:gap-2'>
 				<button
 					onClick={handlePrev}
 					className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-gray-400 text-gray-600 p-2 font-semibold md:hover:bg-gray-600 md:hover:text-gray-200 transition-colors duration-300'>
-					<ArrowLeft />
+					<ArrowLeft size={32} />
 				</button>
 
 				<button
 					onClick={handleNext}
 					className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-gray-400 text-gray-600 p-2 font-semibold md:hover:bg-gray-600 md:hover:text-gray-200 transition-colors duration-300'>
-					<ArrowRight />
+					<ArrowRight size={32} />
 				</button>
 			</div>
 		</div>

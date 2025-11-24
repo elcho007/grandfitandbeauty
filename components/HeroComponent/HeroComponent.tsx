@@ -4,6 +4,7 @@ import React from 'react';
 
 type Props = {};
 import { gsap, SplitText, CustomEase, useGSAP } from '@/lib/gsap';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const carouselSlides = [
 	{
@@ -274,11 +275,15 @@ const HeroComponent = (props: Props) => {
 			newSlideImgContainer.appendChild(newSlideImg);
 			carouselImagesRef.current.appendChild(newSlideImgContainer);
 
+			const isMobile = window.innerWidth < 768;
+			const ease = isMobile ? 'power2.inOut' : 'hop';
+			const duration = isMobile ? 1 : 1.5;
+
 			if (currentSlideImage) {
 				gsap.to(currentSlideImage, {
 					x: direction === 'left' ? slideOffset : -slideOffset,
-					duration: 1.5,
-					ease: 'hop',
+					duration: duration,
+					ease: ease,
 				});
 			}
 
@@ -292,8 +297,8 @@ const HeroComponent = (props: Props) => {
 				},
 				{
 					clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-					duration: 1.5,
-					ease: 'hop',
+					duration: duration,
+					ease: ease,
 					onComplete: () => {
 						// Cleanup old slides
 						const imgElements =
@@ -310,8 +315,8 @@ const HeroComponent = (props: Props) => {
 
 			gsap.to(newSlideImg, {
 				x: 0,
-				duration: 1.5,
-				ease: 'hop',
+				duration: duration,
+				ease: ease,
 			});
 
 			updateActiveTextSlide(newIndex);
@@ -376,14 +381,7 @@ const HeroComponent = (props: Props) => {
 					ref={prevBtnRef}
 					onClick={handlePrev}
 					disabled={isAnimating}>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						height='24px'
-						viewBox='0 -960 960 960'
-						width='24px'
-						fill='#e5e7eb'>
-						<path d='m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z' />
-					</svg>
+					<ArrowLeft size={32} className='stroke-[#b39a67]' />
 				</button>
 
 				<button
@@ -391,14 +389,7 @@ const HeroComponent = (props: Props) => {
 					ref={nextBtnRef}
 					onClick={handleNext}
 					disabled={isAnimating}>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						height='24px'
-						viewBox='0 -960 960 960'
-						width='24px'
-						fill='#e5e7eb'>
-						<path d='M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z' />
-					</svg>
+					<ArrowRight size={32} className='stroke-[#b39a67]' />
 				</button>
 			</div>
 		</div>

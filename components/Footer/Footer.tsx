@@ -5,9 +5,9 @@ type Props = {};
 
 const Footer = (props: Props) => {
 	return (
-		<div className='px-[5vw] bg-gray-950 text-gray-200 relative before:content-[""] before:absolute before:-top-20 before:left-0 before:w-full before:h-32 before:bg-gray-950 before:z-0'>
+		<div className='px-[5vw] bg-gray-300 text-[#b39a67] relative before:content-[""] before:absolute before:-top-20 before:left-0 before:w-full before:h-32 before:bg-gray-300 before:z-0'>
 			<footer className='w-full py-8 grid grid-cols-1 md:grid-cols-3 gap-4'>
-				<div className='location text-xs flex gap-2 col-span-3 font-mono opacity-55 text-gray-400'>
+				<div className='location text-xs flex gap-2 col-span-3 font-mono opacity-55 text-[#b39a67]/50'>
 					{' '}
 					<span>Dubrovnik</span>
 					{/* current time */}

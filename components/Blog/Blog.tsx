@@ -32,7 +32,7 @@ const dummyBlogPosts = [
 
 const Blog = (props: Props) => {
 	return (
-		<div className='bg-gray-950 min-h-screen w-full p-[5vw] text-gray-200 flex flex-col gap-8'>
+		<div className='bg-(--black) min-h-screen w-full p-[5vw] text-gray-200 flex flex-col gap-8'>
 			{' '}
 			<GSAPSplitTextComponent ease={'power2'}>
 				<h4 className='text-2xl tracking-tighter uppercase font-semibold text-gray-200'>

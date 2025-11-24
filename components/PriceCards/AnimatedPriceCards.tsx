@@ -120,7 +120,7 @@ const CardContent = ({
 					key={featureIndex}
 					className='mb-2 list-none flex items-start gap-2'>
 					<span
-						className={`w-5 h-5 rounded-full flex items-center justify-center mt-1 shrink-0 ${
+						className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
 							index === 1 && activeIndex === 0
 								? 'bg-pink-900'
 								: `${activeIndex === 0 ? 'bg-gray-700' : 'bg-green-950'}`
@@ -297,7 +297,7 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 										activeIndex === 0 ? 'bg-pink-600' : 'bg-(--green)'
 								  } text-green-950`
 								: 'bg-gray-50  text-gray-700'
-						} rounded-3xl`}>
+						} rounded-xl`}>
 						<CardContent card={card} index={index} activeIndex={activeIndex} />
 					</div>
 				))}
@@ -321,7 +321,7 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 										activeIndex === 0 ? 'bg-pink-600' : 'bg-(--green)'
 								  } text-(--darkGreen)`
 								: 'bg-gray-50 text-gray-700'
-						} rounded-3xl transition-colors duration-300`}
+						} rounded-xl transition-colors duration-300`}
 						style={{
 							transformOrigin: 'center bottom',
 							top: '5%',

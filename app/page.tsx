@@ -4,11 +4,11 @@ import ClientTestimonials from '@/components/ClientTestimonials/ClientTestimonia
 import Coach from '@/components/Coach/Coach';
 import Faq from '@/components/FAQ/Faq';
 import HeroComponent from '@/components/HeroComponent/HeroComponent';
+import PowerQuotes from '@/components/PowerQuotes/PowerQuotes';
 import PriceCards from '@/components/PriceCards/PriceCards';
 import Services from '@/components/ServicesSection/Services';
 import SuccessStories from '@/components/SuccessStories/SuccessStories';
 import TwoImageClipComponent from '@/components/TwoImageClipComponent/TwoImageClipComponent';
-import VideoComponent from '@/components/VideoComponent/VideoComponent';
 
 export default function Home() {
 	return (
@@ -19,8 +19,9 @@ export default function Home() {
 				<Coach />
 				<SuccessStories />
 				<ClientTestimonials />
-				<VideoComponent />
+
 				<TwoImageClipComponent />
+				<PowerQuotes />
 				<BeautyCornerComponent />
 				<PriceCards />
 				<Blog />

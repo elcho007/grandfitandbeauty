@@ -314,14 +314,14 @@ const BeautyCornerComponent: React.FC = () => {
 						<button
 							type='button'
 							onClick={() => goPrev(true)}
-							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-pink-800 px-4 py-2 text-sm font-medium text-pink-800 transition hover:bg-pink-100 hover:text-gray-900'>
-							<ArrowLeft />
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-pink-800 px-4 py-2 text-sm font-medium text-pink-800 transition hover:bg-pink-100 hover:text-pink-800'>
+							<ArrowLeft size={32} />
 						</button>
 						<button
 							type='button'
 							onClick={() => goNext(true)}
-							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-pink-800 text-pink-800 px-4 py-2 text-sm font-medium transition hover:bg-pink-100 hover:text-gray-900'>
-							<ArrowRight />
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-pink-800 text-pink-800 px-4 py-2 text-sm font-medium transition hover:bg-pink-100 duration-300 hover:text-pink-800'>
+							<ArrowRight size={32} />
 						</button>
 					</div>
 				</div>

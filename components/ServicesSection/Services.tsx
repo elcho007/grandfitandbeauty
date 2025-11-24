@@ -265,6 +265,10 @@ const Services = () => {
 		const cards = wheelRef.current.querySelectorAll('.card');
 
 		const splitInstances: SplitText[] = [];
+		const isMobile = window.innerWidth < 768;
+		const ease = isMobile ? 'power2.inOut' : 'hop';
+		const duration = isMobile ? 1 : 1.5;
+		const offset = isMobile ? 150 : 500;
 
 		cards.forEach((card, index) => {
 			if (index === activeCardIndex) {
@@ -289,12 +293,12 @@ const Services = () => {
 					gsap.fromTo(
 						cardImage,
 						{
-							x: direction === 'next' ? 500 : -500,
+							x: direction === 'next' ? offset : -offset,
 						},
 						{
 							x: 0,
-							duration: 1.5,
-							ease: 'hop',
+							duration: duration,
+							ease: ease,
 						}
 					);
 				}
@@ -309,8 +313,8 @@ const Services = () => {
 					},
 					{
 						clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-						duration: 1.5,
-						ease: 'hop',
+						duration: duration,
+						ease: ease,
 					}
 				);
 
@@ -325,7 +329,7 @@ const Services = () => {
 						yPercent: 0,
 						duration: 0.35,
 						stagger: { amount: 0.25 },
-						ease: 'hop',
+						ease: ease,
 						delay: 0.4,
 					}
 				);
@@ -340,7 +344,7 @@ const Services = () => {
 						yPercent: 0,
 						duration: 0.5,
 						stagger: { amount: 0.15 },
-						ease: 'hop',
+						ease: ease,
 						delay: 0.3,
 					}
 				);
@@ -349,20 +353,16 @@ const Services = () => {
 				const cardImage = card.querySelector('img');
 				if (cardImage) {
 					gsap.to(cardImage, {
-						x: direction === 'next' ? -500 : 500,
-						duration: 1.5,
-						ease: 'hop',
+						x: direction === 'next' ? -offset : offset,
+						duration: duration,
+						ease: ease,
 					});
 				}
 
-				gsap.set(card, { zIndex: 1, visibility: 'visible' });
-				gsap.to(card, {
-					clipPath:
-						direction === 'next'
-							? 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
-							: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
-					duration: 1.5,
-					ease: 'hop',
+				gsap.set(card, {
+					zIndex: 1,
+					visibility: 'visible',
+					clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
 				});
 			} else {
 				// Keep other cards completely hidden
@@ -382,14 +382,14 @@ const Services = () => {
 		<>
 			<div
 				ref={draggableWheelRef}
-				className='w-full min-h-[110vh] bg-gray-200 slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center'>
+				className='w-full min-h-[110vh] bg-(--black) slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center text-[#b39a67]'>
 				<GSAPSplitTextComponent
 					ease={'expo'}
 					start={'top 90%'}
 					duration={1}
 					className='col-span-12'>
 					<h2
-						className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max'
+						className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max text-[#b39a67]'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						GrandFit&Beauty usluge
 					</h2>
@@ -410,13 +410,13 @@ const Services = () => {
 				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
-				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-gray-300 w-full h-[650px] justify-between overflow-hidden relative'>
+				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-gray-300 w-full h-[650px] justify-between overflow-hidden relative rounded-xl'>
 					<span
-						className='text-sm md:text-xl absolute top-4 left-4 md:pl-8 pt-2 text-gray-950/50'
+						className='text-sm md:text-xl absolute top-4 left-4 md:left-8 text-gray-950/50'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						{activeCardIndex + 1}/{allCards.length}
 					</span>
-					<div className='flex flex-col justify-center gap-4 p-4 md:p-8 pt-16 md:pt-0'>
+					<div className='flex flex-col justify-center gap-4 p-4 md:p-8 pt-16 md:pt-0 w-full md:w-1/2 '>
 						<h3
 							ref={titleRef}
 							className='text-3xl md:text-7xl tracking-tight font-medium leading-tight'
@@ -432,8 +432,8 @@ const Services = () => {
 									'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est quis sapiente eius voluptatum dolore, eos iusto, possimus corporis accusamus nam! Deserunt fugiat odit necessitatibus repudiandae nemo fuga sequi, perferendis hic amet est eligendi ipsa perspiciatis soluta.'}
 							</div>
 						</div>
-						<div className='card-content absolute left-4 z-20 col-start-1 w-36 md:w-68 flex bottom-2 text-black'>
-							<div className='flex gap-2 md:gap-4 h-16 md:h-20 max-w-max'>
+						<div className='card-content absolute left-4 md:left-8 z-20 col-start-1 w-36 md:w-68 flex bottom-4 md:bottom-8 text-black'>
+							<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
 								<button
 									aria-label='Previous service'
 									onClick={(e) => {
@@ -448,7 +448,7 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-white md:border-black border-dashed flex items-center justify-center'>
+									className='aspect-square border border-white hover:bg-gray-400 transition-all duration-300 md:border-black border-dashed flex items-center justify-center'>
 									<ArrowLeft
 										size={32}
 										className='stroke-white md:stroke-black'
@@ -467,7 +467,7 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-dashed border-white md:border-black flex items-center justify-center'>
+									className='aspect-square border border-dashed hover:bg-gray-400 transition-all duration-300 border-white md:border-black flex items-center justify-center'>
 									<ArrowRight
 										size={32}
 										className='stroke-white md:stroke-black'
@@ -478,7 +478,7 @@ const Services = () => {
 					</div>
 					<div
 						ref={wheelRef}
-						className='wheel z-10 w-full h-1/2 md:h-full flex items-center justify-between gap-4 relative'>
+						className='wheel z-10 w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-between gap-4 relative'>
 						<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
 							{allCards.map((card, index) => (
 								<div
@@ -487,7 +487,7 @@ const Services = () => {
 									ref={(el) => {
 										cardRefs.current[index] = el;
 									}}
-									className='card absolute w-full h-full overflow-hidden bg-(--darkerYellow) flex flex-col items-center justify-between text-center'>
+									className='card absolute w-full h-full overflow-hidden flex flex-col items-center justify-between text-center'>
 									<div className='relative w-full h-full overflow-hidden'>
 										<Image
 											src={card.image || '/images/gfb1.jpg'}

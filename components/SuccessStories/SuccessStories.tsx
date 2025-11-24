@@ -63,30 +63,30 @@ const SuccessStories = (props: Props) => {
 	return (
 		<>
 			<GFBMarquee />
-			<div className='w-full min-h-screen bg-yellow-400 px-[5vw] pt-8 pb-[5vw] flex flex-col gap-4 md:gap-8'>
-				<div className='grid grid-cols-4 gap-8 w-full bg-gray-300'>
+			<div className='w-full min-h-screen bg-(--black) px-[5vw] pt-8 pb-[5vw] flex flex-col gap-4 md:gap-8'>
+				<div className='grid grid-cols-4 gap-8 w-full bg-gray-300 rounded-xl overflow-hidden'>
 					<div className='col-span-full md:col-span-1 w-full flex flex-col p-4 md:p-8'>
 						<GSAPSplitTextComponent
 							ease={'expo'}
 							start={'top bottom'}
 							duration={1}>
 							<h3
-								className='text-3xl md:text-[3.5vw] mb-4 tracking-tight'
+								className='text-3xl md:text-[3.5vw] mb-4 tracking-tight text-[#b39a67]'
 								style={{ fontFamily: 'Anton, sans-serif' }}>
 								Uspješne priče
 							</h3>
 						</GSAPSplitTextComponent>
 						<h4
-							className='text-xl tracking-tight  mb-2'
+							className='text-xl tracking-tight mb-2 text-[#b39a67]'
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							Ovo može biti vaša priča.{' '}
 						</h4>
-						<p className='text-base tracking-tight max-w-3xl mb-4'>
+						<p className='text-base tracking-tight max-w-3xl mb-4 text-[#b39a67]'>
 							Pogledajte kako su naši klijenti transformisali svoje živote uz
 							naše program. Njihove priče su inspiracija za sve koji žele
 							postići svoje ciljeve.
 						</p>
-						<button className='bg-black text-white max-w-max text-base px-3 py-2 before:content-[""] before:absolute before:inset-0 before:bg-(--green) before:top-1 before:left-1 before:w-full before:h-full before before:-z-10 z-10 relative mb-4 after after:content-[""] after:absolute after:inset-0 after:bg-black after:w-full after:h-full after:z-[-2] '>
+						<button className='bg-[#b39a67] text-black font-medium max-w-max text-base px-3 py-2 before:content-[""] before:absolute before:inset-0 before:bg-black before:top-1 before:left-1 before:w-full before:h-full before before:-z-10 z-10 relative mb-4 after after:content-[""] after:absolute after:inset-0 after:bg-[#b39a67] after:w-full after:h-full after:z-[-2] '>
 							Prijavite se već danas
 						</button>
 						<p
@@ -96,7 +96,7 @@ const SuccessStories = (props: Props) => {
 							indomitable will." – Mahatma Gandhi
 						</p>
 					</div>
-					<div className='relative w-full h-[600px] col-start-1 col-span-full md:col-start-2 md:col-span-3 border '>
+					<div className='relative w-full h-[600px] col-start-1 col-span-full md:col-start-2 md:col-span-3 overflow-hidden'>
 						<Image
 							src={stories[activeStoryIndex].image}
 							alt='Workout Image'
