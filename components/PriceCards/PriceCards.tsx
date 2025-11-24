@@ -7,35 +7,37 @@ import React from 'react';
 type Props = {};
 
 const PriceCards = (props: Props) => {
-	const [activeIndex, setActiveIndex] = React.useState<number>(0);
+	const [activeIndex, setActiveIndex] = React.useState<number>(1);
 	return (
 		<div
-			className={`w-full min-h-screen ${
-				activeIndex === 0 ? 'bg-pink-300' : 'bg-(--green)'
+			className={`w-full min-h-[130svh] md:min-h-screen overflow-hidden ${
+				activeIndex === 0 ? 'bg-gray-200' : 'bg-gray-300'
 			} flex justify-center items-center py-[5vw]`}>
-			<div className='w-[90vw] mx-auto min-h-1/2 flex flex-col items-center gap-8'>
+			<div className='w-[90vw] mx-auto min-h-1/2 flex flex-col items-center gap-4 md:gap-8'>
+				<GSAPSplitTextComponent ease={'power2'}>
+					<h2
+						className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3] ${
+							activeIndex === 0 ? 'text-pink-600' : 'text-green-950'
+						} text-center`}
+						style={{ fontFamily: 'Anton, sans-serif' }}>
+						Izaberite program ili uslugu koja vam najviše odgovara
+					</h2>
+				</GSAPSplitTextComponent>
 				<button
 					className='cursor-pointer'
 					onClick={() => setActiveIndex(activeIndex === 0 ? 1 : 0)}>
 					<span
-						className={`text-sm tracking-tight uppercase font-semibold text-gray-200 ${
-							activeIndex === 0 ? 'bg-pink-600' : 'bg-(--darkGreen)'
-						} p-3 rounded-lg`}>
+						className={`text-xs tracking-tight uppercase font-medium text-gray-200 mb-4 flex ${
+							activeIndex === 0 ? 'bg-pink-600' : 'bg-green-950'
+						} px-2 py-1 rounded-full`}>
 						{activeIndex === 0
 							? 'vidi cjenik za fitness'
 							: 'vidi cjenik za beauty'}
 					</span>
 				</button>
-				<GSAPSplitTextComponent ease={'power2'}>
-					<h2
-						className='text-5xl tracking-normal max-w-[25ch] leading-[1.3] text-gray-950 text-center uppercase'
-						style={{ fontFamily: 'Anton, sans-serif' }}>
-						Izaberite program ili uslugu koja vam najviše odgovara
-					</h2>
-				</GSAPSplitTextComponent>
 				{/* <ClientButton>Fitness Cjenik</ClientButton> */}
 
-				<AnimatedPriceCards activeIndex={activeIndex} />
+				<AnimatedPriceCards key={activeIndex} activeIndex={activeIndex} />
 			</div>
 		</div>
 	);

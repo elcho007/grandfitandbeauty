@@ -128,8 +128,8 @@ const Navbar = (props: Props) => {
 			</nav>
 			<div className='nav-links absolute right-0 top-0 w-full bg-black text-white px-[5vw] pt-[5vw] z-0 overflow-hidden'>
 				<ul
-					className='flex flex-col gap-4'
-					style={{ fontFamily: 'Lora, serif' }}>
+					className='flex flex-col gap-4 mt-24'
+					style={{ fontFamily: 'Anton, sans-serif' }}>
 					{links.map((link, index) => (
 						<SplitTextComponent
 							key={`${link.href}-${showText}-${reverseText}`}

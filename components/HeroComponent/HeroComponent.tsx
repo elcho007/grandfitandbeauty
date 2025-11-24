@@ -335,7 +335,7 @@ const HeroComponent = (props: Props) => {
 	}, [isAnimating, currentIndex, animateSlide]);
 
 	return (
-		<div className='w-full h-screen after after:content-[""] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-purple-600/50 after:mix-blend-multiply after:z-0'>
+		<div className='w-full h-svh after after:content-[""] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-purple-600/50 after:mix-blend-multiply after:z-0'>
 			<div className='carousel' ref={carouselRef}>
 				<div className='carousel-images' ref={carouselImagesRef}></div>
 

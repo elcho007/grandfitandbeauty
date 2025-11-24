@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { useGSAP, gsap } from '../../lib/gsap';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
 
 type BeautyCard = {
 	title: string;
@@ -103,8 +105,8 @@ const BeautyCornerComponent: React.FC = () => {
 
 		gsap.to(track, {
 			x: -step,
-			duration: 0.5,
-			ease: 'power2.inOut',
+			duration: 0.75,
+			ease: 'power2',
 			onComplete: () => {
 				track.appendChild(first);
 				gsap.set(track, { x: 0 });
@@ -142,8 +144,8 @@ const BeautyCornerComponent: React.FC = () => {
 
 			gsap.to(track, {
 				x: -step,
-				duration: 0.5,
-				ease: 'power2.inOut',
+				duration: 0.75,
+				ease: 'power2',
 				onComplete: () => {
 					track.appendChild(first);
 					gsap.set(track, { x: 0 });
@@ -185,8 +187,8 @@ const BeautyCornerComponent: React.FC = () => {
 
 			gsap.to(track, {
 				x: 0,
-				duration: 0.5,
-				ease: 'power2.inOut',
+				duration: 0.75,
+				ease: 'power2',
 				onComplete: () => {
 					setActiveIndex(
 						(i) => (i - 1 + beautyCards.length) % beautyCards.length
@@ -244,17 +246,19 @@ const BeautyCornerComponent: React.FC = () => {
 	);
 
 	return (
-		<section className='bg-pink-400 text-gray-900 w-full px-[5vw] py-16 flex flex-col gap-10 items-center'>
+		<section className='bg-pink-200 text-gray-900 w-full px-[5vw] py-16 flex flex-col gap-4 md:gap-8 items-center'>
 			<header className='w-full max-w-6xl flex flex-col gap-3 '>
-				<p className='text-sm uppercase tracking-[0.4em] text-gray-800/70'>
+				<p className='text-sm uppercase tracking-[0.4em] text-pink-900'>
 					GrandFit&Beauty
 				</p>
-				<h3
-					className='text-4xl md:text-5xl font-semibold tracking-tighter'
-					style={{ fontFamily: 'Lora, serif' }}>
-					Beauty Corner
-				</h3>
-				<p className='max-w-2xl text-base md:text-lg text-gray-800/80'>
+				<GSAPSplitTextComponent ease={'power2'}>
+					<h3
+						className='text-4xl md:text-5xl font-semibold tracking-tight text-pink-800 leading-[1.35]'
+						style={{ fontFamily: 'Lora, serif' }}>
+						Beauty Corner
+					</h3>
+				</GSAPSplitTextComponent>
+				<p className='max-w-2xl text-base md:text-lg text-pink-800'>
 					Istražite našu ponudu tretmana i pronađite idealnu kombinaciju
 					wellness iskustava.
 				</p>
@@ -269,13 +273,13 @@ const BeautyCornerComponent: React.FC = () => {
 						<article
 							key={card.title}
 							ref={registerCard(index)}
-							className={`beauty-card ${cardWidth} cursor-pointer aspect-square w-32 rounded-xs border border-dashed border-pink-600 bg-pink-200 px-6 py-8  transition-all duration-300 ease-out ${
+							className={`beauty-card ${cardWidth} cursor-pointer aspect-square w-64 md:w-32 rounded-xs border border-dashed border-pink-600 bg-pink-200 px-6 py-8  transition-all duration-300 ease-out ${
 								activeIndex === index
 									? 'ring-2 ring-offset-4 ring-offset-pink-400 ring-pink-600'
 									: ''
 							}`}>
 							<header className='flex items-start flex-col justify-between gap-2'>
-								<span className='text-xs uppercase tracking-[0.3em] text-gray-500'>
+								<span className='text-[10px] uppercase tracking-[0.3em] text-gray-500'>
 									Tretman
 								</span>
 								<h4 className='text-2xl font-semibold tracking-tight'>
@@ -293,8 +297,8 @@ const BeautyCornerComponent: React.FC = () => {
 			</div>
 			<div className='flex flex-wrap items-center justify-between gap-4 w-full max-w-6xl'>
 				<div className='flex flex-col items-start gap-3'>
-					<div className='flex items-center gap-2 text-sm text-gray-800/70'>
-						<span className='inline-block h-2 w-2 rounded-full bg-gray-800/60' />
+					<div className='flex items-center gap-2 text-sm text-pink-800'>
+						<span className='inline-block h-2 w-2 rounded-full bg-pink-800' />
 						<span>
 							{activeIndex + 1 < 10 ? `0${activeIndex + 1}` : activeIndex + 1}
 						</span>
@@ -310,14 +314,14 @@ const BeautyCornerComponent: React.FC = () => {
 						<button
 							type='button'
 							onClick={() => goPrev(true)}
-							className='aspect-square border border-dashed border-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-pink-100 hover:text-gray-900'>
-							Prethodni
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-pink-800 px-4 py-2 text-sm font-medium text-pink-800 transition hover:bg-pink-100 hover:text-gray-900'>
+							<ArrowLeft />
 						</button>
 						<button
 							type='button'
 							onClick={() => goNext(true)}
-							className='aspect-square border border-dashed border-gray-900 text-white px-4 py-2 text-sm font-medium transition hover:bg-pink-100 hover:text-gray-900'>
-							Sljedeći
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-pink-800 text-pink-800 px-4 py-2 text-sm font-medium transition hover:bg-pink-100 hover:text-gray-900'>
+							<ArrowRight />
 						</button>
 					</div>
 				</div>

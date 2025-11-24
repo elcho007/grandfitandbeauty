@@ -8,8 +8,8 @@ type Props = {};
 const TwoImageClipComponent = (props: Props) => {
 	return (
 		<div className='w-full h-screen'>
-			<div className='w-full h-full relative grid grid-cols-1 md:grid-cols-2 grid-rows-1'>
-				<div className='relative overflow-hidden p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:mix-blend-difference before:top-0 before:bg-yellow-500/10'>
+			<div className='w-full h-full relative flex flex-col md:grid grid-cols-1 md:grid-cols-2 grid-rows-1'>
+				<div className='relative overflow-hidden h-1/2 md:h-full p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:top-0 before:bg-black/30'>
 					<GSAPClipPathImageRevealComponent>
 						<Image
 							src='/images/gfb3.jpg'
@@ -18,23 +18,21 @@ const TwoImageClipComponent = (props: Props) => {
 							className='object-cover'
 						/>
 					</GSAPClipPathImageRevealComponent>
-					<div className='relative top-[55%] z-10 mix-blend-overlay text-3xl max-w-sm text-white'>
+					<div className='relative top-8 md:top-[90svh] z-20 max-w-3xl text-white'>
 						<GSAPSplitTextComponent
 							ease={'power2'}
 							stagger={0.03}
 							duration={0.75}
-							start='top 80%'>
-							<p>
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-								Molestias ipsa architecto molestiae fugiat nisi dolorem
-								doloremque quod rerum neque dolores dicta, asperiores fuga modi,
-								tempora aut, vero totam vel omnis temporibus. Ipsum sed quas
-								optio!
+							start='top bottom'>
+							<p
+								style={{ fontFamily: 'Anton, sans-serif' }}
+								className='text-xl md:text-5xl uppercase leading-[1.3]'>
+								Tražite načine, ne isprike!
 							</p>
 						</GSAPSplitTextComponent>
 					</div>
 				</div>
-				<div className='relative overflow-hidden p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:mix-blend-difference before:top-0 before:bg-yellow-500/10'>
+				<div className='relative overflow-hidden h-1/2 md:h-full p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:top-0 before:bg-black/30'>
 					<GSAPClipPathImageRevealComponent direction='top'>
 						<Image
 							src='/images/gfb4.jpg'
@@ -43,18 +41,16 @@ const TwoImageClipComponent = (props: Props) => {
 							className='object-cover'
 						/>
 					</GSAPClipPathImageRevealComponent>
-					<div className='relative z-20 mix-blend-overlay text-3xl max-w-sm text-white'>
+					<div className='relative z-20 max-w-3xl text-white'>
 						<GSAPSplitTextComponent
 							ease={'power2'}
 							stagger={0.03}
 							duration={0.75}
 							start={'bottom 80%'}>
-							<p>
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-								Molestias ipsa architecto molestiae fugiat nisi dolorem
-								doloremque quod rerum neque dolores dicta, asperiores fuga modi,
-								tempora aut, vero totam vel omnis temporibus. Ipsum sed quas
-								optio!
+							<p
+								style={{ fontFamily: 'Anton, sans-serif' }}
+								className='text-xl md:text-5xl uppercase leading-[1.3]'>
+								Kada mislite da ne možete više, to je samo početak!
 							</p>
 						</GSAPSplitTextComponent>
 					</div>

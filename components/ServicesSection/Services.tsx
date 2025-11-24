@@ -387,14 +387,14 @@ const Services = () => {
 					ease={'expo'}
 					start={'top 90%'}
 					duration={1}
-					className='col-span-5'>
+					className='col-span-12'>
 					<h2
 						className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						GrandFit&Beauty usluge
 					</h2>
 				</GSAPSplitTextComponent>
-				<h3 className='col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[40ch] max-h-max'>
+				<h3 className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max'>
 					U{' '}
 					<span className='font-semibold'>
 						{' '}
@@ -403,20 +403,20 @@ const Services = () => {
 					nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 					izgledate i osjećate se najbolje.
 				</h3>
-				<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
+				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max'>
 					Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 					vam garantujemo najviši nivo usluge i profesionalnosti.
 				</p>
-				<p className='col-span-5 col-start-1 text-base tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[75ch] max-h-max'>
+				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
-				<div className='col-span-12 col-start-1 mt-16 flex bg-gray-300 w-full h-[650px] justify-between overflow-hidden relative'>
+				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-gray-300 w-full h-[650px] justify-between overflow-hidden relative'>
 					<span
-						className='text-xl absolute top-0 left-0 pl-8 pt-2 text-gray-950'
+						className='text-sm md:text-xl absolute top-4 left-4 md:pl-8 pt-2 text-gray-950/50'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						{activeCardIndex + 1}/{allCards.length}
 					</span>
-					<div className='flex flex-col justify-center col-span-5 col-start-1 gap-4 p-8'>
+					<div className='flex flex-col justify-center gap-4 p-4 md:p-8 pt-16 md:pt-0'>
 						<h3
 							ref={titleRef}
 							className='text-3xl md:text-7xl tracking-tight font-medium leading-tight'
@@ -427,13 +427,13 @@ const Services = () => {
 						<div className='more-about-card w-full flex flex-col pb-4'>
 							<div
 								ref={textRef}
-								className='text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[60ch]'>
+								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[60ch]'>
 								{allCards[activeCardIndex].text ||
 									'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est quis sapiente eius voluptatum dolore, eos iusto, possimus corporis accusamus nam! Deserunt fugiat odit necessitatibus repudiandae nemo fuga sequi, perferendis hic amet est eligendi ipsa perspiciatis soluta.'}
 							</div>
 						</div>
-						<div className='card-content absolute  left-8 z-20 col-start-1 w-68 flex bottom-2 text-black'>
-							<div className='flex gap-4 h-32 max-w-max'>
+						<div className='card-content absolute left-4 z-20 col-start-1 w-36 md:w-68 flex bottom-2 text-black'>
+							<div className='flex gap-2 md:gap-4 h-16 md:h-20 max-w-max'>
 								<button
 									aria-label='Previous service'
 									onClick={(e) => {
@@ -448,8 +448,11 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-black border-dashed flex items-center justify-center'>
-									<ArrowLeft size={32} />
+									className='aspect-square border border-white md:border-black border-dashed flex items-center justify-center'>
+									<ArrowLeft
+										size={32}
+										className='stroke-white md:stroke-black'
+									/>
 								</button>
 								<button
 									aria-label='Next service'
@@ -464,15 +467,18 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-dashed border-black flex items-center justify-center'>
-									<ArrowRight size={32} />
+									className='aspect-square border border-dashed border-white md:border-black flex items-center justify-center'>
+									<ArrowRight
+										size={32}
+										className='stroke-white md:stroke-black'
+									/>
 								</button>
 							</div>
 						</div>
 					</div>
 					<div
 						ref={wheelRef}
-						className='wheel z-10 w-1/2 h-full flex items-center justify-between gap-4 relative'>
+						className='wheel z-10 w-full h-1/2 md:h-full flex items-center justify-between gap-4 relative'>
 						<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
 							{allCards.map((card, index) => (
 								<div

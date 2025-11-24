@@ -56,7 +56,7 @@ const Blog = (props: Props) => {
 								<p className='date bg-gray-200 p-4 rounded-sm text-gray-950 max-w-max mt-auto h-12 flex items-center text-xs'>
 									{post.date}
 								</p>
-								<span className='text-gray-100 w-12 h-12 bg-gray-500 flex items-center justify-center rounded-full hover:underline'>
+								<span className='text-gray-100 w-12 h-12 flex items-center justify-center border border-dashed hover:underline'>
 									<ArrowRight />
 								</span>
 							</div>
@@ -78,7 +78,7 @@ const Blog = (props: Props) => {
 				</span>
 
 				{dummyBlogPosts.length > 0 && (
-					<button className='text-gray-100 w-12 h-12 bg-gray-500 flex items-center justify-center rounded-full hover:underline'>
+					<button className='text-gray-100 w-12 h-12 flex items-center justify-center border border-dashed hover:underline'>
 						<ArrowRight />
 					</button>
 				)}

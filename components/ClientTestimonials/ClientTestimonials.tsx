@@ -240,16 +240,18 @@ const ClientTestimonials = (props: Props) => {
 	}, [maxPosition, cardWidth, updateProgressBar]);
 
 	return (
-		<div className='bg-gray-200 w-full min-h-[60vh] flex flex-col justify-center items-center gap-8 text-gray-950 py-8 overflow-hidden'>
-			<h4 className='text-2xl tracking-tighter font-semibold max-w-[40ch]'>
+		<div className=' w-full min-h-[60vh] bg-gray-300 flex flex-col justify-center items-start md:items-center gap-4 md:gap-8 text-gray-950 px-[5vw] py-8 overflow-hidden'>
+			<h2
+				style={{ fontFamily: 'Anton, sans-serif' }}
+				className='text-2xl md:text-5xl tracking-normal max-w-[15ch] leading-[1.3] md:text-center'>
 				Pročitajte šta kažu naši klijenti
-			</h4>
+			</h2>
 			<div className='flex flex-col justify-center max-w-6xl overflow-hidden mx-auto'>
 				<div ref={testimonialsWrapperRef} className='flex w-full gap-2'>
 					{testimonials.map((testimonial, index) => (
 						<div
 							key={index}
-							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-(--green) flex flex-col'>
+							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-gray-200 flex flex-col rounded-xl'>
 							<div className='flex items-end gap-4 mb-8'>
 								<div className='relative w-16 h-16 rounded-full overflow-hidden'>
 									<Image
@@ -268,25 +270,24 @@ const ClientTestimonials = (props: Props) => {
 						</div>
 					))}
 				</div>
+				<span
+					ref={progressBarWrapperRef}
+					className='w-40 h-2 bg-gray-200 rounded-full relative flex items-center mt-4 self-start md:self-center'>
+					<span
+						ref={progressBarRef}
+						className='w-12 h-1 bg-gray-600 rounded mx-1'></span>
+				</span>
 			</div>
-			<div className='flex items-center gap-2'>
+			<div className='flex items-center gap-2 md:gap-4'>
 				<button
 					onClick={handlePrev}
-					className='border border-(--green) text-(--green) p-2 rounded-full font-semibold hover:bg-(--green) hover:text-gray-200 transition-colors duration-300'>
+					className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-gray-400 text-gray-600 p-2 font-semibold md:hover:bg-gray-600 md:hover:text-gray-200 transition-colors duration-300'>
 					<ArrowLeft />
 				</button>
 
-				<span
-					ref={progressBarWrapperRef}
-					className='w-40 h-2 bg-(--green) rounded-full relative flex items-center'>
-					<span
-						ref={progressBarRef}
-						className='w-12 h-1 bg-(--darkGreen) rounded-full mx-1'></span>
-				</span>
-
 				<button
 					onClick={handleNext}
-					className='border border-(--green) text-(--green) p-2 rounded-full font-semibold hover:bg-(--green) hover:text-gray-200 transition-colors duration-300'>
+					className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-gray-400 text-gray-600 p-2 font-semibold md:hover:bg-gray-600 md:hover:text-gray-200 transition-colors duration-300'>
 					<ArrowRight />
 				</button>
 			</div>

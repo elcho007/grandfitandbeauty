@@ -102,7 +102,7 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ src, alt }) => {
 			className='absolute top-0 left-0 w-full h-full object-cover'
 			style={{
 				willChange: 'transform',
-				transform: 'translateY(0) scale(1)',
+				transform: 'translateY(0) scale(1.25)',
 			}}
 		/>
 	);

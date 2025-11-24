@@ -103,26 +103,50 @@ const Faq = () => {
 	useGSAP(
 		() => {
 			if (!faqRef.current) return;
-			const anim = gsap.fromTo(
-				faqRef.current,
-				{
-					borderBottomLeftRadius: 0,
-					borderBottomRightRadius: 0,
-				},
-				{
-					borderBottomLeftRadius: '4rem',
-					borderBottomRightRadius: '4rem',
-					scrollTrigger: {
-						trigger: faqRef.current,
-						start: 'bottom bottom',
-						end: 'bottom center',
-						scrub: true,
+			const mm = gsap.matchMedia();
+
+			mm.add('(max-width: 768px)', () => {
+				const anim = gsap.fromTo(
+					faqRef.current,
+					{
+						borderBottomLeftRadius: 0,
+						borderBottomRightRadius: 0,
 					},
-				}
-			);
+					{
+						borderBottomLeftRadius: '1rem',
+						borderBottomRightRadius: '1rem',
+						scrollTrigger: {
+							trigger: faqRef.current,
+							start: 'bottom bottom',
+							end: 'bottom center',
+							scrub: true,
+						},
+					}
+				);
+			});
+
+			mm.add('(min-width: 769px)', () => {
+				const anim = gsap.fromTo(
+					faqRef.current,
+					{
+						borderBottomLeftRadius: 0,
+						borderBottomRightRadius: 0,
+					},
+					{
+						borderBottomLeftRadius: '4rem',
+						borderBottomRightRadius: '4rem',
+						scrollTrigger: {
+							trigger: faqRef.current,
+							start: 'bottom bottom',
+							end: 'bottom center',
+							scrub: true,
+						},
+					}
+				);
+			});
 
 			return () => {
-				anim.kill();
+				mm.revert();
 			};
 		},
 		{ scope: faqRef }
@@ -131,12 +155,17 @@ const Faq = () => {
 	return (
 		<div
 			ref={faqRef}
-			className='w-full h-screen bg-gray-300 flex justify-center gap-8 items-center px-[5vw] py-[5vw] relative z-10'>
-			<div className='flex gap-8 min-h-[60vh] items-center'>
-				<div className='flex max-w-3xl flex-col gap-6 bg-(--green) p-6 rounded-lg h-full justify-center flex-1'>
+			className='w-full min-h-screen bg-gray-300 flex flex-col justify-center md:items-center gap-8 px-[5vw] py-[10vh] md:py-[5vw] relative z-10'>
+			<h2
+				className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3]`}
+				style={{ fontFamily: 'Anton, sans-serif' }}>
+				Najčešća pitanja
+			</h2>
+			<div className='flex w-full flex-col md:flex-row gap-4 md:gap-8 min-h-[60vh] items-center md:justify-center'>
+				<div className='flex w-full max-w-full md:max-w-md flex-col gap-3 md:gap-6 bg-(--green) p-4 md:p-6 rounded-lg h-full justify-center flex-1'>
 					{' '}
 					<h3
-						className='text-5xl tracking-tight leading-[1.3] max-w-[15ch] text-green-950'
+						className='text-xl md:text-5xl tracking-tight leading-[1.3] max-w-full md:max-w-[15ch] text-green-950'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						Ovo su neka od najčešćih pitanja koja nam postavljaju naši klijenti.
 					</h3>
@@ -145,7 +174,7 @@ const Faq = () => {
 						Kontaktirajte nas
 					</button>
 				</div>
-				<div className='faq-wrapper grid grid-cols-1 gap-4 max-w-[35vw]'>
+				<div className='faq-wrapper grid grid-cols-1 gap-2 md:gap-4 max-w-full md:max-w-[35vw]'>
 					{Array.from({ length: 5 }).map((_, index) => (
 						<div
 							onClick={handleOpenFAQ(index)}
@@ -156,10 +185,9 @@ const Faq = () => {
 							className='faq-item z-10 border border-dashed border-green-950 rounded-lg p-4 cursor-pointer transition-colors duration-300 relative flex flex-col justify-center overflow-hidden'>
 							<div className='flex justify-between items-center gap-16'>
 								<h4
-									className='text-xl text-green-950 relative z-10'
+									className='text-sm font-semibold md:font-medium md:text-xl text-green-950 relative z-10'
 									style={{ fontFamily: 'Lora, serif' }}>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-									doloribus.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit.
 								</h4>
 								{activeFaqIndex === index ? (
 									<X size={32} className='opacity-75 text-green-950 z-10' />

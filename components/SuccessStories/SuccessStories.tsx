@@ -63,9 +63,9 @@ const SuccessStories = (props: Props) => {
 	return (
 		<>
 			<GFBMarquee />
-			<div className='w-full min-h-screen bg-gray-200 px-[5vw] pt-8 pb-[5vw] flex flex-col gap-8'>
+			<div className='w-full min-h-screen bg-yellow-400 px-[5vw] pt-8 pb-[5vw] flex flex-col gap-4 md:gap-8'>
 				<div className='grid grid-cols-4 gap-8 w-full bg-gray-300'>
-					<div className='col-span-full md:col-span-1 w-full flex flex-col p-8'>
+					<div className='col-span-full md:col-span-1 w-full flex flex-col p-4 md:p-8'>
 						<GSAPSplitTextComponent
 							ease={'expo'}
 							start={'top bottom'}
@@ -136,7 +136,7 @@ const SuccessStories = (props: Props) => {
 					<div className='flex gap-2 col-span-full col-start-1 md:col-span-3 md:col-start-2 w-full justify-end overflow-hidden'>
 						<div
 							onClick={() => handleActiveStoryChange(0)}
-							className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+							className='w-24 md:w-48 h-24 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 							<Image
 								src={'/images/story1.jpg'}
 								fill
@@ -146,7 +146,7 @@ const SuccessStories = (props: Props) => {
 						</div>
 						<div
 							onClick={() => handleActiveStoryChange(1)}
-							className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+							className='w-24 md:w-48 h-24 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 							<Image
 								src={'/images/story2.jpg'}
 								fill
@@ -156,7 +156,7 @@ const SuccessStories = (props: Props) => {
 						</div>
 						<div
 							onClick={() => handleActiveStoryChange(2)}
-							className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+							className='w-24 md:w-48 h-24 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 							<Image
 								src={'/images/story3.jpg'}
 								fill
@@ -166,7 +166,7 @@ const SuccessStories = (props: Props) => {
 						</div>
 						<div
 							onClick={() => handleActiveStoryChange(3)}
-							className='w-48 h-32 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
+							className='w-24 md:w-48 h-24 md:h-40 bg-[#171717] rounded-sm flex relative flex-1'>
 							<Image
 								src={'/images/story4.jpg'}
 								fill
