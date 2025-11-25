@@ -155,22 +155,22 @@ const Faq = () => {
 	return (
 		<div
 			ref={faqRef}
-			className='w-full min-h-screen bg-(--black) flex flex-col justify-center md:items-center gap-8 px-[5vw] py-[10vh] md:py-[5vw] relative text-[#b39a67] z-10'>
+			className='w-full min-h-screen bg-(--black) flex flex-col justify-center md:items-center gap-8 px-[5vw] py-[10vh] md:py-[5vw] relative text-[#bcbcbc] z-10'>
 			<h2
 				className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3]`}
 				style={{ fontFamily: 'Anton, sans-serif' }}>
 				Najčešća pitanja
 			</h2>
 			<div className='flex w-full flex-col md:flex-row gap-4 md:gap-8 min-h-[60vh] items-center md:justify-center'>
-				<div className='flex w-full max-w-full md:max-w-md flex-col gap-3 md:gap-6 bg-gray-300 text-[#b39a67] p-4 md:p-6 rounded-lg h-full justify-center flex-1'>
+				<div className='flex w-full max-w-full md:max-w-md flex-col gap-3 md:gap-6 bg-[#bcbcbc] text-black p-4 md:p-6 rounded-lg h-full justify-center flex-1'>
 					{' '}
 					<h3
-						className='text-xl md:text-4xl tracking-tight leading-[1.3] max-w-full md:max-w-[15ch] text-[#b39a67]'
+						className='text-xl md:text-4xl tracking-tight leading-[1.3] max-w-full md:max-w-[15ch] text-black'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						Ovo su neka od najčešćih pitanja koja nam postavljaju naši klijenti.
 					</h3>
-					<h4 className='text-[#b39a67]'>Imate li dodatnih pitanja?</h4>
-					<button className='bg-[#b39a67] px-3 py-2 rounded-sm max-w-max text-(--black)'>
+					<h4 className='text-black'>Imate li dodatnih pitanja?</h4>
+					<button className='bg-black px-3 py-2 rounded-sm max-w-max text-gray-100'>
 						Kontaktirajte nas
 					</button>
 				</div>
@@ -182,7 +182,7 @@ const Faq = () => {
 							ref={(el) => {
 								faqRefs.current[index] = el;
 							}}
-							className='faq-item z-10 border md:border-2 border-dashed border-gray-300 rounded-lg p-4 cursor-pointer transition-colors duration-300 relative flex flex-col justify-center overflow-hidden'>
+							className='faq-item z-10 border md:border border-dashed border-gray-300 rounded-lg p-4 cursor-pointer transition-colors duration-300 relative flex flex-col justify-center overflow-hidden'>
 							<div className='flex justify-between items-center gap-16'>
 								<h4
 									className='text-sm font-semibold md:font-medium md:text-xl text-gray-300 relative z-10'

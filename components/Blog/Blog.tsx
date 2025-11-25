@@ -32,10 +32,10 @@ const dummyBlogPosts = [
 
 const Blog = (props: Props) => {
 	return (
-		<div className='bg-(--black) min-h-screen w-full p-[5vw] text-gray-200 flex flex-col gap-8'>
+		<div className='bg-[#bcbcbc] min-h-screen w-full p-[5vw] text-black flex flex-col gap-8'>
 			{' '}
 			<GSAPSplitTextComponent ease={'power2'}>
-				<h4 className='text-2xl tracking-tighter uppercase font-semibold text-gray-200'>
+				<h4 className='text-2xl tracking-tighter uppercase font-semibold text-black'>
 					Fitness Blog by Elvis Agović
 				</h4>
 			</GSAPSplitTextComponent>
@@ -45,18 +45,18 @@ const Blog = (props: Props) => {
 						<Link
 							href={`/blog/${post.id}`}
 							key={post.id}
-							className='blog-post w-full border border-gray-200 border-dashed p-4 rounded-md aspect-square flex flex-col'>
+							className='blog-post w-full border border-black border-dashed p-4 rounded-md aspect-square flex flex-col'>
 							<h5
 								style={{ fontFamily: 'Anton, sans-serif' }}
-								className='text-4xl tracking-tight mb-4 text-gray-200'>
+								className='text-4xl tracking-tight mb-4 text-black'>
 								{post.title}
 							</h5>
-							<p className='text-gray-200'>{post.excerpt}</p>
+							<p className='text-black'>{post.excerpt}</p>
 							<div className='post-footer flex mt-auto justify-between items-center'>
-								<p className='date bg-gray-200 p-4 rounded-sm text-gray-950 max-w-max mt-auto h-12 flex items-center text-xs'>
+								<p className='date bg-black p-4 rounded-sm text-gray-100 max-w-max mt-auto h-12 flex items-center text-xs'>
 									{post.date}
 								</p>
-								<span className='text-gray-100 w-12 h-12 flex items-center justify-center border border-dashed hover:underline'>
+								<span className='text-black w-12 h-12 flex items-center justify-center border border-black border-dashed hover:underline'>
 									<ArrowRight />
 								</span>
 							</div>
@@ -65,7 +65,7 @@ const Blog = (props: Props) => {
 				</FadeIn>
 			</div>
 			<div className='pagination flex items-start mt-auto flex-col gap-4'>
-				<span className='text-gray-200'>
+				<span className='text-black'>
 					Ukupno {dummyBlogPosts.length}
 					{dummyBlogPosts.length === 1
 						? ' post'
@@ -78,7 +78,7 @@ const Blog = (props: Props) => {
 				</span>
 
 				{dummyBlogPosts.length > 0 && (
-					<button className='text-gray-100 w-12 h-12 flex items-center justify-center border border-dashed hover:underline'>
+					<button className='text-black w-12 h-12 flex items-center justify-center border border-black border-dashed hover:underline'>
 						<ArrowRight />
 					</button>
 				)}

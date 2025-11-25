@@ -6,35 +6,128 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
 
 const treninziCards = [
-	{ title: 'Grupne vježbe', image: '', text: '' },
-	{ title: 'Individualne vježbe', image: '', text: '' },
-	{ title: 'Djeca', image: '', text: '' },
-	{ title: 'Rehabilitacija', image: '', text: '' },
-	{ title: 'Sportaši', image: '/images/sportasi.png', text: '' },
-	{ title: 'Aq8 EMS sistem treninga', image: '', text: '' },
+	{
+		title: 'Grupne vježbe',
+		image: '',
+		text: [
+			'U Grand Fit & Beauty nudimo intenzivne i motivirajuće grupne treninge u malim skupinama do 6 osoba, prilagođene i muškarcima i ženama. Naši treninzi kombiniraju snagu, izdržljivost i funkcionalne vježbe, stvarajući idealan balans za sve koji žele vidljive rezultate i podršku trenera uz prijateljsku atmosferu.',
+		],
+	},
+	{
+		title: 'Individualni trening',
+		image: '',
+		text: [
+			'Individualni treninzi pružaju potpuno personaliziran pristup, prilagođen vašim ciljevima, mogućnostima i životnom ritmu. Rad 1 na 1 s osobnim trenerom omogućuje maksimalnu učinkovitost svakog treninga, pravilnu tehniku i kontinuiranu motivaciju.',
+			'Bilo da želite izgraditi snagu, oblikovati tijelo, poboljšati kondiciju ili jednostavno uvesti zdravu rutinu, vaš trener kreira program isključivo za vas, prateći vaš napredak iz treninga u trening.',
+		],
+	},
+	{
+		title: 'Trening za djecu',
+		image: '',
+		text: [
+			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio accusamus ad adipisci praesentium at neque ea quasi, quis modi optio, error facere recusandae alias iure?',
+		],
+	},
+	{
+		title: 'Rehabilitacija',
+		image: '',
+		text: [
+			'Rehabilitacija u Grand Fit-u osmišljena je za sve koji se oporavljaju od ozljeda, operativnih zahvata ili dugotrajnijih bolnih stanja. Naš stručni tim pristupa svakom klijentu individualno, kombinirajući ciljane vježbe, mobilizaciju i kontrolirane pokrete kako bi se povratila funkcija, snaga i stabilnost tijela.',
+			'Kroz pažljivo vođen proces fokusiramo se na siguran oporavak, pravilne obrasce kretanja i postupno vraćanje u svakodnevne aktivnosti ili sport. Cilj nam je smanjiti bol, poboljšati mobilnost i spriječiti ponovne ozljede uz stalni nadzor i podršku trenera.',
+		],
+	},
+	{
+		title: 'Kondicijska priprema sportaša',
+		image: '/images/sportasi.png',
+		text: [
+			'Kondicijska priprema namijenjena je sportašima svih razina koji žele unaprijediti svoju snagu, brzinu, eksplozivnost i izdržljivost te pritom smanjiti rizik od ozljeda. Program je u potpunosti prilagođen specifičnim zahtjevima vašeg sporta, natjecateljskom ritmu i individualnim ciljevima.',
+			'Kroz stručno vođene treninge razvijamo ključne motoričke sposobnosti, pravilne obrasce kretanja i stabilnost koja čini temelj svakog vrhunskog rezultata. Pratimo napredak, analiziramo performanse i prilagođavamo intenzitet kako biste bili u najboljoj formi onda kada je najvažnije.',
+		],
+	},
+	{
+		title: 'Aq8 EMS sistem treninga',
+		image: '',
+		text: [
+			'AQ8 EMS predstavlja najnapredniji oblik elektrostimulacijskog treninga, osmišljen za maksimalne rezultate u minimalnom vremenu. U samo 20 minuta aktivira se preko 90% mišićnih vlakana, čime se postiže intenzitet usporediv s višesatnim klasičnim treningom.',
+			'Ovaj sustav omogućuje istovremeni rad na svim mišićnim skupinama, uz kontrolirane električne impulse koji pojačavaju kontrakcije i čine trening učinkovitijim, sigurnijim i savršeno prilagođenim vašim ciljevima.',
+		],
+	},
 	{
 		title: 'Bodyspace sistem treninga',
 		image: '',
-		text: 'Kombinira vakuum tehnologiju i infracrveno grijanje kako bi potaknuo ubrzano topljenje masnih naslaga, oblikovanje tijela i poboljšanje cirkulacije.Idealno za ubrzavanje metabolizma, smanjenje celulita i vidljive rezultate u kraćem vremenu.',
+		text: [
+			'Kombinira vakuum tehnologiju i infracrveno grijanje kako bi potaknuo ubrzano topljenje masnih naslaga, oblikovanje tijela i poboljšanje cirkulacije. Idealno za ubrzavanje metabolizma, smanjenje celulita i vidljive rezultate u kraćem vremenu.',
+		],
 	},
 ];
 
 const beautyCards = [
-	{ title: 'Masaža', image: '', text: '' },
-	{ title: 'Maderoterapija', image: '', text: '' },
-	{ title: 'Linfomodeling', image: '/images/linfomodeling.png', text: '' },
-	{ title: 'Hydrafacial', image: '', text: '' },
+	{
+		title: 'GFB Masaža by Elma',
+		image: '',
+		text: [
+			'Naša Elma razvila je posebnu tehniku masaže namijenjenu profesionalnim i rekreativnim sportašima.',
+			'Ovo nije klasična masaža — riječ je o ciljanoj, funkcionalnoj terapiji koja opušta napete mišiće, vraća pokretljivost i ubrzava oporavak nakon treninga.',
+			'Idealna je za sve koji žele snažniji pristup, brže rezultate i stvarno olakšanje.',
+		],
+	},
+	{
+		title: 'Maderoterapija',
+		image: '',
+		text: [
+			'Maderoterapija je prirodna tehnika oblikovanja tijela koja drvenim valjcima potiče cirkulaciju, limfnu drenažu i smanjenje celulita. Rezultat je zategnutija, glađa i oblikovanija figura.',
+			'Idealna je za poboljšanje tonusa kože, eliminaciju toksina i vidljivo smanjenje celulita — uz ugodan osjećaj opuštanja.',
+		],
+	},
+	{
+		title: 'Linfomodeling',
+		image: '/images/linfomodeling.png',
+		text: [
+			'Linfomodeling je napredna tehnika limfne drenaže i oblikovanja tijela koja kombinira precizne, ritmične pokrete za poticanje cirkulacije i eliminaciju toksina. Tretman smanjuje otekline, zadržavanje vode i celulit, dok istovremeno definira linije tijela.',
+			'Rezultat je laganije tijelo, vidljivo bolja tekstura kože i osjećaj potpune lakoće i detoksa',
+		],
+	},
+	{
+		title: 'Hydrafacial',
+		image: '',
+		text: [
+			'Hydrafacial je luksuzni nekirurški tretman koji dubinski čisti, exfolira i hidratizira kožu u samo jednom postupku. Uz pomoć vakuumske tehnologije uklanja nečistoće i mrtve stanice, dok istovremeno infundira kožu visokokvalitetnim serumima.',
+			'Rezultat je trenutno svježija, blistava i dubinski hidratizirana koža, bez iritacija i bez vremena oporavka. Idealan za sve tipove kože.',
+		],
+	},
 	{
 		title: 'Tesla',
 		image: '/images/tesla.png',
-		text: 'Funkcionira tako da elektromagnetsko polje prolazi kroz cijelu kožu i masnoću područja koje se tretira, da bi se učinkovito stimulirali mišići pružajući najintenzivnije kontinuirane kontrakcije, što je idealno za rast mišića, ali i umiranje masnih stanica.Tretman je ugodan i nema nelagode. Traje 30 minuta i ne zahtijeva oporavak, a dva do tri tretmana tjedno trebaju biti dovoljna da većina ljudi postigne sjajan rezultat. Obično se preporučuje šest tretmana uslijed kojih se već vide promjene na izgledu mišića.',
+		text: [
+			'Funkcionira tako da elektromagnetsko polje prolazi krozcijelu kožu i masnoću područja koje se tretira, da bi se učinkovito stimulirali mišići pružajući najintenzivnije kontinuirane kontrakcije, što je idealno za rast mišića, ali i umiranje masnih stanica.',
+			'Tretman je ugodan i nema nelagode. Traje 30 minuta i ne zahtijeva oporavak, a dvado tri tretmana tjedno trebaju biti dovoljna da većinaljudi postigne sjajan rezultat. Obično se preporučuješest tretmana uslijed kojih se već vide promjene naizgledu mišića.',
+		],
 	},
-	{ title: 'Rf tretman', image: '', text: '' },
+	{
+		title: 'Radiofrekvencija',
+		image: '',
+		text: [
+			'Radiofrekvencija je neinvazivni tretman koji zagrijavanjem dubljih slojeva kože potiče stvaranje kolagena, zateže kožu i smanjuje vidljivost bora. Poboljšava tonus, elastičnost i teksturu kože, uz trenutni “lifting” efekt.',
+			'Rezultat je čvršća, zaglađenija i pomlađena koža — bez boli i bez vremena oporavka.',
+		],
+	},
 ];
 
 const generalCards = [
-	{ title: 'Bazen', image: '/images/bazen.png', text: '' },
-	{ title: 'Teretana', image: '', text: '' },
+	{
+		title: 'Vodena oaza',
+		image: '/images/bazen.png',
+		text: [
+			'Naša Vodena oaza idealno je mjesto za opuštanje i lagano vježbanje u vodi. Bazen pruža savršenu kombinaciju relaksacije, rasterećenja mišića i nježnog pokreta koji obnavlja tijelo i um.',
+		],
+	},
+	{
+		title: 'Teretana',
+		image: '',
+		text: [
+			'Naša teretana opremljena je modernim spravama i slobodnim utezima, idealna za snagu, kondiciju i funkcionalni trening. Prostor je prilagođen početnicima i naprednima, uz fokus na kvalitetan trening u ugodnom, motivirajućem okruženju.',
+		],
+	},
 ];
 
 const allCards = [...treninziCards, ...beautyCards, ...generalCards];
@@ -273,19 +366,29 @@ const Services = () => {
 		cards.forEach((card, index) => {
 			if (index === activeCardIndex) {
 				// Animate in the new active card with clip path reveal
-				const splitText = new SplitText(textRef.current, {
-					type: 'words,chars',
-					mask: 'words',
+				const textParagraphs = textRef.current?.querySelectorAll('p');
+				const splitTexts: SplitText[] = [];
+
+				textParagraphs?.forEach((p) => {
+					const split = new SplitText(p, {
+						type: 'words,chars',
+						mask: 'words',
+					});
+					splitTexts.push(split);
+					splitInstances.push(split);
 				});
+
 				const splitTitle = new SplitText(titleRef.current, {
 					type: 'words,chars',
 					mask: 'words',
 				});
 
-				splitInstances.push(splitText, splitTitle);
+				splitInstances.push(splitTitle);
 				gsap.set(card, { zIndex: 2, visibility: 'visible' });
 				gsap.set(splitTitle.chars, { opacity: 0, yPercent: 100 });
-				gsap.set(splitText.words, { opacity: 0, yPercent: 100 });
+				splitTexts.forEach((split) => {
+					gsap.set(split.words, { opacity: 0, yPercent: 100 });
+				});
 
 				// Clip path animation - reveal from appropriate direction
 				const cardImage = card.querySelector('img');
@@ -318,21 +421,23 @@ const Services = () => {
 					}
 				);
 
-				gsap.fromTo(
-					splitText.words,
-					{
-						yPercent: 100,
-						opacity: 0,
-					},
-					{
-						opacity: 1,
-						yPercent: 0,
-						duration: 0.35,
-						stagger: { amount: 0.25 },
-						ease: ease,
-						delay: 0.4,
-					}
-				);
+				splitTexts.forEach((split, idx) => {
+					gsap.fromTo(
+						split.words,
+						{
+							yPercent: 100,
+							opacity: 0,
+						},
+						{
+							opacity: 1,
+							yPercent: 0,
+							duration: 0.35,
+							stagger: { amount: 0.25 },
+							ease: ease,
+							delay: 0.4 + idx * 0.1,
+						}
+					);
+				});
 				gsap.fromTo(
 					splitTitle.chars,
 					{
@@ -382,7 +487,7 @@ const Services = () => {
 		<>
 			<div
 				ref={draggableWheelRef}
-				className='w-full min-h-[110vh] bg-(--black) slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center text-[#b39a67]'>
+				className='w-full min-h-[110vh] bg-(--black) slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center'>
 				<GSAPSplitTextComponent
 					ease={'expo'}
 					start={'top 90%'}
@@ -394,7 +499,7 @@ const Services = () => {
 						GrandFit&Beauty usluge
 					</h2>
 				</GSAPSplitTextComponent>
-				<h3 className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max'>
+				<h3 className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b39a67]'>
 					U{' '}
 					<span className='font-semibold'>
 						{' '}
@@ -403,23 +508,23 @@ const Services = () => {
 					nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 					izgledate i osjećate se najbolje.
 				</h3>
-				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max'>
+				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
 					Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 					vam garantujemo najviši nivo usluge i profesionalnosti.
 				</p>
-				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max'>
+				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
-				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-gray-300 w-full h-[650px] justify-between overflow-hidden relative rounded-xl'>
+				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-[#bcbcbc] w-full h-[750px] justify-between overflow-hidden relative rounded-xl'>
 					<span
-						className='text-sm md:text-xl absolute top-4 left-4 md:left-8 text-gray-950/50'
+						className='text-sm md:text-xl absolute top-4 left-4 md:left-8 text-black/70'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						{activeCardIndex + 1}/{allCards.length}
 					</span>
 					<div className='flex flex-col justify-center gap-4 p-4 md:p-8 pt-16 md:pt-0 w-full md:w-1/2 '>
 						<h3
 							ref={titleRef}
-							className='text-3xl md:text-7xl tracking-tight font-medium leading-tight'
+							className='text-3xl md:text-6xl tracking-tight font-medium leading-tight'
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							{allCards[activeCardIndex].title}
 						</h3>
@@ -427,9 +532,12 @@ const Services = () => {
 						<div className='more-about-card w-full flex flex-col pb-4'>
 							<div
 								ref={textRef}
-								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[60ch]'>
-								{allCards[activeCardIndex].text ||
-									'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est quis sapiente eius voluptatum dolore, eos iusto, possimus corporis accusamus nam! Deserunt fugiat odit necessitatibus repudiandae nemo fuga sequi, perferendis hic amet est eligendi ipsa perspiciatis soluta.'}
+								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[50ch]'>
+								{allCards[activeCardIndex].text.map((paragraph, idx) => (
+									<p key={idx} className='text-base mt-2'>
+										{paragraph}
+									</p>
+								)) || 'Trenutno nema dodatnih informacija o ovoj usluzi.'}
 							</div>
 						</div>
 						<div className='card-content absolute left-4 md:left-8 z-20 col-start-1 w-36 md:w-68 flex bottom-4 md:bottom-8 text-black'>

@@ -298,9 +298,9 @@ const StatCardComponent = ({
 								<span className='text-[10px] tracking-widest uppercase text-gray-300 font-medium relative top-1'>
 									{new Date().toLocaleDateString('hr-HR', { month: 'long' })}
 								</span>
-								<span className='bg-[#b39a67] p-1 text-[12px] text-black rounded-full flex justify-center items-center w-fit px-2 mt-2'>
-									Odlično!
-								</span>
+							</span>
+							<span className='bg-[#b39a67] p-1 text-[12px] text-black rounded-full flex justify-center items-center h-fit px-2'>
+								Odlično!
 							</span>
 						</div>
 
@@ -406,9 +406,9 @@ const PowerQuotes = (props: Props) => {
 	}, [currentIndex]);
 
 	return (
-		<div className='w-full min-h-[150svh] md:min-h-svh px-4 md:px-8 py-8 flex flex-col justify-between gap-2'>
+		<div className='w-full min-h-[150svh] md:min-h-svh px-4 md:px-8 py-8 flex flex-col justify-between gap-2 bg-[#f1e5ce]'>
 			<div className='w-full h-full flex flex-col md:flex-row gap-2'>
-				<div className='flex flex-col w-full md:w-2/3 flex-1 items-center justify-between bg-gray-200 rounded-xl p-4'>
+				<div className='flex flex-col w-full md:w-2/3 flex-1 items-center justify-between bg-black rounded-xl p-4'>
 					<div className='h-1/3 w-full flex justify-center items-center mb-8'>
 						<h1
 							ref={headingRef}
@@ -427,7 +427,7 @@ const PowerQuotes = (props: Props) => {
 						/>
 					</div>
 				</div>
-				<div className='flex w-full md:w-1/3 items-center content-start justify-between flex-wrap rounded-xl p-4 gap-4 bg-gray-200 md:max-h-none'>
+				<div className='flex w-full md:w-1/3 items-center content-start justify-between flex-wrap rounded-xl p-4 gap-4 bg-gray-950 md:max-h-none'>
 					{statsCards.map((card, index) => (
 						<StatCardComponent key={card.id} card={card} index={index} />
 					))}

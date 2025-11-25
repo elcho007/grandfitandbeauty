@@ -8,6 +8,17 @@ type Props = {
 	activeIndex: number;
 };
 
+const colorsForBeautyPriceCards = [
+	{ bgColor: '#ebbfbc', color: '#000000' },
+	{ bgColor: '#dad9d4', color: '#000000' },
+	{ bgColor: '#b39a67', color: '#000000' },
+];
+const colorsForFitnessPriceCards = [
+	{ bgColor: '#dbd6c3', color: '#000000' },
+	{ bgColor: '#b4bdbc', color: '#000000' },
+	{ bgColor: '#b39a67', color: '#000000' },
+];
+
 const beautyPriceCards = [
 	{
 		title: 'Osnovni Beauty Paket',
@@ -87,16 +98,8 @@ const CardContent = ({
 	activeIndex: number;
 }) => (
 	<>
-		<div
-			className={`flex flex-col gap-2 border-b ${
-				index === 1 ? 'border-gray-50/50' : 'border-green-900/50'
-			}`}>
-			<h3
-				className={`${
-					index === 1 && activeIndex === 0
-						? 'text-pink-200/50'
-						: 'text-green-950/50'
-				} relative z-10 text-lg font-semibold tracking-tight uppercase`}>
+		<div className='flex flex-col gap-2 border-b border-current/20'>
+			<h3 className='opacity-50 relative z-10 text-lg font-semibold tracking-tight uppercase'>
 				{card.title}
 			</h3>
 			{'subTitle' in card && (
@@ -105,10 +108,7 @@ const CardContent = ({
 				</p>
 			)}
 
-			<p
-				className={`${
-					index === 1 && activeIndex === 0 ? 'text-pink-200' : 'text-green-950'
-				} relative z-10 font-bold mb-2 flex text-5xl tracking-tighter items-end gap-1`}>
+			<p className='relative z-10 font-bold mb-2 flex text-5xl tracking-tighter items-end gap-1'>
 				{card.price}
 				<span className='font-normal text-lg tracking-normal'>/mjesečno</span>
 			</p>
@@ -119,29 +119,10 @@ const CardContent = ({
 				<li
 					key={featureIndex}
 					className='mb-2 list-none flex items-start gap-2'>
-					<span
-						className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-							index === 1 && activeIndex === 0
-								? 'bg-pink-900'
-								: `${activeIndex === 0 ? 'bg-gray-700' : 'bg-green-950'}`
-						}`}>
-						<Check
-							size={12}
-							className={
-								index === 1 && activeIndex === 0
-									? `${activeIndex === 0 ? 'text-pink-200' : 'text-green-100'}`
-									: 'text-gray-200'
-							}
-						/>
+					<span className='w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-current/20'>
+						<Check size={12} />
 					</span>
-					<span
-						className={`${
-							index === 1 && activeIndex === 0
-								? 'text-pink-200'
-								: 'text-green-950'
-						} leading-[1.45] relative -top-0.5`}>
-						{feature}
-					</span>
+					<span className='leading-[1.45] relative -top-0.5'>{feature}</span>
 				</li>
 			))}
 		</ul>
@@ -285,22 +266,33 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 				className='hidden md:flex gap-4 items-center justify-center w-full'
 				duration={0.5}
 				stagger={0.15}>
-				{currentCards.map((card, index) => (
-					<div
-						key={card.title}
-						ref={(el) => {
-							cardsRef.current[index] = el!;
-						}}
-						className={`relative price-card p-8 pb-2 mb-4 aspect-[.70] w-84 flex flex-col ${
-							index === 1
-								? `w-92 aspect-[.65] z-10 ${
-										activeIndex === 0 ? 'bg-pink-600' : 'bg-(--green)'
-								  } text-green-950`
-								: 'bg-gray-50  text-gray-700'
-						} rounded-xl`}>
-						<CardContent card={card} index={index} activeIndex={activeIndex} />
-					</div>
-				))}
+				{currentCards.map((card, index) => {
+					const colorArray =
+						activeIndex === 0
+							? colorsForBeautyPriceCards
+							: colorsForFitnessPriceCards;
+					const cardColors = colorArray[index];
+					return (
+						<div
+							key={card.title}
+							ref={(el) => {
+								cardsRef.current[index] = el!;
+							}}
+							className={`relative price-card p-8 pb-2 mb-4 aspect-[.70] w-84 flex flex-col ${
+								index === 1 ? 'w-92 aspect-[.65] z-10' : ''
+							} rounded-xl`}
+							style={{
+								backgroundColor: cardColors.bgColor,
+								color: cardColors.color,
+							}}>
+							<CardContent
+								card={card}
+								index={index}
+								activeIndex={activeIndex}
+							/>
+						</div>
+					);
+				})}
 			</FadeIn>
 
 			{/* Mobile View */}
@@ -309,26 +301,33 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 				onTouchStart={onTouchStart}
 				onTouchMove={onTouchMove}
 				onTouchEnd={onTouchEnd}>
-				{currentCards.map((card, index) => (
-					<div
-						key={`mobile-${card.title}`}
-						ref={(el) => {
-							mobileCardsRef.current[index] = el!;
-						}}
-						className={`absolute p-8 pb-2 w-[90%] h-[480px] flex flex-col shadow-xl ${
-							index === 1
-								? `${
-										activeIndex === 0 ? 'bg-pink-600' : 'bg-(--green)'
-								  } text-(--darkGreen)`
-								: 'bg-gray-50 text-gray-700'
-						} rounded-xl transition-colors duration-300`}
-						style={{
-							transformOrigin: 'center bottom',
-							top: '5%',
-						}}>
-						<CardContent card={card} index={index} activeIndex={activeIndex} />
-					</div>
-				))}
+				{currentCards.map((card, index) => {
+					const colorArray =
+						activeIndex === 0
+							? colorsForBeautyPriceCards
+							: colorsForFitnessPriceCards;
+					const cardColors = colorArray[index];
+					return (
+						<div
+							key={`mobile-${card.title}`}
+							ref={(el) => {
+								mobileCardsRef.current[index] = el!;
+							}}
+							className='absolute p-8 pb-2 w-[90%] h-[480px] flex flex-col shadow-xl rounded-xl transition-colors duration-300'
+							style={{
+								backgroundColor: cardColors.bgColor,
+								color: cardColors.color,
+								transformOrigin: 'center bottom',
+								top: '5%',
+							}}>
+							<CardContent
+								card={card}
+								index={index}
+								activeIndex={activeIndex}
+							/>
+						</div>
+					);
+				})}
 
 				{/* Mobile Controls */}
 				<div className='absolute -bottom-1 flex gap-2 md:gap-8 z-30'>
