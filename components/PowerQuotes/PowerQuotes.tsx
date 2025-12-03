@@ -194,11 +194,11 @@ const StatCardComponent = ({
 			'w-[calc(50%-0.5rem)] h-48 flex justify-between rounded-sm p-4';
 		switch (card.theme) {
 			case 'light':
-				return `${baseStyles} bg-gray-100 flex-col`;
+				return `${baseStyles} bg-gray-300 flex-col`;
 			case 'dark':
-				return `${baseStyles} bg-gray-700 text-gray-100 flex-col`;
+				return `${baseStyles} bg-(--gold) text-(--black) flex-col`;
 			case 'darker':
-				return `${baseStyles} bg-gray-700 text-gray-100 items-start flex-col gap-4`;
+				return `${baseStyles} bg-(--gold) text-(--black) items-start flex-col gap-4`;
 			default:
 				return baseStyles;
 		}
@@ -268,10 +268,10 @@ const StatCardComponent = ({
 				return (
 					<>
 						<div className='flex flex-col h-full'>
-							<span className='text-gray-300 tracking-tight font-semibold'>
+							<span className='text-(--black) tracking-tight font-semibold'>
 								{card.title}
 							</span>
-							<p className='text-xs text-gray-400'>
+							<p className='text-xs text-gray-800'>
 								{card.date?.toLocaleDateString('hr-HR', {
 									weekday: 'long',
 									day: 'numeric',
@@ -285,7 +285,7 @@ const StatCardComponent = ({
 								className='text-5xl tracking-tight'>
 								{card.value}
 							</span>
-							<span className='text-xs text-gray-400'>{card.subtext}</span>
+							<span className='text-xs text-gray-800'>{card.subtext}</span>
 						</div>
 					</>
 				);
@@ -293,13 +293,13 @@ const StatCardComponent = ({
 				return (
 					<>
 						<div className='flex justify-between w-full'>
-							<span className='text-gray-300 tracking-tight font-semibold flex flex-col leading-none'>
+							<span className='text-(--black) tracking-tight font-semibold flex flex-col leading-none'>
 								{card.title}
-								<span className='text-[10px] tracking-widest uppercase text-gray-300 font-medium relative top-1'>
+								<span className='text-[10px] tracking-widest uppercase text-(--black) font-medium relative top-1'>
 									{new Date().toLocaleDateString('hr-HR', { month: 'long' })}
 								</span>
 							</span>
-							<span className='bg-[#b39a67] p-1 text-[12px] text-black rounded-full flex justify-center items-center h-fit px-2'>
+							<span className='bg-(--black) p-1 text-[12px] text-(--gold) rounded-full flex justify-center items-center h-fit px-2'>
 								Odlično!
 							</span>
 						</div>
@@ -316,8 +316,8 @@ const StatCardComponent = ({
 												isFuture
 													? 'bg-gray-600'
 													: isMissed
-													? 'bg-red-600'
-													: 'bg-gray-200'
+													? 'bg-(--navyBlue)'
+													: 'bg-gray-300'
 											}`}
 											title={`Day ${i + 1}`}
 										/>
@@ -406,13 +406,13 @@ const PowerQuotes = (props: Props) => {
 	}, [currentIndex]);
 
 	return (
-		<div className='w-full min-h-[150svh] md:min-h-svh px-4 md:px-8 py-8 flex flex-col justify-between gap-2 bg-[#f1e5ce]'>
+		<div className='w-full min-h-[150svh] md:min-h-[140vh] px-4 md:px-8 py-8 flex flex-col justify-center gap-2 bg-(--black)'>
 			<div className='w-full h-full flex flex-col md:flex-row gap-2'>
-				<div className='flex flex-col w-full md:w-2/3 flex-1 items-center justify-between bg-black rounded-xl p-4'>
+				<div className='flex flex-col w-full md:w-2/3 flex-1 items-center justify-between border border-(--gold) rounded-xl p-4'>
 					<div className='h-1/3 w-full flex justify-center items-center mb-8'>
 						<h1
 							ref={headingRef}
-							className='text-3xl md:text-5xl lg:text-7xl font-bold text-[#b39a67] text-center leading-tight tracking-tight max-w-[18ch] md:max-w-[22ch]'
+							className='text-3xl md:text-5xl lg:text-7xl font-bold text-(--gold) text-center leading-tight tracking-tight max-w-[18ch] md:max-w-[22ch]'
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							{motivationalQuotes[currentIndex]}
 						</h1>
@@ -436,11 +436,11 @@ const PowerQuotes = (props: Props) => {
 
 			<div>
 				<h2
-					className=' text-3xl xl:text-[2vw] tracking-tight mt-4 max-h-max'
+					className=' text-3xl xl:text-[2vw] tracking-tight mt-4 max-h-max text-(--gold)'
 					style={{ fontFamily: 'Anton, sans-serif' }}>
 					Mi ćemo se pobrinuti da vaši dani budu ispunjeni napretkom.
 				</h2>
-				<button className='bg-[#b39a67] text-white px-3 py-1.5 mt-4'>
+				<button className='bg-[#b39a67] text-(--black) px-3 py-1.5 mt-4'>
 					Rezervišite svoj termin
 				</button>
 			</div>

@@ -240,56 +240,58 @@ const ClientTestimonials = (props: Props) => {
 	}, [maxPosition, cardWidth, updateProgressBar]);
 
 	return (
-		<div className=' w-full min-h-[60vh] bg-gray-300 flex flex-col justify-center items-start md:items-center gap-4 md:gap-8 text-gray-950 px-[5vw] py-8 overflow-hidden'>
-			<h2
-				style={{ fontFamily: 'Anton, sans-serif' }}
-				className='text-2xl md:text-5xl tracking-normal max-w-[15ch] leading-[1.3] md:text-center'>
-				Pročitajte šta kažu naši klijenti
-			</h2>
-			<div className='flex flex-col justify-center max-w-6xl overflow-hidden mx-auto'>
-				<div ref={testimonialsWrapperRef} className='flex w-full gap-2'>
-					{testimonials.map((testimonial, index) => (
-						<div
-							key={index}
-							className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-gray-200 flex flex-col rounded-xl'>
-							<div className='flex items-end gap-4 mb-8'>
-								<div className='relative w-16 h-16 rounded-full overflow-hidden'>
-									<Image
-										fill
-										src={testimonial.image}
-										alt={`Slika klijenta ${testimonial.name}`}
-									/>
+		<div className=' w-full min-h-svh bg-(--black) flex flex-col justify-center items-start md:items-center gap-4 md:gap-8 text-(--black) px-[5vw] py-8 overflow-hidden'>
+			<div className='flex flex-col justify-center items-center gap-4 border border-dashed border-(--gold) p-4 rounded-xl w-full'>
+				<h2
+					style={{ fontFamily: 'Anton, sans-serif' }}
+					className='text-2xl md:text-5xl tracking-normal max-w-[15ch] leading-[1.3] md:text-center text-(--gold)'>
+					Pročitajte šta kažu naši klijenti
+				</h2>
+				<div className='flex flex-col justify-center max-w-7xl overflow-hidden mx-auto p-4 rounded-xl'>
+					<div ref={testimonialsWrapperRef} className='flex w-full gap-2'>
+						{testimonials.map((testimonial, index) => (
+							<div
+								key={index}
+								className='testimonial-card shrink-0 w-56 aspect-3/4 p-4 bg-(--gold) flex flex-col rounded-xl text-(--white)'>
+								<div className='flex items-end gap-4 mb-8'>
+									<div className='relative w-16 h-16 rounded-full overflow-hidden'>
+										<Image
+											fill
+											src={testimonial.image}
+											alt={`Slika klijenta ${testimonial.name}`}
+										/>
+									</div>
+									<span>{testimonial.name}</span>
 								</div>
-								<span>{testimonial.name}</span>
+								<p className='text-sm '>{testimonial.feedback}</p>
+
+								<span className='bg-[#ccae72] p-2 text-[10px] text-(--black) mt-auto flex max-w-max rounded-xs'>
+									{testimonial.date}
+								</span>
 							</div>
-							<p className='text-sm '>{testimonial.feedback}</p>
-
-							<span className='bg-gray-200 p-2 text-[10px] text-gray-800 mt-auto flex max-w-max rounded-xs'>
-								{testimonial.date}
-							</span>
-						</div>
-					))}
-				</div>
-				<span
-					ref={progressBarWrapperRef}
-					className='w-40 h-2 bg-gray-200 rounded-full relative flex items-center mt-4 self-start md:self-center'>
+						))}
+					</div>
 					<span
-						ref={progressBarRef}
-						className='w-12 h-1 bg-gray-600 rounded mx-1'></span>
-				</span>
-			</div>
-			<div className='flex items-center gap-2 md:gap-2'>
-				<button
-					onClick={handlePrev}
-					className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-gray-400 text-gray-600 p-2 font-semibold md:hover:bg-gray-600 md:hover:text-gray-200 transition-colors duration-300'>
-					<ArrowLeft size={32} />
-				</button>
+						ref={progressBarWrapperRef}
+						className='w-40 h-2 bg-(--gold) rounded-full relative flex items-center mt-4 self-start md:self-center'>
+						<span
+							ref={progressBarRef}
+							className='w-12 h-1 bg-(--black) rounded mx-1'></span>
+					</span>
+				</div>
+				<div className='flex items-center gap-2 md:gap-2'>
+					<button
+						onClick={handlePrev}
+						className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-(--gold) text-(--gold) p-2 font-semibold md:hover:bg-(--black) md:hover:text-(--gold) transition-colors duration-300'>
+						<ArrowLeft size={32} />
+					</button>
 
-				<button
-					onClick={handleNext}
-					className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-gray-400 text-gray-600 p-2 font-semibold md:hover:bg-gray-600 md:hover:text-gray-200 transition-colors duration-300'>
-					<ArrowRight size={32} />
-				</button>
+					<button
+						onClick={handleNext}
+						className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-(--gold) text-(--gold) p-2 font-semibold md:hover:bg-(--black) md:hover:text-(--gold) transition-colors duration-300'>
+						<ArrowRight size={32} />
+					</button>
+				</div>
 			</div>
 		</div>
 	);

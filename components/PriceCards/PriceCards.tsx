@@ -24,15 +24,24 @@ const PriceCards = (props: Props) => {
 					</h2>
 				</GSAPSplitTextComponent>
 				<button
-					className='cursor-pointer'
+					className='cursor-pointer flex gap-2 rounded-full border border-(--gold) items-center w-36 h-10 justify-between relative overflow-hidden'
 					onClick={() => setActiveIndex(activeIndex === 0 ? 1 : 0)}>
 					<span
-						className={`text-xs tracking-tight uppercase font-medium text-gray-200 mb-4 flex ${
-							activeIndex === 0 ? 'bg-[#b39a67]' : 'bg-[#b39a67]'
-						} px-2 py-1 rounded-full`}>
-						{activeIndex === 0
-							? 'vidi cjenik za fitness'
-							: 'vidi cjenik za beauty'}
+						className={`${
+							activeIndex === 1 ? 'text-[#1a1a1a]' : 'text-gray-200'
+						} text-xs tracking-tight uppercase font-medium relative z-10 flex rounded-full px-3 w-24 h-10 items-center justify-center py-1`}>
+						{' '}
+						fitness
+					</span>
+					<span
+						className={`absolute w-1/2 h-full flex bg-(--gold) rounded-full border border-(--gold) z-0 transition-all duration-300 ease-out transform ${
+							activeIndex === 1 ? 'translate-x-0' : 'translate-x-full'
+						}`}></span>
+					<span
+						className={`${
+							activeIndex === 1 ? 'text-gray-200' : 'text-[#1a1a1a]'
+						} text-xs tracking-tight uppercase font-medium relative z-10 flex rounded-full px-3 w-24 h-10 items-center justify-center py-1`}>
+						beauty
 					</span>
 				</button>
 				{/* <ClientButton>Fitness Cjenik</ClientButton> */}

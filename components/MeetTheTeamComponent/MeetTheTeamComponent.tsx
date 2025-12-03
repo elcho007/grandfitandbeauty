@@ -19,38 +19,38 @@ type Props = {};
 
 const MeetTheTeamComponent = (props: Props) => {
 	return (
-		<div className='w-full min-h-svh px-[5vw] py-24 grid grid-cols-12 gap-8 justify-center items-start bg-(--black) text-gray-200'>
-			<div className='col-span-6'>
+		<div className='w-full min-h-[120svh] py-24 grid grid-cols-[5vw_repeat(12,minmax(0,1fr))_5vw] content-start justify-start items-start bg-(--black) text-gray-200'>
+			<div className='col-span-6 col-start-2 row-span-1 flex flex-col justify-end items-start mb-4'>
 				<h2
-					className='text-3xl xl:text-[3vw] tracking-tight mb-4 max-h-max text-[#b39a67] max-w-2xl'
+					className='text-3xl xl:text-[3vw] tracking-tight mb-4 max-h-max text-[#b39a67] max-w-2xl row-start-1'
 					style={{ fontFamily: 'Anton, sans-serif' }}>
 					Upoznajte Elmu i Elvisa, vlasnike Grand Fit & Beauty
 				</h2>
 			</div>
-			<div className='relative col-span-6 max-w-4xl h-[400px] md:h-[800px] my-8 row-span-3'>
+			<div className='relative col-start-8 -col-end-1 w-full h-full md:h-svh row-span-3 row-start-1'>
 				<Image
 					fill
 					alt='Elma i Elvis'
-					src='/images/fitnesscouple.avif'
-					className='object-cover rounded-lg'
+					src='/images/elvis_elma.webp'
+					className='object-contain'
 				/>
 			</div>
-			<div className='flex flex-col col-start-1 col-span-6 row-start-2'>
-				<p className='max-w-lg text-xl'>
+			<div className='flex flex-col col-start-2 col-span-6 row-start-2'>
+				<p className='max-w-lg text-lg font-light'>
 					Grand Fit & Beauty nastao je iz jedne priče o ljubavi, strasti prema
 					poslu i zajedničkom snu. Elma i Elvis upoznali su se radeći rame uz
 					rame — ona kao stručnjakinja u wellnessu, a on kao trener u hotelskoj
 					wellness zoni. Od prvog dana, povezala ih je ista energija, ista
 					vizija i isti osjećaj da zajedno mogu više.
 				</p>
-				<p className='max-w-lg mt-4 text-xl'>
+				<p className='max-w-lg mt-4 text-lg font-light'>
 					Radili su predano, učili jedno od drugoga i otkrili da najbolje
 					rezultate postižu upravo kada su zajedno. Upravo ta snaga partnerstva,
 					ali i ljubavi, bila je motivacija da naprave hrabar korak i otvore
 					svoj centar, mjesto koje će nositi njihov potpis, njihovu filozofiju i
 					njihovu strast.
 				</p>
-				<p className='max-w-lg mt-4 text-xl'>
+				<p className='max-w-lg mt-4 text-lg font-light'>
 					Tako je nastao Grand Fit & Beauty: prostor u kojem se isprepliću
 					profesionalnost, toplina i posvećenost svakom gostu. Danas, Elma i
 					Elvis vode centar s istim žarom s kojim su se i upoznali, vjerujući da

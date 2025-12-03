@@ -246,19 +246,19 @@ const BeautyCornerComponent: React.FC = () => {
 	);
 
 	return (
-		<section className='bg-[#b39a67] text-gray-900 w-full px-[5vw] py-16 flex flex-col gap-4 md:gap-8 items-center'>
+		<section className='bg-[#b39a67] text-(--black) w-full px-[5vw] py-16 flex flex-col gap-4 md:gap-8 items-center'>
 			<header className='w-full max-w-6xl flex flex-col gap-3 '>
-				<p className='text-sm uppercase tracking-[0.4em] text-black'>
+				<p className='text-sm uppercase tracking-[0.4em] text-(--black)'>
 					GrandFit&Beauty
 				</p>
 				<GSAPSplitTextComponent ease={'power2'}>
 					<h3
-						className='text-4xl md:text-5xl font-semibold tracking-tight text-black leading-[1.35]'
+						className='text-4xl md:text-5xl font-semibold tracking-tight text-(--black) leading-[1.35]'
 						style={{ fontFamily: 'Lora, serif' }}>
 						Beauty Corner
 					</h3>
 				</GSAPSplitTextComponent>
-				<p className='max-w-2xl text-base md:text-lg text-black'>
+				<p className='max-w-2xl text-base md:text-lg text-(--black)'>
 					Istražite našu ponudu tretmana i pronađite idealnu kombinaciju
 					wellness iskustava.
 				</p>
@@ -275,7 +275,7 @@ const BeautyCornerComponent: React.FC = () => {
 							ref={registerCard(index)}
 							className={`beauty-card ${cardWidth} cursor-pointer aspect-square w-64 md:w-32 rounded-xs border border-dashed border-gray-800 bg-[#b39a67] px-6 py-8  transition-all duration-300 ease-out ${
 								activeIndex === index
-									? 'ring-2 ring-offset-4 ring-offset-gray-800 ring-gray-950'
+									? 'ring-2 ring-offset-3 ring-offset-gray-800 ring-gray-950'
 									: ''
 							}`}>
 							<header className='flex items-start flex-col justify-between gap-2'>
@@ -287,7 +287,7 @@ const BeautyCornerComponent: React.FC = () => {
 								</h4>
 							</header>
 							{card.text && (
-								<p className='mt-6 text-sm leading-relaxed text-gray-700'>
+								<p className='mt-6 text-sm leading-relaxed text-gray-800'>
 									{card.text}
 								</p>
 							)}
@@ -297,8 +297,8 @@ const BeautyCornerComponent: React.FC = () => {
 			</div>
 			<div className='flex flex-wrap items-center justify-between gap-4 w-full max-w-6xl'>
 				<div className='flex flex-col items-start gap-3'>
-					<div className='flex items-center gap-2 text-sm text-gray-800'>
-						<span className='inline-block h-2 w-2 rounded-full bg-gray-800' />
+					<div className='flex items-center gap-2 text-sm text-(--black)'>
+						<span className='inline-block h-2 w-2 rounded-full bg-(--black)' />
 						<span>
 							{activeIndex + 1 < 10 ? `0${activeIndex + 1}` : activeIndex + 1}
 						</span>
@@ -314,13 +314,13 @@ const BeautyCornerComponent: React.FC = () => {
 						<button
 							type='button'
 							onClick={() => goPrev(true)}
-							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-gray-800 px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-100 hover:text-gray-800'>
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-(--black) px-4 py-2 text-sm font-medium text-(--black) transition hover:bg-(--black) hover:text-(--gold) duration-300'>
 							<ArrowLeft size={32} />
 						</button>
 						<button
 							type='button'
 							onClick={() => goNext(true)}
-							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-gray-800 text-gray-800 px-4 py-2 text-sm font-medium transition hover:bg-gray-100 duration-300 hover:text-gray-800'>
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-(--black) text-(--black) px-4 py-2 text-sm font-medium transition hover:bg-(--black) duration-300 hover:text-(--gold)'>
 							<ArrowRight size={32} />
 						</button>
 					</div>

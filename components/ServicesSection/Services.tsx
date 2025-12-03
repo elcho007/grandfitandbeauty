@@ -494,12 +494,12 @@ const Services = () => {
 					duration={1}
 					className='col-span-12'>
 					<h2
-						className=' text-3xl xl:text-[5vw] tracking-tight mb-4 max-h-max text-[#b39a67]'
+						className='text-3xl xl:text-[3vw] tracking-tight mb-2 max-h-max text-[#b39a67] max-w-2xl row-start-1'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						GrandFit&Beauty usluge
 					</h2>
 				</GSAPSplitTextComponent>
-				<h3 className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b39a67]'>
+				<h3 className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b39a67] mb-6'>
 					U{' '}
 					<span className='font-semibold'>
 						{' '}
@@ -515,13 +515,8 @@ const Services = () => {
 				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
-				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-[#bcbcbc] w-full h-[750px] justify-between overflow-hidden relative rounded-xl'>
-					<span
-						className='text-sm md:text-xl absolute top-4 left-4 md:left-8 text-black/70'
-						style={{ fontFamily: 'Anton, sans-serif' }}>
-						{activeCardIndex + 1}/{allCards.length}
-					</span>
-					<div className='flex flex-col justify-center gap-4 p-4 md:p-8 pt-16 md:pt-0 w-full md:w-1/2 '>
+				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-transparent  w-full h-[750px] justify-between overflow-hidden relative gap-1'>
+					<div className='flex flex-col justify-center gap-4 w-full md:w-1/2 text-(--gold) border border-(--gold) rounded-xl p-6 md:p-8 relative'>
 						<h3
 							ref={titleRef}
 							className='text-3xl md:text-6xl tracking-tight font-medium leading-tight'
@@ -532,7 +527,7 @@ const Services = () => {
 						<div className='more-about-card w-full flex flex-col pb-4'>
 							<div
 								ref={textRef}
-								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-gray-950 max-w-[50ch]'>
+								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-(--gold) max-w-[50ch]'>
 								{allCards[activeCardIndex].text.map((paragraph, idx) => (
 									<p key={idx} className='text-base mt-2'>
 										{paragraph}
@@ -540,7 +535,7 @@ const Services = () => {
 								)) || 'Trenutno nema dodatnih informacija o ovoj usluzi.'}
 							</div>
 						</div>
-						<div className='card-content absolute left-4 md:left-8 z-20 col-start-1 w-36 md:w-68 flex bottom-4 md:bottom-8 text-black'>
+						<div className='card-content absolute z-20 col-start-1 w-36 md:w-68 flex text-(--gold) bottom-6 md:bottom-8 justify-between items-center'>
 							<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
 								<button
 									aria-label='Previous service'
@@ -556,10 +551,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-white hover:bg-gray-400 transition-all duration-300 md:border-black border-dashed flex items-center justify-center'>
+									className='aspect-square border border-(--gold) group hover:bg-(--gold) transition-all duration-300 border-dashed flex items-center justify-center'>
 									<ArrowLeft
 										size={32}
-										className='stroke-white md:stroke-black'
+										className='stroke-white md:stroke-(--gold) group-hover:stroke-(--black)'
 									/>
 								</button>
 								<button
@@ -575,10 +570,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-dashed hover:bg-gray-400 transition-all duration-300 border-white md:border-black flex items-center justify-center'>
+									className='aspect-square border group border-dashed hover:bg-(--gold) hover:text-(--black) transition-all duration-300 border-(--gold) flex items-center justify-center'>
 									<ArrowRight
 										size={32}
-										className='stroke-white md:stroke-black'
+										className='stroke-white md:stroke-(--gold) group-hover:stroke-(--black) '
 									/>
 								</button>
 							</div>
@@ -586,7 +581,12 @@ const Services = () => {
 					</div>
 					<div
 						ref={wheelRef}
-						className='wheel z-10 w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-between gap-4 relative'>
+						className='wheel z-10 w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-between gap-4 relative border border-(--gold) rounded-xl overflow-hidden'>
+						<span
+							className='text-sm md:text-xl absolute text-(--gold)/70 z-20 top-4 left-4'
+							style={{ fontFamily: 'Anton, sans-serif' }}>
+							{activeCardIndex + 1}/{allCards.length}
+						</span>
 						<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
 							{allCards.map((card, index) => (
 								<div

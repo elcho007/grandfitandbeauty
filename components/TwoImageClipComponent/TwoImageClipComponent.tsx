@@ -9,15 +9,9 @@ const TwoImageClipComponent = (props: Props) => {
 	return (
 		<div className='w-full h-screen'>
 			<div className='w-full h-full relative flex flex-col md:grid grid-cols-1 md:grid-cols-2 grid-rows-1'>
-				<div className='relative overflow-hidden h-1/2 md:h-full p-4 before:content-[""] before:absolute before:w-full before:h-full before:left-0 before:top-0 before:bg-[#b39a67]/30 before:z-10'>
-					<GSAPClipPathImageRevealComponent>
-						<Image
-							src='/images/gfb3.jpg'
-							fill
-							alt=''
-							className='object-cover'
-						/>
-					</GSAPClipPathImageRevealComponent>
+				<div className='relative overflow-hidden h-1/2 md:h-full p-4 after:content-[""] after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-[#b39a67]/30 after:z-10'>
+					<Image src='/images/gfb3.jpg' fill alt='' className='object-cover' />
+
 					<div className='relative top-8 md:top-[90svh] z-20 max-w-3xl text-white'>
 						<GSAPSplitTextComponent
 							ease={'power2'}
@@ -33,14 +27,8 @@ const TwoImageClipComponent = (props: Props) => {
 					</div>
 				</div>
 				<div className='relative overflow-hidden h-1/2 md:h-full p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:top-0 before:bg-[#b39a67]/30'>
-					<GSAPClipPathImageRevealComponent direction='top'>
-						<Image
-							src='/images/gfb4.jpg'
-							fill
-							alt=''
-							className='object-cover'
-						/>
-					</GSAPClipPathImageRevealComponent>
+					<Image src='/images/gfb4.jpg' fill alt='' className='object-cover' />
+
 					<div className='relative z-20 max-w-3xl text-[white]'>
 						<GSAPSplitTextComponent
 							ease={'power2'}
