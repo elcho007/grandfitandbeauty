@@ -24,12 +24,12 @@ const PriceCards = (props: Props) => {
 					</h2>
 				</GSAPSplitTextComponent>
 				<button
-					className='cursor-pointer flex gap-2 rounded-full border border-(--gold) items-center w-36 h-10 justify-between relative overflow-hidden'
+					className='cursor-pointer flex gap-2 rounded-full border border-(--gold) items-center w-38 h-10 justify-between relative overflow-hidden'
 					onClick={() => setActiveIndex(activeIndex === 0 ? 1 : 0)}>
 					<span
 						className={`${
-							activeIndex === 1 ? 'text-[#1a1a1a]' : 'text-gray-200'
-						} text-xs tracking-tight uppercase font-medium relative z-10 flex rounded-full px-3 w-24 h-10 items-center justify-center py-1`}>
+							activeIndex === 1 ? 'text-[#1a1a1a]' : 'text-[#9d9d9d]'
+						} text-xs tracking-tight uppercase font-medium relative z-10 flex rounded-full px-3 w-24 h-10 items-center justify-center `}>
 						{' '}
 						fitness
 					</span>
@@ -39,8 +39,8 @@ const PriceCards = (props: Props) => {
 						}`}></span>
 					<span
 						className={`${
-							activeIndex === 1 ? 'text-gray-200' : 'text-[#1a1a1a]'
-						} text-xs tracking-tight uppercase font-medium relative z-10 flex rounded-full px-3 w-24 h-10 items-center justify-center py-1`}>
+							activeIndex === 1 ? 'text-[#9d9d9d]' : 'text-[#1a1a1a]'
+						} text-xs tracking-tight uppercase font-medium relative z-10 flex rounded-full px-3 w-24 h-10 items-center justify-center `}>
 						beauty
 					</span>
 				</button>

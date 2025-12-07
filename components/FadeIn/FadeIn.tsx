@@ -36,7 +36,7 @@ const FadeIn = ({
 
 			const tween = gsap.fromTo(
 				elements,
-				{ autoAlpha: 0, yPercent: 20, rotation: rotation },
+				{ autoAlpha: 0, yPercent: 10, rotation: rotation },
 				{
 					autoAlpha: 1,
 					yPercent:

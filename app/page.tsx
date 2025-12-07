@@ -11,21 +11,27 @@ import Services from '@/components/ServicesSection/Services';
 import SuccessStories from '@/components/SuccessStories/SuccessStories';
 import TwoImageClipComponent from '@/components/TwoImageClipComponent/TwoImageClipComponent';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
+import ClientTestimonialsAlternative from '@/components/ClientTestimonialsAlternative/ClientTestimonials';
+import BeautyMarquee from '@/components/BeautyMarquee/BeautyMarquee';
+import IntroAnimation from '@/components/IntroAnimation/IntroAnimation';
 
 export default function Home() {
 	return (
-		<div className='bg-zinc-50 font-sans dark:bg-black'>
+		<div>
 			<main className='w-full'>
+				<IntroAnimation />
 				<HeroComponent />
 				<MeetTheTeamComponent />
+				{/* <Coach /> */}
 				<Services />
-				<Coach />
+				<ClientTestimonialsAlternative />
 				<SuccessStories />
-				<ClientTestimonials />
-				<VideoComponent />
+				{/* <ClientTestimonials /> */}
+				{/* <VideoComponent /> */}
 				<TwoImageClipComponent />
 				<PowerQuotes />
 				<BeautyCornerComponent />
+				<BeautyMarquee />
 				<PriceCards />
 				<Blog />
 				<Faq />

@@ -247,7 +247,7 @@ const BeautyCornerComponent: React.FC = () => {
 
 	return (
 		<section className='bg-[#b39a67] text-(--black) w-full px-[5vw] py-16 flex flex-col gap-4 md:gap-8 items-center'>
-			<header className='w-full max-w-6xl flex flex-col gap-3 '>
+			<header className='w-full max-w-6xl flex flex-col gap-3 items-center'>
 				<p className='text-sm uppercase tracking-[0.4em] text-(--black)'>
 					GrandFit&Beauty
 				</p>
@@ -258,7 +258,7 @@ const BeautyCornerComponent: React.FC = () => {
 						Beauty Corner
 					</h3>
 				</GSAPSplitTextComponent>
-				<p className='max-w-2xl text-base md:text-lg text-(--black)'>
+				<p className='max-w-md text-center text-base md:text-lg text-(--black)'>
 					Istražite našu ponudu tretmana i pronađite idealnu kombinaciju
 					wellness iskustava.
 				</p>
@@ -295,8 +295,8 @@ const BeautyCornerComponent: React.FC = () => {
 					))}
 				</div>
 			</div>
-			<div className='flex flex-wrap items-center justify-between gap-4 w-full max-w-6xl'>
-				<div className='flex flex-col items-start gap-3'>
+			<div className='flex flex-wrap items-center justify-center gap-4 w-full max-w-6xl'>
+				<div className='flex flex-col items-center gap-3'>
 					<div className='flex items-center gap-2 text-sm text-(--black)'>
 						<span className='inline-block h-2 w-2 rounded-full bg-(--black)' />
 						<span>

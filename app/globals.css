@@ -13,7 +13,7 @@
 	--white: #f0f0f0;
 	--navyBlue: #10214b;
 
-	--black: #0a0a0a;
+	--black: #0c0c0c;
 }
 
 @theme inline {
@@ -35,8 +35,14 @@
 }
 
 body {
-	background: var(--background);
+	background: var(--black);
 	color: var(--foreground);
+}
+
+h1,
+h2,
+h3 {
+	font-family: 'Anton', sans-serif;
 }
 
 /* SplitText styling for proper word spacing */
@@ -215,7 +221,7 @@ body {
 	}
 
 	.control-btn:hover svg {
-		stroke: #e5e7eb;
+		stroke: var(--gold);
 	}
 
 	.control-btn {

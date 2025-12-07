@@ -155,26 +155,26 @@ const Faq = () => {
 	return (
 		<div
 			ref={faqRef}
-			className='w-full min-h-screen bg-(--black) flex flex-col justify-center md:items-center gap-8 px-[5vw] py-[10vh] md:py-[5vw] relative text-[#bcbcbc] z-10'>
+			className='w-full min-h-screen bg-(--black) flex flex-col justify-center md:items-center gap-8 px-[5vw] py-[10vh] md:py-[5vw] relative text-[#9d9d9d] z-10'>
 			<h2
 				className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3]`}
 				style={{ fontFamily: 'Anton, sans-serif' }}>
 				Najčešća pitanja
 			</h2>
-			<div className='flex w-full flex-col md:flex-row gap-4 md:gap-8 min-h-[60vh] items-center md:justify-center'>
-				<div className='flex w-full max-w-full md:max-w-md flex-col gap-3 md:gap-6 bg-[#bcbcbc] text-black p-4 md:p-6 rounded-lg h-full justify-center flex-1'>
+			<div className='flex w-full flex-col md:flex-row gap-4 min-h-[60vh] items-center md:justify-center'>
+				<div className='flex w-full max-w-full md:max-w-md flex-col gap-3 md:gap-6 bg-[#9d9d9d] text-(--black) p-4 md:p-6 rounded-lg h-full justify-center flex-1'>
 					{' '}
 					<h3
-						className='text-xl md:text-4xl tracking-tight leading-[1.3] max-w-full md:max-w-[15ch] text-black'
+						className='text-xl md:text-4xl tracking-tight leading-[1.3] max-w-full md:max-w-[15ch] text-(--black)'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						Ovo su neka od najčešćih pitanja koja nam postavljaju naši klijenti.
 					</h3>
-					<h4 className='text-black'>Imate li dodatnih pitanja?</h4>
-					<button className='bg-black px-3 py-2 rounded-sm max-w-max text-gray-100'>
+					<h4 className='text-(--black)'>Imate li dodatnih pitanja?</h4>
+					<button className='bg-(--black) px-3 py-2 rounded-sm max-w-max text-gray-200'>
 						Kontaktirajte nas
 					</button>
 				</div>
-				<div className='faq-wrapper grid grid-cols-1 gap-2 md:gap-4 max-w-full md:max-w-[35vw]'>
+				<div className='faq-wrapper grid grid-cols-1 gap-2 md:gap-2 max-w-full md:max-w-[35vw]'>
 					{Array.from({ length: 5 }).map((_, index) => (
 						<div
 							onClick={handleOpenFAQ(index)}
@@ -182,17 +182,20 @@ const Faq = () => {
 							ref={(el) => {
 								faqRefs.current[index] = el;
 							}}
-							className='faq-item z-10 border md:border border-dashed border-gray-300 rounded-lg p-4 cursor-pointer transition-colors duration-300 relative flex flex-col justify-center overflow-hidden'>
+							className='faq-item z-10 border md:border border-dashed border-gray-300/40 rounded-lg p-4 cursor-pointer transition-colors duration-300 relative flex flex-col justify-center overflow-hidden'>
 							<div className='flex justify-between items-center gap-16'>
 								<h4
-									className='text-sm font-semibold md:font-medium md:text-xl text-gray-300 relative z-10'
+									className='text-sm font-semibold md:font-medium md:text-xl text-gray-300 relative z-10 max-w-md'
 									style={{ fontFamily: 'Lora, serif' }}>
 									Lorem ipsum dolor sit amet consectetur adipisicing elit.
 								</h4>
 								{activeFaqIndex === index ? (
-									<X size={32} className='opacity-75 text-gray-300 z-10' />
+									<X size={32} className='opacity-75 text-gray-300/20 z-10' />
 								) : (
-									<Plus size={32} className='opacity-75 text-gray-300 z-10' />
+									<Plus
+										size={32}
+										className='opacity-75 text-gray-300/20 z-10'
+									/>
 								)}
 							</div>
 							<div

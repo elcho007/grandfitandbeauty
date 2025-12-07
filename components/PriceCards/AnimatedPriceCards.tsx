@@ -15,7 +15,7 @@ const colorsForBeautyPriceCards = [
 ];
 const colorsForFitnessPriceCards = [
 	{ bgColor: '#dbd6c3', color: '#000000' },
-	{ bgColor: '#b4bdbc', color: '#000000' },
+	{ bgColor: '#9d9d9d', color: '#000000' },
 	{ bgColor: '#b39a67', color: '#000000' },
 ];
 
@@ -99,7 +99,7 @@ const CardContent = ({
 }) => (
 	<>
 		<div className='flex flex-col gap-2 border-b border-current/20'>
-			<h3 className='opacity-50 relative z-10 text-lg font-semibold tracking-tight uppercase'>
+			<h3 className='opacity-50 relative z-10 text-lg tracking-tight uppercase'>
 				{card.title}
 			</h3>
 			{'subTitle' in card && (
@@ -122,7 +122,9 @@ const CardContent = ({
 					<span className='w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-current/20'>
 						<Check size={12} />
 					</span>
-					<span className='leading-[1.45] relative -top-0.5'>{feature}</span>
+					<span className='leading-[1.45] relative -top-0.5 text-balance'>
+						{feature}
+					</span>
 				</li>
 			))}
 		</ul>
@@ -265,7 +267,8 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 				key={`desktop-${activeIndex}`}
 				className='hidden md:flex gap-4 items-center justify-center w-full'
 				duration={0.5}
-				stagger={0.15}>
+				start='top 95%'
+				stagger={0.1}>
 				{currentCards.map((card, index) => {
 					const colorArray =
 						activeIndex === 0
@@ -333,12 +336,12 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 				<div className='absolute -bottom-1 flex gap-2 md:gap-8 z-30'>
 					<button
 						onClick={handlePrev}
-						className={`p-3 bg-white/10 border aspect-square w-16 flex items-center justify-center border-dashed border-white text-white transition-all active:scale-95`}>
+						className={`p-3 border aspect-square w-16 flex items-center justify-center border-dashed border-[#9d9d9d] text-[#9d9d9d] transition-all active:scale-95`}>
 						<ArrowLeft size={24} />
 					</button>
 					<button
 						onClick={handleNext}
-						className={`p-3 aspect-square w-16 bg-white/10 border border-dashed flex items-center justify-center border-white text-white transition-all active:scale-95`}>
+						className={`p-3 border aspect-square w-16 flex items-center justify-center border-dashed border-[#9d9d9d] text-[#9d9d9d] transition-all active:scale-95`}>
 						<ArrowRight size={24} />
 					</button>
 				</div>

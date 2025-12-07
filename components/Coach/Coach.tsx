@@ -30,8 +30,8 @@ const Coach = (props: Props) => {
 	return (
 		<div
 			ref={coachRef}
-			className='after:content-[""] after:block after:w-full after:h-full after:bg-(--gold) after:absolute after:top-0 after:left-0 after:z-10 after:opacity-30 after:mix-blend-overlay relative z-10 w-full min-h-screen xl:min-h-[130svh] bg-[url(/images/elvis.webp)] bg-size-[380%] xl:bg-size-[130%] bg-no-repeat bg-center content-end text-4xl font-bold grid grid-cols-[5vw_repeat(12,1fr)_5vw] pb-8'>
-			<div className=' z-20 flex absolute top-8 left-0 w-full h-20 items-center px-[5vw]'>
+			className='after:content-[""] after:block after:w-full after:h-full after:bg-(--black) after:absolute after:top-0 after:left-0 after:z-10 after:opacity-30 relative z-10 w-full min-h-screen xl:min-h-svh bg-[url(/images/elvis.webp)] bg-size-[380%] xl:bg-size-[130%] bg-no-repeat bg-center content-end text-4xl font-bold grid grid-cols-[5vw_repeat(12,1fr)_5vw] pb-8'>
+			<div className='z-20 flex absolute top-8 left-0 w-full h-20 items-center px-[5vw]'>
 				<GSAPSplitTextComponent ease={'power2'} start='top 90%' delay={0.25}>
 					<p
 						className='text-xl md:text-3xl font-normal tracking-tighter text-left text-white max-w-md leading-[1.3]'

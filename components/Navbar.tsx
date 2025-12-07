@@ -116,7 +116,9 @@ const Navbar = (props: Props) => {
 		<div className='absolute h-20 w-full z-30'>
 			<nav className='flex items-center justify-between px-[5vw] mx-auto h-20 bg-transparent  text-white z-20 relative w-full'>
 				<div>
-					<Image src={Logo} alt='Logo' width={50} height={50} />
+					<Link href='/'>
+						<Image src={Logo} alt='Logo' width={50} height={50} />
+					</Link>
 				</div>
 
 				<button

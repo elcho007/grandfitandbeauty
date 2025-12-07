@@ -135,8 +135,10 @@ const allCards = [...treninziCards, ...beautyCards, ...generalCards];
 const Services = () => {
 	const wheelRef = React.useRef<HTMLDivElement>(null);
 	const draggableWheelRef = React.useRef<HTMLDivElement>(null);
+	const smallImagesRef = React.useRef<HTMLDivElement>(null);
 
 	const cardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+	const smallCardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 	const titleRef = React.useRef<HTMLDivElement>(null);
 	const textRef = React.useRef<HTMLDivElement>(null);
 
@@ -348,7 +350,7 @@ const Services = () => {
 	}); */
 
 	useGSAP(() => {
-		if (!wheelRef.current) return;
+		if (!wheelRef.current || !smallImagesRef.current) return;
 
 		CustomEase.create(
 			'hop',
@@ -356,6 +358,7 @@ const Services = () => {
 		);
 
 		const cards = wheelRef.current.querySelectorAll('.card');
+		const smallCards = smallImagesRef.current.querySelectorAll('.card');
 
 		const splitInstances: SplitText[] = [];
 		const isMobile = window.innerWidth < 768;
@@ -363,6 +366,7 @@ const Services = () => {
 		const duration = isMobile ? 1 : 1.5;
 		const offset = isMobile ? 150 : 500;
 
+		// Animate desktop cards
 		cards.forEach((card, index) => {
 			if (index === activeCardIndex) {
 				// Animate in the new active card with clip path reveal
@@ -464,10 +468,19 @@ const Services = () => {
 					});
 				}
 
-				gsap.set(card, {
-					zIndex: 1,
-					visibility: 'visible',
-					clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+				gsap.to(card, {
+					clipPath:
+						direction === 'next'
+							? 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
+							: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
+					duration: duration,
+					ease: ease,
+					onStart: () => {
+						gsap.set(card, {
+							zIndex: 1,
+							visibility: 'visible',
+						});
+					},
 				});
 			} else {
 				// Keep other cards completely hidden
@@ -478,6 +491,74 @@ const Services = () => {
 				});
 			}
 		});
+
+		// Animate small images (mobile view)
+		smallCards.forEach((smallCard, index) => {
+			if (index === activeCardIndex) {
+				gsap.set(smallCard, { zIndex: 2, visibility: 'visible' });
+
+				const smallCardImage = smallCard.querySelector('img');
+				if (smallCardImage) {
+					gsap.fromTo(
+						smallCardImage,
+						{
+							x: direction === 'next' ? 50 : -50,
+						},
+						{
+							x: 0,
+							duration: duration,
+							ease: ease,
+						}
+					);
+				}
+
+				gsap.fromTo(
+					smallCard,
+					{
+						clipPath:
+							direction === 'next'
+								? 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)'
+								: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+					},
+					{
+						clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+						duration: duration,
+						ease: ease,
+					}
+				);
+			} else if (index === prevCardIndex) {
+				const smallCardImage = smallCard.querySelector('img');
+				if (smallCardImage) {
+					gsap.to(smallCardImage, {
+						x: direction === 'next' ? -50 : 50,
+						duration: duration,
+						ease: ease,
+					});
+				}
+
+				gsap.to(smallCard, {
+					clipPath:
+						direction === 'next'
+							? 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
+							: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
+					duration: duration,
+					ease: ease,
+					onStart: () => {
+						gsap.set(smallCard, {
+							zIndex: 1,
+							visibility: 'visible',
+						});
+					},
+				});
+			} else {
+				gsap.set(smallCard, {
+					clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+					zIndex: 0,
+					visibility: 'hidden',
+				});
+			}
+		});
+
 		return () => {
 			splitInstances.forEach((split) => split.revert());
 		};
@@ -487,9 +568,9 @@ const Services = () => {
 		<>
 			<div
 				ref={draggableWheelRef}
-				className='w-full min-h-[110vh] bg-(--black) slider relative grid grid-cols-12 overflow-hidden py-10 px-[5vw] gap-2 items-end justify-items-start align-content-center'>
+				className='w-full min-h-vh bg-(--black) slider relative grid grid-cols-12 overflow-hidden py-8 lg:py-20 px-[5vw] gap-2 items-end justify-items-start align-content-center border-b border-(--gold)/20'>
 				<GSAPSplitTextComponent
-					ease={'expo'}
+					ease={'power2'}
 					start={'top 90%'}
 					duration={1}
 					className='col-span-12'>
@@ -499,7 +580,7 @@ const Services = () => {
 						GrandFit&Beauty usluge
 					</h2>
 				</GSAPSplitTextComponent>
-				<h3 className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b39a67] mb-6'>
+				<p className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b39a67] mb-4'>
 					U{' '}
 					<span className='font-semibold'>
 						{' '}
@@ -507,7 +588,7 @@ const Services = () => {
 					</span>
 					nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 					izgledate i osjećate se najbolje.
-				</h3>
+				</p>
 				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
 					Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 					vam garantujemo najviši nivo usluge i profesionalnosti.
@@ -515,8 +596,38 @@ const Services = () => {
 				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
-				<div className='col-span-12 col-start-1 mt-16 flex flex-col md:flex-row bg-transparent  w-full h-[750px] justify-between overflow-hidden relative gap-1'>
-					<div className='flex flex-col justify-center gap-4 w-full md:w-1/2 text-(--gold) border border-(--gold) rounded-xl p-6 md:p-8 relative'>
+				<div className='col-span-12 col-start-1 mt-4 lg:mt-16 flex flex-col md:flex-row bg-transparent w-full h-vh lg:h-[90vh] justify-between overflow-hidden relative'>
+					<div className='flex flex-col justify-start gap-4 min-h-[650px] w-full md:w-1/2 border border-(--gold) border-dashed text-(--gold) rounded-xl p-6 md:p-8 relative'>
+						<div className='relative w-full h-24 flex justify-end mb-4'>
+							<span
+								className='text-sm md:text-xl absolute text-(--gold)/50 z-20 top-0 left-0'
+								style={{ fontFamily: 'Anton, sans-serif' }}>
+								{String(activeCardIndex + 1).padStart(2, '0')}/
+								{String(allCards.length).padStart(2, '0')}
+							</span>
+							<div
+								ref={smallImagesRef}
+								className='small-images-wrapper relative flex w-24 h-24 rounded-lg lg:hidden overflow-hidden'>
+								{allCards.map((card, index) => (
+									<div
+										key={index}
+										data-active={activeCardIndex === index}
+										ref={(el) => {
+											smallCardRefs.current[index] = el;
+										}}
+										className='card absolute w-full h-full overflow-hidden flex flex-col items-center justify-between text-center'>
+										<div className='relative w-full h-full overflow-hidden'>
+											<Image
+												src={card.image || '/images/gfb1.jpg'}
+												alt={card.title || 'Service image'}
+												fill
+												className='object-cover'
+											/>
+										</div>{' '}
+									</div>
+								))}
+							</div>
+						</div>
 						<h3
 							ref={titleRef}
 							className='text-3xl md:text-6xl tracking-tight font-medium leading-tight'
@@ -524,12 +635,12 @@ const Services = () => {
 							{allCards[activeCardIndex].title}
 						</h3>
 						{/* More info card */}
-						<div className='more-about-card w-full flex flex-col pb-4'>
+						<div className='more-about-card w-full flex flex-col pb-2'>
 							<div
 								ref={textRef}
-								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-(--gold) max-w-[50ch]'>
+								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-(--gold) max-w-[50ch] mb-2'>
 								{allCards[activeCardIndex].text.map((paragraph, idx) => (
-									<p key={idx} className='text-base mt-2'>
+									<p key={idx} className='text-[13px] md:text-base mt-1 '>
 										{paragraph}
 									</p>
 								)) || 'Trenutno nema dodatnih informacija o ovoj usluzi.'}
@@ -551,10 +662,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-(--gold) group hover:bg-(--gold) transition-all duration-300 border-dashed flex items-center justify-center'>
+									className='aspect-square border border-(--gold) group lg:hover:bg-(--gold) transition-all duration-300 border-dashed flex items-center justify-center'>
 									<ArrowLeft
 										size={32}
-										className='stroke-white md:stroke-(--gold) group-hover:stroke-(--black)'
+										className='stroke-(--gold) lg:group-hover:stroke-(--black)'
 									/>
 								</button>
 								<button
@@ -570,10 +681,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border group border-dashed hover:bg-(--gold) hover:text-(--black) transition-all duration-300 border-(--gold) flex items-center justify-center'>
+									className='aspect-square border group border-dashed lg:hover:bg-(--gold) lg:hover:text-(--black) transition-all duration-300 border-(--gold) flex items-center justify-center'>
 									<ArrowRight
 										size={32}
-										className='stroke-white md:stroke-(--gold) group-hover:stroke-(--black) '
+										className='stroke-(--gold) lg:group-hover:stroke-(--black) '
 									/>
 								</button>
 							</div>
@@ -581,13 +692,8 @@ const Services = () => {
 					</div>
 					<div
 						ref={wheelRef}
-						className='wheel z-10 w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-between gap-4 relative border border-(--gold) rounded-xl overflow-hidden'>
-						<span
-							className='text-sm md:text-xl absolute text-(--gold)/70 z-20 top-4 left-4'
-							style={{ fontFamily: 'Anton, sans-serif' }}>
-							{activeCardIndex + 1}/{allCards.length}
-						</span>
-						<div className='images-wrapper relative flex w-full h-full overflow-hidden'>
+						className='wheel hidden z-10 w-full md:w-1/2 h-1/2 md:h-full lg:flex items-center justify-between relative rounded-xl overflow-hidden'>
+						<div className='images-wrapper relative w-full h-full overflow-hidden'>
 							{allCards.map((card, index) => (
 								<div
 									key={index}

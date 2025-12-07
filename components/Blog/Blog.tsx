@@ -1,8 +1,11 @@
+'use client';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import FadeIn from '../FadeIn/FadeIn';
 import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
+
+import { gsap, useGSAP, ScrollTrigger } from '@/lib/gsap';
 
 type Props = {};
 
@@ -31,8 +34,43 @@ const dummyBlogPosts = [
 ];
 
 const Blog = (props: Props) => {
+	const blogRef = React.useRef<HTMLDivElement>(null);
+
+	useGSAP(
+		() => {
+			if (!blogRef.current) return;
+
+			gsap.set(blogRef.current, {
+				width: '80%',
+				margin: '0 auto',
+				transformOrigin: 'center',
+			});
+
+			gsap.fromTo(
+				blogRef.current,
+				{
+					width: '80%',
+				},
+				{
+					width: '100%',
+					duration: 1,
+					scrollTrigger: {
+						trigger: blogRef.current,
+						start: 'top bottom',
+						end: 'top 40%',
+						scrub: 1,
+						invalidateOnRefresh: true,
+					},
+				}
+			);
+		},
+		{ scope: blogRef }
+	);
+
 	return (
-		<div className='bg-[#bcbcbc] min-h-screen w-full p-[5vw] text-black flex flex-col gap-8'>
+		<div
+			ref={blogRef}
+			className='bg-[#9d9d9d] min-h-screen w-full p-[5vw] text-black flex flex-col gap-8'>
 			{' '}
 			<GSAPSplitTextComponent ease={'power2'}>
 				<h4 className='text-2xl tracking-tighter uppercase font-semibold text-black'>

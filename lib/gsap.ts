@@ -7,6 +7,7 @@ import { CustomEase } from 'gsap/CustomEase';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { Draggable } from 'gsap/Draggable';
 import { Observer } from 'gsap/Observer';
+import { Flip } from 'gsap/Flip';
 import { useGSAP } from '@gsap/react';
 
 // Register all plugins once
@@ -16,7 +17,8 @@ gsap.registerPlugin(
 	CustomEase,
 	InertiaPlugin,
 	Draggable,
-	Observer
+	Observer,
+	Flip
 );
 
 // Export the configured GSAP instance and plugins
@@ -28,6 +30,7 @@ export {
 	InertiaPlugin,
 	Draggable,
 	Observer,
+	Flip,
 	useGSAP,
 };
 
