@@ -126,7 +126,7 @@ const TwoImageClipComponent = (props: Props) => {
 				<div className='clip-card relative overflow-hidden h-full p-4 after:content-[""] after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-[#b39a67]/30 after:z-10 row-span-1'>
 					<Image src='/images/gfb3.jpg' fill alt='' className='object-cover' />
 
-					<div className='relative z-20 text-orange-500 w-full h-full flex items-center justify-center'>
+					<div className='relative z-20 text-[#fa8603] w-full h-full flex items-center justify-center'>
 						<p
 							style={{ fontFamily: 'Anton, sans-serif' }}
 							className='slideup-text text-2xl md:text-7xl uppercase leading-[1.3] text-center max-w-xs lg:max-w-md'>
@@ -137,7 +137,7 @@ const TwoImageClipComponent = (props: Props) => {
 				<div className='clip-card relative overflow-hidden h-full p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:top-0 before:bg-[#b39a67]/30 row-span-1'>
 					<Image src='/images/gfb4.jpg' fill alt='' className='object-cover' />
 
-					<div className='relative z-20 text-orange-500 w-full h-full flex items-center justify-center'>
+					<div className='relative z-20 text-[#fa8603] w-full h-full flex items-center justify-center'>
 						<p
 							style={{ fontFamily: 'Anton, sans-serif' }}
 							className='slideup-text text-2xl md:text-7xl uppercase text-center leading-[1.3] max-w-xs lg:max-w-md'>
@@ -148,7 +148,7 @@ const TwoImageClipComponent = (props: Props) => {
 				<div className='clip-card relative overflow-hidden h-full p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:top-0 before:bg-[#b39a67]/30 row-span-1'>
 					<Image src='/images/gfb1.jpg' fill alt='' className='object-cover' />
 
-					<div className='relative z-20 text-orange-500 w-full h-full flex items-center justify-center'>
+					<div className='relative z-20 text-[#fa8603] w-full h-full flex items-center justify-center'>
 						<p
 							style={{ fontFamily: 'Anton, sans-serif' }}
 							className='slideup-text text-2xl md:text-7xl uppercase text-center leading-[1.3] max-w-xs lg:max-w-md'>
@@ -159,7 +159,7 @@ const TwoImageClipComponent = (props: Props) => {
 				<div className='clip-card relative overflow-hidden h-full p-4 before:content-[""] before:absolute before:w-full before:z-10 before:h-full before:left-0 before:top-0 before:bg-[#b39a67]/30 row-span-1'>
 					<Image src='/images/gfb2.jpg' fill alt='' className='object-cover' />
 
-					<div className='relative z-20 text-orange-500 w-full h-full flex items-center justify-center'>
+					<div className='relative z-20 text-[#fa8603] w-full h-full flex items-center justify-center'>
 						<p
 							style={{ fontFamily: 'Anton, sans-serif' }}
 							className='slideup-text text-2xl md:text-7xl uppercase text-center leading-[1.3] max-w-xs lg:max-w-md'>

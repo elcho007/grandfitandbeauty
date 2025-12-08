@@ -268,25 +268,28 @@ const HeroComponent = (props: Props) => {
 			newSlideImg.src = carouselSlides[newIndex].image;
 			newSlideImg.alt = carouselSlides[newIndex].title;
 
+			const isMobile = window.innerWidth < 768;
+			const ease = isMobile ? 'power2.inOut' : 'hop';
+			const duration = isMobile ? 0.8 : 1.5;
+			const imageOffset = isMobile ? 30 : slideOffset;
+
 			gsap.set(newSlideImg, {
-				x: direction === 'left' ? -slideOffset : slideOffset,
+				x: direction === 'left' ? -imageOffset : imageOffset,
 			});
 
 			newSlideImgContainer.appendChild(newSlideImg);
 			carouselImagesRef.current.appendChild(newSlideImgContainer);
 
-			const isMobile = window.innerWidth < 768;
-			const ease = isMobile ? 'power2.inOut' : 'hop';
-			const duration = isMobile ? 1 : 1.5;
-
+			// Animate outgoing image
 			if (currentSlideImage) {
 				gsap.to(currentSlideImage, {
-					x: direction === 'left' ? slideOffset : -slideOffset,
+					x: direction === 'left' ? imageOffset : -imageOffset,
 					duration: duration,
 					ease: ease,
 				});
 			}
 
+			// Animate incoming clip-path
 			gsap.fromTo(
 				newSlideImgContainer,
 				{
@@ -313,6 +316,7 @@ const HeroComponent = (props: Props) => {
 				}
 			);
 
+			// Animate incoming image
 			gsap.to(newSlideImg, {
 				x: 0,
 				duration: duration,

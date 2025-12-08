@@ -2,6 +2,7 @@
 import { X, Plus } from 'lucide-react';
 import React from 'react';
 import { gsap, useGSAP, ScrollTrigger } from '../../lib/gsap';
+import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
 
 const Faq = () => {
 	const [activeFaqIndex, setActiveFaqIndex] = React.useState<number | null>(
@@ -156,11 +157,13 @@ const Faq = () => {
 		<div
 			ref={faqRef}
 			className='w-full min-h-screen bg-(--black) flex flex-col justify-center md:items-center gap-8 px-[5vw] py-[10vh] md:py-[5vw] relative text-[#9d9d9d] z-10'>
-			<h2
-				className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3]`}
-				style={{ fontFamily: 'Anton, sans-serif' }}>
-				Najčešća pitanja
-			</h2>
+			<GSAPSplitTextComponent start='top 90%' duration={0.75} ease={'power2'}>
+				<h2
+					className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3]`}
+					style={{ fontFamily: 'Anton, sans-serif' }}>
+					Najčešća pitanja
+				</h2>
+			</GSAPSplitTextComponent>
 			<div className='flex w-full flex-col md:flex-row gap-4 min-h-[60vh] items-center md:justify-center'>
 				<div className='flex w-full max-w-full md:max-w-md flex-col gap-3 md:gap-6 bg-[#9d9d9d] text-(--black) p-4 md:p-6 rounded-lg h-full justify-center flex-1'>
 					{' '}

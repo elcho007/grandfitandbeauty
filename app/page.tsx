@@ -27,7 +27,7 @@ export default function Home() {
 				<ClientTestimonialsAlternative />
 				<SuccessStories />
 				{/* <ClientTestimonials /> */}
-				{/* <VideoComponent /> */}
+				<VideoComponent />
 				<TwoImageClipComponent />
 				<PowerQuotes />
 				<BeautyCornerComponent />

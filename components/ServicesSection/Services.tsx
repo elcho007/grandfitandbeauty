@@ -575,7 +575,7 @@ const Services = () => {
 					duration={1}
 					className='col-span-12'>
 					<h2
-						className='text-3xl xl:text-[3vw] tracking-tight mb-2 max-h-max text-[#b39a67] max-w-2xl row-start-1'
+						className='text-5xl xl:text-[3vw] tracking-tight leading-snug mb-2 max-h-max text-[#b39a67] max-w-2xl row-start-1'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						GrandFit&Beauty usluge
 					</h2>
@@ -598,9 +598,9 @@ const Services = () => {
 				</p>
 				<div className='col-span-12 col-start-1 mt-4 lg:mt-16 flex flex-col md:flex-row bg-transparent w-full h-vh lg:h-[90vh] justify-between overflow-hidden relative'>
 					<div className='flex flex-col justify-start gap-4 min-h-[650px] w-full md:w-1/2 border border-(--gold) border-dashed text-(--gold) rounded-xl p-6 md:p-8 relative'>
-						<div className='relative w-full h-24 flex justify-end mb-4'>
+						<div className='relative w-full h-24 flex justify-start mb-4'>
 							<span
-								className='text-sm md:text-xl absolute text-(--gold)/50 z-20 top-0 left-0'
+								className='text-sm md:text-xl absolute text-(--gold)/50 z-20 top-0 left-28 lg:left-0'
 								style={{ fontFamily: 'Anton, sans-serif' }}>
 								{String(activeCardIndex + 1).padStart(2, '0')}/
 								{String(allCards.length).padStart(2, '0')}

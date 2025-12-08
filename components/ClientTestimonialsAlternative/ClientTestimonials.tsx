@@ -241,7 +241,7 @@ const ClientTestimonials = (props: Props) => {
 								e.preventDefault();
 								handlePrev();
 							}}
-							className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-(--black) lg:border-[#9d9d9d] text-(--black) lg:text-[#9d9d9d] p-2 font-semibold transition-colors duration-300 touch-manipulation'>
+							className='border aspect-square w-16 md:w-20 flex lg:hover:bg-[#9d9d9d] lg:hover:text-(--black) items-center justify-center border-dashed border-(--black) lg:border-[#9d9d9d] text-(--black) lg:text-[#9d9d9d] p-2 font-semibold transition-colors duration-300 touch-manipulation'>
 							<ArrowLeft size={32} />
 						</button>
 
@@ -251,7 +251,7 @@ const ClientTestimonials = (props: Props) => {
 								e.preventDefault();
 								handleNext();
 							}}
-							className='border aspect-square w-16 md:w-20 flex items-center justify-center border-dashed border-(--black) lg:border-[#9d9d9d] text-(--black) lg:text-[#9d9d9d] p-2 font-semibold transition-colors duration-300 touch-manipulation'>
+							className='border aspect-square w-16 md:w-20 flex items-center lg:hover:bg-[#9d9d9d] lg:hover:text-(--black) justify-center border-dashed border-(--black) lg:border-[#9d9d9d] text-(--black) lg:text-[#9d9d9d] p-2 font-semibold transition-colors duration-300 touch-manipulation'>
 							<ArrowRight size={32} />
 						</button>
 					</div>

@@ -162,7 +162,7 @@ const Footer = (props: Props) => {
 							</label>
 
 							<label className='flex flex-col text-sm'>
-								Klase / Grupe
+								Grupi treninzi
 								<select
 									name='classes'
 									defaultValue=''
@@ -193,13 +193,13 @@ const Footer = (props: Props) => {
 										type='checkbox'
 										name='consent'
 										required
-										className='rounded border-black/20'
+										className='rounded border-black/20 bg-amber-200'
 									/>
 									<span>Prihvaćam obradu podataka u svrhu kontakta.</span>
 								</label>
 								<button
 									type='submit'
-									className='bg-(--black) text-(--gold) px-4 py-2 rounded-md text-sm hover:opacity-90 transition'>
+									className='bg-(--black) text-(--gold) px-4 py-2 rounded-md text-sm hover:opacity-90 transition mt-2 lg:mt-0'>
 									Pošalji upit
 								</button>
 							</div>

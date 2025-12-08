@@ -247,32 +247,32 @@ const SuccessStories = (props: Props) => {
 									{stories[activeStoryIndex].title}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-sm'>
+							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Početna kilaža: </span>
 								<span className='stat-start'>
 									{stories[activeStoryIndex].startWeight}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-sm'>
+							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Kilaža nakon programa: </span>
 								<span className='stat-end'>
 									{stories[activeStoryIndex].endWeight}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-sm'>
+							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Trajanje programa: </span>
 								<span className='stat-duration'>
 									{stories[activeStoryIndex].duration}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-sm'>
+							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Povećanje mišićne mase: </span>
 								<span className='stat-muscle'>
 									{stories[activeStoryIndex].misicnaMasa}
 								</span>
 								<span> kg</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-sm'>
+							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Gubitak masnog tkiva: </span>
 								<span className='stat-fat'>
 									{Math.abs(stories[activeStoryIndex].fatLoss)}
@@ -280,8 +280,8 @@ const SuccessStories = (props: Props) => {
 								<span> kg</span>
 							</div>
 						</div>
-						<div className='grid w-full grid-cols-[repeat(4,1fr)] absolute bottom-4 right-0 z-100'>
-							<div className='flex gap-2 col-span-full col-start-1 md:col-start-2 -col-end-2 w-full overflow-hidden'>
+						<div className='grid w-full grid-cols-[5vw_repeat(4,1fr)_5vw] absolute bottom-4 right-0 z-100'>
+							<div className='flex gap-2 col-span-full col-start-2 md:col-start-3 col-end-6 w-full overflow-hidden'>
 								<div
 									onClick={() => handleActiveStoryChange(0)}
 									className='w-16 md:w-48 h-16 md:h-40 bg-[#171717] rounded-lg flex relative flex-1 overflow-hidden'>
