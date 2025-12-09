@@ -114,7 +114,7 @@ const MeetTheTeamComponent = (props: Props) => {
 						ease={'power2'}
 						start='top 90%'>
 						<h2
-							className='text-3xl xl:text-[3vw] tracking-tight text-[#b39a67] max-w-2xl '
+							className='text-3xl xl:text-[3vw] tracking-tight text-[#9d9d9d] max-w-2xl '
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							Upoznajte Elmu i Elvisa, vlasnike Grand Fit&Beauty
 						</h2>

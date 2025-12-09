@@ -21,7 +21,6 @@ export default function Home() {
 			<main className='w-full'>
 				<IntroAnimation />
 				<HeroComponent />
-				<MeetTheTeamComponent />
 				{/* <Coach /> */}
 				<Services />
 				<ClientTestimonialsAlternative />
@@ -34,6 +33,7 @@ export default function Home() {
 				<BeautyMarquee />
 				<PriceCards />
 				<Blog />
+				<MeetTheTeamComponent />
 				<Faq />
 			</main>
 		</div>
