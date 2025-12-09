@@ -64,15 +64,16 @@ const MeetTheTeamComponent = (props: Props) => {
 			transformOrigin: 'center center',
 			xPercent: 110,
 		});
-		gsap.fromTo(
+		const tween = gsap.fromTo(
 			coverImages,
 			{
-				yPercent: 20,
+				xPercent: 110,
+				rotation: 15,
 				opacity: 0,
 			},
 			{
 				rotation: 0,
-				yPercent: 0,
+				xPercent: 0,
 				opacity: 1,
 				duration: 1.25,
 				ease: 'power2',
@@ -94,6 +95,7 @@ const MeetTheTeamComponent = (props: Props) => {
 
 		return () => {
 			tl.kill();
+			tween.kill();
 		};
 	}, []);
 

@@ -11,6 +11,7 @@ type Props = {
 	ease: gsap.EaseFunction | string;
 	className?: string;
 	direction?: 'up' | 'down';
+	rotation?: number;
 };
 
 const GSAPSplitTextComponent = ({
@@ -22,6 +23,7 @@ const GSAPSplitTextComponent = ({
 	ease = 'power2.in',
 	className = '',
 	direction = 'up',
+	rotation = 10,
 }: Props) => {
 	const splitWrapperRef = React.useRef<HTMLDivElement>(null);
 
@@ -35,12 +37,17 @@ const GSAPSplitTextComponent = ({
 			onSplit: (self) => {
 				gsap.fromTo(
 					self.lines,
-					{ opacity: 0, yPercent: direction === 'up' ? 100 : -100 },
+					{
+						opacity: 0,
+						yPercent: direction === 'up' ? 100 : -100,
+						rotation: rotation,
+					},
 					{
 						opacity: 1,
 						yPercent: 0,
 						stagger: stagger,
 						duration: duration,
+						rotation: 0,
 						delay: delay,
 						ease: ease,
 						scrollTrigger: {

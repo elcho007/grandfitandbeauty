@@ -344,7 +344,7 @@ const HeroComponent = (props: Props) => {
 	}, [isAnimating, currentIndex, animateSlide]);
 
 	return (
-		<div className='w-full h-svh after after:content-[""] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-purple-600/50 after:mix-blend-multiply after:z-0'>
+		<div className='w-full h-svh after after:content-[""] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black/50 fter:z-0'>
 			<div className='carousel' ref={carouselRef}>
 				<div className='carousel-images' ref={carouselImagesRef}></div>
 
@@ -385,7 +385,7 @@ const HeroComponent = (props: Props) => {
 					ref={prevBtnRef}
 					onClick={handlePrev}
 					disabled={isAnimating}>
-					<ArrowLeft size={32} className='stroke-[#b39a67]' />
+					<ArrowLeft size={32} className='stroke-[#ffebc4]' />
 				</button>
 
 				<button
@@ -393,7 +393,7 @@ const HeroComponent = (props: Props) => {
 					ref={nextBtnRef}
 					onClick={handleNext}
 					disabled={isAnimating}>
-					<ArrowRight size={32} className='stroke-[#b39a67]' />
+					<ArrowRight size={32} className='stroke-[#ffebc4]' />
 				</button>
 			</div>
 		</div>

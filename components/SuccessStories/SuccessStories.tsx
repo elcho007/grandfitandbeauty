@@ -193,7 +193,7 @@ const SuccessStories = (props: Props) => {
 			{/* <GFBMarquee /> */}
 			<div className='w-full min-h-[120vh] bg-(--black) pt-20 pb-[5vw] flex flex-col justify-center'>
 				<div className='grid grid-cols-[5vw_repeat(3,minmax(0,1fr))_5vw] w-full overflow-hidden'>
-					<div className='col-start-2 col-span-3 md:col-start-2 md:col-span-1 w-full flex flex-col px-[4vw] py-8 md:py-24 bg-(--gold) rounded-xl'>
+					<div className='col-start-2 col-span-3 md:col-start-2 md:col-span-1 w-full flex flex-col px-[4vw] py-8 md:py-24 bg-[#cebd92] rounded-xl'>
 						<GSAPSplitTextComponent
 							ease={'expo'}
 							start={'top bottom'}
@@ -210,7 +210,7 @@ const SuccessStories = (props: Props) => {
 							izdvojili samo neke od njih. A već sutra, i vi možete ispisati
 							svoju priču i napraviti vidljive promjene u vrlo kratkom roku.
 						</p>
-						<button className='bg-(--black) text-(--gold) font-medium max-w-max text-base px-3 py-2 z-10 relative mb-4'>
+						<button className='bg-(--black) text-[#cebd92] font-medium max-w-max text-base px-3 py-2 z-10 relative mb-4'>
 							Ispiši svoju priču
 						</button>
 						<p
@@ -242,37 +242,37 @@ const SuccessStories = (props: Props) => {
 						<div
 							ref={statsRef}
 							className='story-stats absolute z-100 bottom-20 md:bottom-0 left-0 w-full mt-auto flex flex-col gap-2 p-4'>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex max-w-max text-lg'>
+							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex max-w-max text-lg'>
 								<span className='stat-title font-semibold tracking-tight'>
 									{stories[activeStoryIndex].title}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
+							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Početna kilaža: </span>
 								<span className='stat-start'>
 									{stories[activeStoryIndex].startWeight}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
+							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Kilaža nakon programa: </span>
 								<span className='stat-end'>
 									{stories[activeStoryIndex].endWeight}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
+							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Trajanje programa: </span>
 								<span className='stat-duration'>
 									{stories[activeStoryIndex].duration}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
+							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Povećanje mišićne mase: </span>
 								<span className='stat-muscle'>
 									{stories[activeStoryIndex].misicnaMasa}
 								</span>
 								<span> kg</span>
 							</div>
-							<div className='stat-item bg-(--black) text-(--gold) px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
+							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
 								<span>Gubitak masnog tkiva: </span>
 								<span className='stat-fat'>
 									{Math.abs(stories[activeStoryIndex].fatLoss)}

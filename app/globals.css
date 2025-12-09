@@ -125,7 +125,7 @@ h3 {
 
 .title,
 .subTitle {
-	color: #b39a67;
+	color: #cebd92;
 }
 
 .heading-span {
@@ -134,7 +134,7 @@ h3 {
 
 .slide-title-container p {
 	max-width: 45ch;
-	color: #b39a67;
+	color: #cebd92;
 	line-height: 1.45;
 	letter-spacing: -0.025em;
 }
@@ -152,7 +152,7 @@ h3 {
 
 .slide-description {
 	font-size: 1rem;
-	color: #b39a67;
+	color: #cebd92;
 	letter-spacing: -0.015em;
 	max-width: 40ch;
 }
@@ -164,7 +164,7 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	background-color: transparent;
-	border: 1px solid #b39a67;
+	border: 1px solid #cebd92;
 	cursor: pointer;
 	transition: all 200ms ease-in-out;
 }
@@ -188,7 +188,7 @@ h3 {
 
 @media (hover: hover) {
 	.control-btn:hover {
-		background-color: #b39a67;
+		background-color: #cebd92;
 	}
 }
 
@@ -221,7 +221,7 @@ h3 {
 	}
 
 	.control-btn:hover svg {
-		stroke: var(--gold);
+		stroke: #cebd92;
 	}
 
 	.control-btn {

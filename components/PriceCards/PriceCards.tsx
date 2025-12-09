@@ -17,7 +17,7 @@ const PriceCards = (props: Props) => {
 				<GSAPSplitTextComponent ease={'power2'}>
 					<h2
 						className={`text-2xl md:text-5xl tracking-normal max-w-[25ch] leading-[1.3] ${
-							activeIndex === 0 ? 'text-[#b39a67]' : 'text-[#b39a67]'
+							activeIndex === 0 ? 'text-[#cebd92]' : 'text-[#cebd92]'
 						} text-center`}
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						Izaberite program ili uslugu koja vam najviše odgovara
@@ -34,7 +34,7 @@ const PriceCards = (props: Props) => {
 						fitness
 					</span>
 					<span
-						className={`absolute w-1/2 h-full flex bg-(--gold) rounded-full border border-(--gold) z-0 transition-all duration-300 ease-out transform ${
+						className={`absolute w-1/2 h-full flex bg-[#cebd92] rounded-full border border-[#cebd92] z-0 transition-all duration-300 ease-out transform ${
 							activeIndex === 1 ? 'translate-x-0' : 'translate-x-full'
 						}`}></span>
 					<span

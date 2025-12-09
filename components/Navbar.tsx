@@ -42,7 +42,7 @@ const Navbar = (props: Props) => {
 
 		// Set initial state explicitly
 		gsap.set('.nav-links', {
-			height: '500px',
+			height: '100svh',
 			autoAlpha: 0,
 			y: '-110%',
 		});
@@ -124,8 +124,8 @@ const Navbar = (props: Props) => {
 				<button
 					ref={hamburgerRef}
 					className='hamburger-menuToggle flex flex-col justify-center items-center gap-1 w-8 h-8 ml-4'>
-					<span className='w-full h-0.5 bg-[#b39a67]'></span>
-					<span className='w-full h-0.5 bg-[#b39a67]'></span>
+					<span className='w-full h-0.5 bg-[#cebd92]'></span>
+					<span className='w-full h-0.5 bg-[#cebd92]'></span>
 				</button>
 			</nav>
 			<div className='nav-links absolute right-0 top-0 w-full bg-black text-white px-[5vw] pt-[5vw] z-0 overflow-hidden'>
@@ -140,7 +140,7 @@ const Navbar = (props: Props) => {
 							reverse={reverseText}
 							onComplete={handleTextAnimationComplete}>
 							<li
-								className='text-4xl tracking-tight leading-[1.2] text-[#b39a67]'
+								className='text-4xl tracking-tight leading-[1.2] text-[#cebd92]'
 								key={link.href}>
 								<Link href={link.href}>{link.name}</Link>
 							</li>

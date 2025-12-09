@@ -11,12 +11,12 @@ type Props = {
 const colorsForBeautyPriceCards = [
 	{ bgColor: '#ebbfbc', color: '#000000' },
 	{ bgColor: '#f3e5cf', color: '#000000' },
-	{ bgColor: '#b39a67', color: '#000000' },
+	{ bgColor: '#cebd92', color: '#000000' },
 ];
 const colorsForFitnessPriceCards = [
 	{ bgColor: '#dbd6c3', color: '#000000' },
 	{ bgColor: '#9d9d9d', color: '#000000' },
-	{ bgColor: '#b39a67', color: '#000000' },
+	{ bgColor: '#cebd92', color: '#000000' },
 ];
 
 const beautyPriceCards = [

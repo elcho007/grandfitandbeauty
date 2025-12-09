@@ -575,12 +575,12 @@ const Services = () => {
 					duration={1}
 					className='col-span-12'>
 					<h2
-						className='text-5xl xl:text-[3vw] tracking-tight leading-snug mb-2 max-h-max text-[#b39a67] max-w-2xl row-start-1'
+						className='text-5xl xl:text-[3vw] tracking-tight leading-snug mb-2 max-h-max text-[#cebd92] max-w-2xl row-start-1'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						GrandFit&Beauty usluge
 					</h2>
 				</GSAPSplitTextComponent>
-				<p className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b39a67] mb-4'>
+				<p className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#cebd92] mb-4'>
 					U{' '}
 					<span className='font-semibold'>
 						{' '}
@@ -589,18 +589,18 @@ const Services = () => {
 					nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 					izgledate i osjećate se najbolje.
 				</p>
-				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
+				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#cebd92]'>
 					Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 					vam garantujemo najviši nivo usluge i profesionalnosti.
 				</p>
-				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b39a67]'>
+				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#cebd92]'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
 				<div className='col-span-12 col-start-1 mt-4 lg:mt-16 flex flex-col md:flex-row bg-transparent w-full h-vh lg:h-[90vh] justify-between overflow-hidden relative'>
-					<div className='flex flex-col justify-start gap-4 min-h-[650px] w-full md:w-1/2 border border-(--gold) border-dashed text-(--gold) rounded-xl p-6 md:p-8 relative'>
+					<div className='flex flex-col justify-start gap-4 min-h-[650px] w-full md:w-1/2 border border-[#cebd92] border-dashed text-[#cebd92] rounded-xl p-6 md:p-8 relative'>
 						<div className='relative w-full h-24 flex justify-start mb-4'>
 							<span
-								className='text-sm md:text-xl absolute text-(--gold)/50 z-20 top-0 left-28 lg:left-0'
+								className='text-sm md:text-xl absolute text-[#cebd92]/50 z-20 top-0 left-28 lg:left-0'
 								style={{ fontFamily: 'Anton, sans-serif' }}>
 								{String(activeCardIndex + 1).padStart(2, '0')}/
 								{String(allCards.length).padStart(2, '0')}
@@ -638,7 +638,7 @@ const Services = () => {
 						<div className='more-about-card w-full flex flex-col pb-2'>
 							<div
 								ref={textRef}
-								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-(--gold) max-w-[50ch] mb-2'>
+								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-[#cebd92] max-w-[50ch] mb-2'>
 								{allCards[activeCardIndex].text.map((paragraph, idx) => (
 									<p key={idx} className='text-[13px] md:text-base mt-1 '>
 										{paragraph}
@@ -646,7 +646,7 @@ const Services = () => {
 								)) || 'Trenutno nema dodatnih informacija o ovoj usluzi.'}
 							</div>
 						</div>
-						<div className='card-content absolute z-20 col-start-1 w-36 md:w-68 flex text-(--gold) bottom-6 md:bottom-8 justify-between items-center'>
+						<div className='card-content absolute z-20 col-start-1 w-36 md:w-68 flex text-[#cebd92] bottom-6 md:bottom-8 justify-between items-center'>
 							<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
 								<button
 									aria-label='Previous service'
@@ -662,10 +662,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-(--gold) group lg:hover:bg-(--gold) transition-all duration-300 border-dashed flex items-center justify-center'>
+									className='aspect-square border border-[#cebd92] group lg:hover:bg-[#cebd92] transition-all duration-300 border-dashed flex items-center justify-center'>
 									<ArrowLeft
 										size={32}
-										className='stroke-(--gold) lg:group-hover:stroke-(--black)'
+										className='stroke-[#cebd92] lg:group-hover:stroke-(--black)'
 									/>
 								</button>
 								<button
@@ -681,10 +681,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border group border-dashed lg:hover:bg-(--gold) lg:hover:text-(--black) transition-all duration-300 border-(--gold) flex items-center justify-center'>
+									className='aspect-square border group border-dashed lg:hover:bg-[#cebd92] lg:hover:text-(--black) transition-all duration-300 border-[#cebd92] flex items-center justify-center'>
 									<ArrowRight
 										size={32}
-										className='stroke-(--gold) lg:group-hover:stroke-(--black) '
+										className='stroke-[#cebd92] lg:group-hover:stroke-[#0c0c0c] '
 									/>
 								</button>
 							</div>

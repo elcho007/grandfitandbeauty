@@ -196,9 +196,9 @@ const StatCardComponent = ({
 			case 'light':
 				return `${baseStyles} bg-gray-300 flex-col`;
 			case 'dark':
-				return `${baseStyles} bg-(--gold) text-(--black) flex-col`;
+				return `${baseStyles} bg-[#cebd92] text-(--black) flex-col`;
 			case 'darker':
-				return `${baseStyles} bg-(--gold) text-(--black) items-start flex-col gap-4`;
+				return `${baseStyles} bg-[#cebd92] text-(--black) items-start flex-col gap-4`;
 			default:
 				return baseStyles;
 		}
@@ -298,7 +298,7 @@ const StatCardComponent = ({
 								<span className='text-[10px] tracking-widest uppercase text-(--black) font-medium relative top-1'>
 									{new Date().toLocaleDateString('hr-HR', { month: 'long' })}
 								</span>
-								<span className='bg-(--black) p-1 text-[12px] text-(--gold) rounded-full flex justify-center items-center h-fit px-2 mt-2'>
+								<span className='bg-(--black) p-1 text-[12px] text-[#cebd92] rounded-full flex justify-center items-center h-fit px-2 mt-2'>
 									Odlično!
 								</span>
 							</span>
@@ -410,21 +410,21 @@ const PowerQuotes = (props: Props) => {
 	return (
 		<div className='w-full min-h-[150svh] md:min-h-[140vh] px-4 md:px-8 py-8 flex flex-col justify-center gap-2 bg-(--black)'>
 			<div className='w-full h-full flex flex-col md:flex-row gap-2'>
-				<div className='flex flex-col w-full gap-4 md:w-1/4 bg-(--gold) lg:h-[90vh] p-4 rounded-xl text-(--black)'>
+				<div className='flex flex-col w-full gap-4 md:w-1/4 bg-[#cebd92] lg:h-[90vh] p-4 rounded-xl text-(--black)'>
 					<h2
 						className=' text-3xl xl:text-[2vw] tracking-tight max-h-max max-w-sm'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						Mi ćemo se pobrinuti da vaši dani budu ispunjeni napretkom.
 					</h2>
-					<button className='bg-(--black) text-(--gold) px-3 py-1.5 max-w-max'>
+					<button className='bg-(--black) text-[#cebd92] px-3 py-1.5 max-w-max'>
 						Rezervišite svoj termin
 					</button>
 				</div>
-				<div className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-(--gold) rounded-xl p-4 h-96 lg:h-[90vh]'>
+				<div className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#cebd92] rounded-xl p-4 h-96 lg:h-[90vh]'>
 					<div className='h-1/3 w-full flex justify-center items-center'>
 						<h1
 							ref={headingRef}
-							className='text-xl md:text-4xl lg:text-5xl text-(--gold) text-center leading-tight tracking-tight max-w-[18ch] md:max-w-[22ch]'
+							className='text-xl md:text-4xl lg:text-5xl text-[#cebd92] text-center leading-tight tracking-tight max-w-[18ch] md:max-w-[22ch]'
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							{motivationalQuotes[currentIndex]}
 						</h1>
@@ -439,7 +439,7 @@ const PowerQuotes = (props: Props) => {
 						/>
 					</div>
 				</div>
-				<div className='flex w-full md:w-1/4 items-center content-center border border-dashed border-(--gold) px-2 py-2 lg:py-0 rounded-xl justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
+				<div className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#cebd92]x-2 py-2 lg:py-0 rounded-xl justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
 					{statsCards.map((card, index) => (
 						<StatCardComponent key={card.id} card={card} index={index} />
 					))}
