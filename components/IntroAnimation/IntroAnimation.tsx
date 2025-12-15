@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React from 'react';
-import { useGSAP, gsap, Flip } from '@/lib/gsap';
+import { useGSAP, gsap, Flip, SplitText } from '@/lib/gsap';
 
 const Logo = '/images/gfblogo.svg';
 
@@ -18,11 +18,11 @@ const IntroAnimation = (props: Props) => {
 	const clipPathsCoordinates = [
 		{
 			starting: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-			ending: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+			ending: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
 		},
 		{
 			starting: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-			ending: 'polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)',
+			ending: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
 		},
 	];
 
@@ -32,134 +32,169 @@ const IntroAnimation = (props: Props) => {
 				!introAnimRef.current ||
 				!leftHalfRef.current ||
 				!rightHalfRef.current ||
-				!logoRef.current
+				!logoRef.current ||
+				!leftSpanRef.current ||
+				!rightSpanRef.current
 			)
 				return;
 
 			const tl = gsap.timeline({
 				onComplete: () => {
-					// Hide intro animation container
-					/* gsap.set(introAnimRef.current, {
+					gsap.set(introAnimRef.current, {
 						autoAlpha: 0,
 						pointerEvents: 'none',
-					}); */
+					});
 				},
 			});
 
-			// Step 1: Count left side from 00 to 49
-			const leftCounter = { val: 0 };
-			tl.to(leftCounter, {
-				val: 49,
-				duration: 1.8,
-				ease: 'expo.out',
-				onUpdate: () => {
-					if (leftSpanRef.current) {
-						leftSpanRef.current.textContent = Math.round(leftCounter.val)
-							.toString()
-							.padStart(2, '0');
-					}
-				},
+			// Split text into characters
+			const leftSplit = new SplitText(leftSpanRef.current, {
+				type: 'chars',
+				mask: 'chars',
+			});
+			const rightSplit = new SplitText(rightSpanRef.current, {
+				type: 'chars',
+				mask: 'chars',
 			});
 
-			// Start logo scaling from the beginning (continues through both counters)
-			tl.to(
-				logoRef.current,
+			gsap.set([rightSpanRef.current, leftSpanRef.current], {
+				xPercent: 100,
+			});
+
+			// Initial state - left chars start off-screen to the LEFT
+			gsap.set(leftSplit.chars, {
+				xPercent: -120,
+			});
+			// Right chars also start off-screen to the LEFT (same direction)
+			gsap.set(rightSplit.chars, {
+				xPercent: -120,
+			});
+
+			// Step 1: Slide in left chars FROM LEFT with stagger
+			tl.fromTo(
+				leftSplit.chars,
 				{
-					width: 128,
-					height: 128,
-					duration: 1.2,
-					ease: 'none',
+					xPercent: -120,
 				},
-				0
+				{
+					xPercent: 0,
+					duration: 0.8,
+					stagger: 0.15,
+					ease: 'expo',
+				},
+				'+=0.5'
 			);
 
-			// Step 2: Hide left span and show right span at the same time
-			tl.set(leftSpanRef.current, {
-				opacity: 0,
-			});
-
-			tl.set(
-				rightSpanRef.current,
+			// Count left side from 00 to 49
+			const leftCounter = { val: 0 };
+			tl.to(
+				leftCounter,
 				{
-					opacity: 1,
+					val: 49,
+					duration: 1.8,
+					ease: 'power1.inOut',
+					onUpdate: () => {
+						const numStr = Math.round(leftCounter.val)
+							.toString()
+							.padStart(2, '0');
+						if (leftSplit.chars[0]) leftSplit.chars[0].textContent = numStr[0];
+						if (leftSplit.chars[1]) leftSplit.chars[1].textContent = numStr[1];
+					},
+				},
+				'+=0.3' //
+			);
+
+			// Step 2: Slide out left chars TO THE RIGHT
+			tl.to(
+				leftSplit.chars,
+				{
+					xPercent: 120,
+					duration: 0.8,
+					ease: 'expo',
+					stagger: 0.1,
+				},
+				'+=0.2'
+			);
+
+			// Step 3: Simultaneously slide in right chars FROM RIGHT with stagger
+			tl.fromTo(
+				rightSplit.chars,
+				{
+					xPercent: -120,
+				},
+				{
+					xPercent: 0,
+					duration: 0.8,
+					ease: 'expo',
+					stagger: 0.15,
 				},
 				'<'
 			);
 
-			// Count from 51 to 100
-			const rightCounter = { val: 51 };
+			// Count right side from 50 to 100
+			const rightCounter = { val: 50 };
 			tl.to(
 				rightCounter,
 				{
 					val: 100,
 					duration: 1.8,
-					ease: 'expo.out',
+					ease: 'power1.inOut',
 					onUpdate: () => {
-						if (rightSpanRef.current) {
-							rightSpanRef.current.textContent = Math.round(
-								rightCounter.val
-							).toString();
+						const numStr = Math.round(rightCounter.val)
+							.toString()
+							.padStart(2, '0');
+						if (rightSplit.chars[0]) {
+							// For 100, show "1" + "00" across two chars
+							if (numStr.length === 3) {
+								rightSplit.chars[0].textContent = numStr[0];
+								if (rightSplit.chars[1])
+									rightSplit.chars[1].textContent = numStr.slice(1);
+							} else {
+								rightSplit.chars[0].textContent = numStr[0];
+								if (rightSplit.chars[1])
+									rightSplit.chars[1].textContent = numStr[1];
+							}
 						}
 					},
 				},
-				'<'
+				'+=0.2'
 			);
 
-			// Continue scaling logo during right counter
+			// Step 4: Slide out right chars TO THE RIGHT
 			tl.to(
-				logoRef.current,
+				rightSplit.chars,
 				{
-					width: 256,
-					height: 256,
-					duration: 1.4,
-					ease: 'none',
-				},
-				'<'
-			);
-
-			// Step 3: Hide right number
-			tl.set(
-				rightSpanRef.current,
-				{
-					opacity: 0,
+					xPercent: 120,
+					duration: 0.8,
+					ease: 'expo',
+					stagger: 0.1,
 				},
 				'+=0.3'
 			);
 
-			// Step 4: Hide logo
-			tl.set(
-				logoRef.current,
-				{
-					opacity: 0,
-				},
-				'+=0.1'
-			);
-
-			// Step 6: Animate clip paths on both halves to reveal content beneath
 			tl.to(
 				leftHalfRef.current,
 				{
 					clipPath: clipPathsCoordinates[0].ending,
-					duration: 1.2,
-					ease: 'expo.inOut',
+					duration: 1,
+					ease: 'expo',
 				},
-				'-=0.4'
-			);
-
-			tl.to(
+				'-=0.5'
+			).to(
 				rightHalfRef.current,
 				{
 					clipPath: clipPathsCoordinates[1].ending,
-					duration: 1.2,
-					ease: 'expo.inOut',
+					duration: 1,
+					ease: 'expo',
 				},
-				'<'
+				'-=.85' //
 			);
 
-			// Step 7: Hide intro container
-			tl.set(introAnimRef.current, {
-				display: 'none',
-			});
+			return () => {
+				leftSplit.revert();
+				rightSplit.revert();
+				tl.kill();
+			};
 		},
 		{ scope: introAnimRef }
 	);
@@ -171,25 +206,33 @@ const IntroAnimation = (props: Props) => {
 			<div
 				ref={leftHalfRef}
 				style={{ clipPath: clipPathsCoordinates[0].starting }}
-				className='text-(--gold) flex items-center justify-center w-full h-full bg-(--black)'>
-				<span ref={leftSpanRef} className='text-6xl font-bold tracking-tighter'>
-					00
-				</span>
+				className='text-(--gold) flex items-center justify-center w-full h-full bg-(--black) '>
+				<div className='w-1/2 xl:w-80 h-60 flex items-center justify-center overflow-hidden'>
+					<span
+						ref={leftSpanRef}
+						style={{ fontFamily: 'Anton, sans-serif' }}
+						className='text-6xl xl:text-[10vw] w-full h-full items-center justify-center flex transform -translate-x-full'>
+						00
+					</span>
+				</div>
 			</div>
 			<div
 				ref={rightHalfRef}
 				style={{ clipPath: clipPathsCoordinates[1].starting }}
 				className='text-(--gold) flex items-center justify-center w-full h-full bg-(--black)'>
-				<span
-					ref={rightSpanRef}
-					className='text-6xl font-bold tracking-tighter opacity-0'>
-					51
-				</span>
+				<div className='w-1/2 xl:w-80 h-60 flex items-center justify-center overflow-hidden'>
+					<span
+						ref={rightSpanRef}
+						style={{ fontFamily: 'Anton, sans-serif' }}
+						className='text-6xl xl:text-[10vw] flex w-full h-full items-center justify-center transform -translate-x-full'>
+						50
+					</span>
+				</div>
 			</div>
 			<div
 				ref={logoRef}
-				className='absolute top-[50%] left-[50%] w-24 h-24'
-				style={{ transform: 'translate(-50%, -50%)' }}>
+				className='absolute left-[50%] top-[50%] w-24 h-24'
+				style={{ transform: 'translate(-50%, -50%)', opacity: 0 }}>
 				<Image
 					src={Logo}
 					alt='GrandFit & Beauty Logo'
