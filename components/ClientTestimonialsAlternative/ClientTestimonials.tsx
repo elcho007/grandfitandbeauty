@@ -234,7 +234,7 @@ const ClientTestimonials = (props: Props) => {
 							</div>
 						))}
 					</div>
-					<div className='flex w-full justify-center items-center gap-2 md:gap-4 relative z-10'>
+					<div className='flex w-full justify-center items-center gap-2 relative z-10'>
 						<button
 							onClick={handlePrev}
 							onTouchEnd={(e) => {

@@ -343,6 +343,11 @@ const PowerQuotes = (props: Props) => {
 	const headingRef = React.useRef<HTMLHeadingElement>(null);
 	const imageRef = React.useRef<HTMLImageElement>(null);
 	const [currentIndex, setCurrentIndex] = React.useState(0);
+	const containerRef = React.useRef<HTMLDivElement>(null);
+	const titleRef = React.useRef<HTMLDivElement>(null);
+	const quoteRef = React.useRef<HTMLDivElement>(null);
+	const statCardsRef = React.useRef<HTMLDivElement>(null);
+	const tl = React.useRef<gsap.core.Timeline | null>(null);
 
 	useGSAP(() => {
 		if (!headingRef.current || !imageRef.current) return;
@@ -407,10 +412,54 @@ const PowerQuotes = (props: Props) => {
 		};
 	}, [currentIndex]);
 
+	useGSAP(() => {
+		if (
+			!containerRef.current ||
+			!titleRef.current ||
+			!quoteRef.current ||
+			!statCardsRef.current
+		)
+			return;
+		tl.current = gsap.timeline({
+			scrollTrigger: {
+				trigger: containerRef.current,
+				start: 'top 80%',
+				toggleActions: 'play none none reverse',
+			},
+		});
+
+		tl.current
+			.fromTo(
+				titleRef.current,
+				{ y: 100, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' }
+			)
+			.fromTo(
+				quoteRef.current,
+				{ y: 100, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' },
+				'-=0.5'
+			)
+			.fromTo(
+				statCardsRef.current,
+				{ y: 100, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' },
+				'-=0.5'
+			);
+
+		return () => {
+			tl.current?.kill();
+		};
+	});
+
 	return (
-		<div className='w-full min-h-[150svh] md:min-h-[140vh] px-4 md:px-8 py-8 flex flex-col justify-center gap-2 bg-(--black)'>
+		<div
+			ref={containerRef}
+			className='w-full min-h-[150svh] md:min-h-[140vh] px-4 md:px-8 py-8 flex flex-col justify-center gap-2 bg-(--black)'>
 			<div className='w-full h-full flex flex-col md:flex-row gap-2'>
-				<div className='flex flex-col w-full gap-4 md:w-1/4 bg-[#cebd92] lg:h-[90vh] p-4 rounded-xl text-(--black)'>
+				<div
+					ref={titleRef}
+					className='flex flex-col w-full gap-4 md:w-1/4 bg-[#cebd92] lg:h-[90vh] p-4 rounded-xl text-(--black)'>
 					<h2
 						className=' text-3xl xl:text-[2vw] tracking-tight max-h-max max-w-sm'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
@@ -420,7 +469,9 @@ const PowerQuotes = (props: Props) => {
 						Rezervišite svoj termin
 					</button>
 				</div>
-				<div className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#cebd92] rounded-xl p-4 h-96 lg:h-[90vh]'>
+				<div
+					ref={quoteRef}
+					className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#cebd92] rounded-xl p-4 h-96 lg:h-[90vh]'>
 					<div className='h-1/3 w-full flex justify-center items-center'>
 						<h1
 							ref={headingRef}
@@ -439,7 +490,9 @@ const PowerQuotes = (props: Props) => {
 						/>
 					</div>
 				</div>
-				<div className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#cebd92]x-2 py-2 lg:py-0 rounded-xl justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
+				<div
+					ref={statCardsRef}
+					className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#cebd92]x-2 py-2 lg:py-0 rounded-xl justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
 					{statsCards.map((card, index) => (
 						<StatCardComponent key={card.id} card={card} index={index} />
 					))}

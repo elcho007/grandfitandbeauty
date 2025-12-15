@@ -1,10 +1,11 @@
 'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useRef } from 'react';
 import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextComponent';
 import GFBMarquee from '../GFBMarquee/GFBMarquee';
 
-import { gsap } from 'gsap';
+import { gsap, useGSAP, ScrollTrigger } from '../../lib/gsap';
+import { text } from 'stream/consumers';
 
 const stories = [
 	{
@@ -59,7 +60,9 @@ const SuccessStories = (props: Props) => {
 	const [activeStoryIndex, setActiveStoryIndex] = React.useState(0);
 	const [isTransitioning, setIsTransitioning] = React.useState(false);
 	const imageContainerRef = React.useRef<HTMLDivElement>(null);
+	const textContainerRef = React.useRef<HTMLDivElement>(null);
 	const statsRef = React.useRef<HTMLDivElement>(null);
+	const containerRef = React.useRef<HTMLDivElement>(null);
 
 	// Helper to animate numbers counting up smoothly
 	const animateNumber = (el: HTMLElement, endValue: number, delta = 3) => {
@@ -188,12 +191,60 @@ const SuccessStories = (props: Props) => {
 		}
 	};
 
+	const tl = useRef<gsap.core.Timeline | null>(null);
+
+	useGSAP(() => {
+		if (typeof window === 'undefined') return;
+		tl.current = gsap.timeline({
+			scrollTrigger: {
+				trigger: containerRef.current,
+				start: 'top 80%',
+				toggleActions: 'play none none reverse',
+			},
+		});
+
+		tl.current
+			.fromTo(
+				textContainerRef.current,
+				{
+					y: 50,
+					scale: 0.95,
+					opacity: 0,
+				},
+				{
+					y: 0,
+					scale: 1,
+					opacity: 1,
+					duration: 1,
+					ease: 'expo.out',
+				}
+			)
+			.fromTo(
+				imageContainerRef.current,
+				{
+					y: 50,
+					scale: 0.95,
+					opacity: 0,
+				},
+				{
+					y: 0,
+					scale: 1,
+					opacity: 1,
+				},
+				'-=0.75'
+			);
+	});
+
 	return (
 		<>
 			{/* <GFBMarquee /> */}
-			<div className='w-full min-h-[120vh] bg-(--black) pt-20 pb-[5vw] flex flex-col justify-center'>
+			<div
+				ref={containerRef}
+				className='w-full min-h-[120vh] bg-(--black) pt-20 pb-[5vw] flex flex-col justify-center'>
 				<div className='grid grid-cols-[5vw_repeat(3,minmax(0,1fr))_5vw] w-full overflow-hidden'>
-					<div className='col-start-2 col-span-3 md:col-start-2 md:col-span-1 w-full flex flex-col px-[4vw] py-8 md:py-24 bg-[#cebd92] rounded-xl'>
+					<div
+						ref={textContainerRef}
+						className='col-start-2 col-span-3 md:col-start-2 md:col-span-1 w-full flex flex-col px-[4vw] py-8 md:py-24 bg-[#cebd92] rounded-xl'>
 						<GSAPSplitTextComponent
 							ease={'expo'}
 							start={'top bottom'}

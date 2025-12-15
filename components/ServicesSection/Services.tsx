@@ -134,6 +134,7 @@ const allCards = [...treninziCards, ...beautyCards, ...generalCards];
 
 const Services = () => {
 	const wheelRef = React.useRef<HTMLDivElement>(null);
+	const contentRef = React.useRef<HTMLDivElement>(null);
 	const draggableWheelRef = React.useRef<HTMLDivElement>(null);
 	const smallImagesRef = React.useRef<HTMLDivElement>(null);
 
@@ -146,6 +147,8 @@ const Services = () => {
 	const [prevCardIndex, setPrevCardIndex] = React.useState<number>(0);
 
 	const [direction, setDirection] = React.useState<'next' | 'prev'>('next');
+
+	const tl = React.useRef<gsap.core.Timeline | null>(null);
 
 	/* useGSAP(
 		() => {
@@ -564,6 +567,34 @@ const Services = () => {
 		};
 	}, [activeCardIndex, direction, prevCardIndex]);
 
+	useGSAP(() => {
+		if (!contentRef.current || !wheelRef.current) return;
+		tl.current = gsap.timeline({
+			scrollTrigger: {
+				trigger: contentRef.current,
+				start: 'top 80%',
+				toggleActions: 'play none none reverse',
+			},
+		});
+
+		tl.current
+			.fromTo(
+				contentRef.current,
+				{ y: 100, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2' }
+			)
+			.fromTo(
+				wheelRef.current,
+				{ y: 100, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2' },
+				'-=0.5'
+			);
+
+		return () => {
+			tl.current?.kill();
+		};
+	});
+
 	return (
 		<>
 			<div
@@ -597,7 +628,9 @@ const Services = () => {
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
 				<div className='col-span-12 col-start-1 mt-4 lg:mt-16 flex flex-col md:flex-row bg-transparent w-full h-vh lg:h-[90vh] justify-between overflow-hidden relative'>
-					<div className='flex flex-col justify-start gap-4 min-h-[650px] w-full md:w-1/2 border border-[#cebd92] border-dashed text-[#cebd92] rounded-xl p-6 md:p-8 relative'>
+					<div
+						ref={contentRef}
+						className='flex flex-col justify-start gap-4 min-h-[450px] lg:min-h-[650px] w-full md:w-1/2 border border-[#cebd92] border-dashed text-[#cebd92] rounded-xl p-6 md:p-8 relative'>
 						<div className='relative w-full h-24 flex justify-start mb-4'>
 							<span
 								className='text-sm md:text-xl absolute text-[#cebd92]/50 z-20 top-0 left-28 lg:left-0'
@@ -646,7 +679,7 @@ const Services = () => {
 								)) || 'Trenutno nema dodatnih informacija o ovoj usluzi.'}
 							</div>
 						</div>
-						<div className='card-content absolute z-20 col-start-1 w-36 md:w-68 flex text-[#cebd92] bottom-6 md:bottom-8 justify-between items-center'>
+						<div className='hidden card-content absolute z-20 col-start-1 w-36 md:w-68 lg:flex text-[#cebd92] bottom-6 md:bottom-8 justify-between items-center'>
 							<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
 								<button
 									aria-label='Previous service'
@@ -713,6 +746,47 @@ const Services = () => {
 								</div>
 							))}
 						</div>
+					</div>
+				</div>
+				<div className='card-content z-20 col-start-1 w-36 md:w-68 lg:hidden text-[#cebd92] bottom-6 md:bottom-8 justify-between items-center'>
+					<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
+						<button
+							aria-label='Previous service'
+							onClick={(e) => {
+								e.preventDefault();
+								setPrevCardIndex(activeCardIndex);
+								setDirection('prev');
+								setActiveCardIndex(() => {
+									// using modulo make it loop around
+									return (
+										(activeCardIndex - 1 + allCards.length) % allCards.length
+									);
+								});
+							}}
+							className='aspect-square border border-[#cebd92] group lg:hover:bg-[#cebd92] transition-all duration-300 border-dashed flex items-center justify-center'>
+							<ArrowLeft
+								size={32}
+								className='stroke-[#cebd92] lg:group-hover:stroke-(--black)'
+							/>
+						</button>
+						<button
+							aria-label='Next service'
+							onClick={(e) => {
+								e.preventDefault();
+								setPrevCardIndex(activeCardIndex);
+								setDirection('next');
+								setActiveCardIndex(() => {
+									return (
+										(activeCardIndex + 1 + allCards.length) % allCards.length
+									);
+								});
+							}}
+							className='aspect-square border group border-dashed lg:hover:bg-[#cebd92] lg:hover:text-(--black) transition-all duration-300 border-[#cebd92] flex items-center justify-center'>
+							<ArrowRight
+								size={32}
+								className='stroke-[#cebd92] lg:group-hover:stroke-[#0c0c0c] '
+							/>
+						</button>
 					</div>
 				</div>
 			</div>
