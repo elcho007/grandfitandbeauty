@@ -14,6 +14,8 @@ import VideoComponent from '@/components/VideoComponent/VideoComponent';
 import ClientTestimonialsAlternative from '@/components/ClientTestimonialsAlternative/ClientTestimonials';
 import BeautyMarquee from '@/components/BeautyMarquee/BeautyMarquee';
 import IntroAnimation from '@/components/IntroAnimation/IntroAnimation';
+import EquipmentComponent from '@/components/EquipmentComponent/Equipment';
+import AdditionalServices from '@/components/AdditionalServicesComponent/AdditionalServices';
 
 export default function Home() {
 	return (
@@ -23,6 +25,8 @@ export default function Home() {
 				<HeroComponent />
 				{/* <Coach /> */}
 				<Services />
+				<EquipmentComponent />
+				<AdditionalServices />
 				<ClientTestimonialsAlternative />
 				<SuccessStories />
 				{/* <ClientTestimonials /> */}
