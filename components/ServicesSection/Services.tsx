@@ -630,17 +630,17 @@ const Services = () => {
 				<div className='col-span-12 col-start-1 mt-4 lg:mt-16 flex flex-col md:flex-row bg-transparent w-full h-vh lg:h-[90vh] justify-between overflow-hidden relative'>
 					<div
 						ref={contentRef}
-						className='flex flex-col justify-start gap-4 min-h-[450px] lg:min-h-[650px] w-full md:w-1/2 border border-[#cebd92] border-dashed text-[#cebd92] rounded-xl p-6 md:p-8 relative'>
-						<div className='relative w-full h-24 flex justify-start mb-4'>
+						className='flex flex-col justify-start gap-0 xl:gap-4 min-h-[450px] lg:min-h-[650px] w-full md:w-1/2 border border-[#cebd92] border-dashed text-[#cebd92] rounded-xl p-6 md:p-8 relative'>
+						<div className='relative w-full h-24 flex justify-start mb-0 xl:mb-4'>
 							<span
-								className='text-sm md:text-xl absolute text-[#cebd92]/50 z-20 top-0 left-28 lg:left-0'
+								className='hidden lg:flex text-sm md:text-xl absolute text-[#cebd92]/50 z-20 top-0 left-28 lg:left-0'
 								style={{ fontFamily: 'Anton, sans-serif' }}>
 								{String(activeCardIndex + 1).padStart(2, '0')}/
 								{String(allCards.length).padStart(2, '0')}
 							</span>
 							<div
 								ref={smallImagesRef}
-								className='small-images-wrapper relative flex w-24 h-24 rounded-lg lg:hidden overflow-hidden'>
+								className='small-images-wrapper relative flex w-16 h-16 rounded lg:hidden overflow-hidden'>
 								{allCards.map((card, index) => (
 									<div
 										key={index}

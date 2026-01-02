@@ -121,7 +121,7 @@ const Equipment = () => {
 						{equipment.map((item) => (
 							<div
 								key={item.id}
-								className='flex flex-col relative h-96 w-64 items-start justify-end p-2 xl:w-full shrink-0'>
+								className='flex flex-col relative h-96 w-64 items-start justify-end p-2 xl:w-full shrink-0 rounded-lg overflow-hidden'>
 								<Image
 									fill
 									src={item.imgUrl}

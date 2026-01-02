@@ -191,7 +191,7 @@ const StatCardComponent = ({
 
 	const getCardStyles = (card: StatCard) => {
 		const baseStyles =
-			'w-[calc(50%-0.5rem)] h-48 flex justify-between rounded-sm p-4';
+			'w-[calc(50%-0.5rem)] h-48 flex justify-between rounded-lg p-2';
 		switch (card.theme) {
 			case 'light':
 				return `${baseStyles} bg-gray-300 flex-col`;
@@ -459,7 +459,7 @@ const PowerQuotes = (props: Props) => {
 			<div className='w-full h-full flex flex-col md:flex-row gap-2'>
 				<div
 					ref={titleRef}
-					className='flex flex-col w-full gap-4 md:w-1/4 bg-[#cebd92] lg:h-[90vh] p-4 rounded-xl text-(--black)'>
+					className='flex flex-col w-full gap-4 md:w-1/4 bg-[#cebd92] lg:h-[90vh] p-4 rounded-lg text-(--black)'>
 					<h2
 						className=' text-3xl xl:text-[2vw] tracking-tight max-h-max max-w-sm'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
@@ -471,7 +471,7 @@ const PowerQuotes = (props: Props) => {
 				</div>
 				<div
 					ref={quoteRef}
-					className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#cebd92] rounded-xl p-4 h-96 lg:h-[90vh]'>
+					className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#cebd92] rounded-lg p-4 h-96 lg:h-[90vh]'>
 					<div className='h-1/3 w-full flex justify-center items-center'>
 						<h1
 							ref={headingRef}
@@ -492,7 +492,7 @@ const PowerQuotes = (props: Props) => {
 				</div>
 				<div
 					ref={statCardsRef}
-					className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#cebd92]x-2 py-2 lg:py-0 rounded-xl justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
+					className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#cebd92] px-2 py-2 lg:py-0 rounded-lg justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
 					{statsCards.map((card, index) => (
 						<StatCardComponent key={card.id} card={card} index={index} />
 					))}

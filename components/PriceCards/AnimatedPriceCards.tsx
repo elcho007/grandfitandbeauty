@@ -266,7 +266,7 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 			<FadeIn
 				key={`desktop-${activeIndex}`}
 				className='hidden md:flex gap-4 items-center justify-center w-full'
-				duration={0.5}
+				duration={1}
 				start='top 95%'
 				stagger={0.1}>
 				{currentCards.map((card, index) => {
@@ -283,7 +283,7 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 							}}
 							className={`relative price-card p-8 pb-2 mb-4 aspect-[.70] w-84 flex flex-col ${
 								index === 1 ? 'w-92 aspect-[.65] z-10' : ''
-							} rounded-xl`}
+							} rounded-lg`}
 							style={{
 								backgroundColor: cardColors.bgColor,
 								color: cardColors.color,
@@ -316,7 +316,7 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 							ref={(el) => {
 								mobileCardsRef.current[index] = el!;
 							}}
-							className='absolute p-8 pb-2 w-[90%] h-[480px] flex flex-col shadow-xl rounded-xl transition-colors duration-300'
+							className='absolute p-8 pb-2 w-[90%] h-[480px] flex flex-col shadow-xl rounded-lg transition-colors duration-300'
 							style={{
 								backgroundColor: cardColors.bgColor,
 								color: cardColors.color,

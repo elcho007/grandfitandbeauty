@@ -46,7 +46,7 @@ const AdditionalServices = (props: Props) => {
 					{additionalServices.map((service) => (
 						<div
 							key={service.id}
-							className='bg-white p-2 relative h-96 flex items-end'>
+							className='bg-white p-2 relative h-96 flex items-end rounded-lg overflow-hidden'>
 							{service.imageUrl && (
 								<Image src={service.imageUrl} alt={service.title} fill />
 							)}

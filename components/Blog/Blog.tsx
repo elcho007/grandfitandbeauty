@@ -83,7 +83,7 @@ const Blog = (props: Props) => {
 						<Link
 							href={`/blog/${post.id}`}
 							key={post.id}
-							className='blog-post w-full border border-black border-dashed p-4 rounded-md aspect-square flex flex-col'>
+							className='blog-post w-full border border-black border-dashed p-4 rounded-lg aspect-square flex flex-col'>
 							<h5
 								style={{ fontFamily: 'Anton, sans-serif' }}
 								className='text-4xl tracking-tight mb-4 text-black'>

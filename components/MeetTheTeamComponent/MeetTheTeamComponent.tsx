@@ -154,12 +154,12 @@ const MeetTheTeamComponent = (props: Props) => {
 				</div>
 				<div
 					ref={ownersBannerRef}
-					className='relative w-full lg:w-1/2 h-svh overflow-hidden rounded-xl group'>
+					className='relative w-full lg:w-1/2 h-svh overflow-hidden rounded-lg group'>
 					<Image
 						fill
 						alt='Elma i Elvis'
 						src='/images/elvis_elma.webp'
-						className='object-cover object-top rounded-xl group-hover:scale-105 transition-transform duration-500 ease-in-out'
+						className='object-cover object-top rounded-lg group-hover:scale-105 transition-transform duration-500 ease-in-out'
 					/>
 				</div>
 			</div>
@@ -175,13 +175,13 @@ const MeetTheTeamComponent = (props: Props) => {
 						<Link
 							href={`/nas-tim/${slugifyName(member.name)}`}
 							key={member.id}
-							className='flex flex-col items-between min-w-[150px] max-w-[calc(50%-1rem)] md:max-w-none flex-1 rounded-xl overflow-hidden'>
+							className='flex flex-col items-between min-w-[150px] max-w-[calc(50%-1rem)] md:max-w-none flex-1 rounded-lg overflow-hidden'>
 							<div className='relative w-full h-40 md:h-96 overflow-hidden'>
 								<Image
 									fill
 									alt={member.name}
 									src={member.image || '/images/elvis.webp'}
-									className='object-cover clip-image object-top rounded-xl grayscale-100'
+									className='object-cover clip-image object-top rounded-lg grayscale-100'
 								/>
 							</div>
 							<div className='flex flex-col gap-1 px-4'>
