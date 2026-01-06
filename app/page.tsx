@@ -16,6 +16,7 @@ import BeautyMarquee from '@/components/BeautyMarquee/BeautyMarquee';
 import IntroAnimation from '@/components/IntroAnimation/IntroAnimation';
 import EquipmentComponent from '@/components/EquipmentComponent/Equipment';
 import AdditionalServices from '@/components/AdditionalServicesComponent/AdditionalServices';
+import TrainingSpaceComponent from '@/components/TrainingSpaceComponent/TrainingSpace';
 
 export default function Home() {
 	return (
@@ -26,6 +27,7 @@ export default function Home() {
 				{/* <Coach /> */}
 				<Services />
 				<EquipmentComponent />
+				<TrainingSpaceComponent />
 				<AdditionalServices />
 				<ClientTestimonialsAlternative />
 				<SuccessStories />

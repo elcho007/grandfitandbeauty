@@ -8,6 +8,7 @@ const Logo = '/images/gfblogo.svg';
 type Props = {};
 
 const IntroAnimation = (props: Props) => {
+	const [shouldShow, setShouldShow] = React.useState(false);
 	const introAnimRef = React.useRef<HTMLDivElement>(null);
 	const leftHalfRef = React.useRef<HTMLDivElement>(null);
 	const rightHalfRef = React.useRef<HTMLDivElement>(null);
@@ -26,8 +27,26 @@ const IntroAnimation = (props: Props) => {
 		},
 	];
 
+	// Decide whether to show the intro only on true first visit
+	React.useEffect(() => {
+		if (typeof window === 'undefined') return;
+
+		try {
+			const hasSeenIntro = window.localStorage.getItem('hasSeenIntro');
+			if (!hasSeenIntro) {
+				setShouldShow(true);
+				window.localStorage.setItem('hasSeenIntro', 'true');
+			}
+		} catch (error) {
+			// If localStorage is unavailable, fall back to showing once per mount
+			setShouldShow(true);
+		}
+	}, []);
+
 	useGSAP(
 		() => {
+			if (!shouldShow) return;
+
 			if (
 				!introAnimRef.current ||
 				!leftHalfRef.current ||
@@ -196,8 +215,10 @@ const IntroAnimation = (props: Props) => {
 				tl.kill();
 			};
 		},
-		{ scope: introAnimRef }
+		{ scope: introAnimRef, dependencies: [shouldShow] }
 	);
+
+	if (!shouldShow) return null;
 
 	return (
 		<div
