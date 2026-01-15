@@ -62,13 +62,13 @@ const TrainingSpace = (props: Props) => {
 			</div>
 
 			<div className='absolute z-10 text-white w-[calc(100%-32px)] xl:w-[calc(100%-160px)] bottom-20 xl:bottom-30 '>
-				<p className='text-lg xl:text-3xl flex xl:max-w-3xl mx-auto text-center mb-16 tracking-tight font-medium'>
+				<p className='text-lg xl:text-3xl flex xl:max-w-3xl mx-auto text-center mb-8 tracking-tighter text-balance font-normal'>
 					Nudimo vam trening zonu u koju ćete željeti da se vraćate. Naš centar
 					njeguje kulturu međusobnog poštovanja i podrške. Naši treneri vas
 					prate na svakom koraku.
 				</p>
 
-				<div className='flex flex-wrap gap-2 xl:gap-4 w-full max-w-4xl mx-auto mt-15 justify-center '>
+				<div className='flex flex-wrap gap-1 xl:gap-4 w-full max-w-4xl mx-auto mt-8 justify-center '>
 					{trainingChips.map((chip, index) => (
 						<div
 							key={index}

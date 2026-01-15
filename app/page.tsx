@@ -17,6 +17,7 @@ import IntroAnimation from '@/components/IntroAnimation/IntroAnimation';
 import EquipmentComponent from '@/components/EquipmentComponent/Equipment';
 import AdditionalServices from '@/components/AdditionalServicesComponent/AdditionalServices';
 import TrainingSpaceComponent from '@/components/TrainingSpaceComponent/TrainingSpace';
+import BeautyBentoGrid from '@/components/BeautyBentoGrid/BeautyBentoGrid';
 
 export default function Home() {
 	return (
@@ -37,6 +38,7 @@ export default function Home() {
 				<PowerQuotes />
 				<BeautyCornerComponent />
 				<BeautyMarquee />
+				<BeautyBentoGrid />
 				<PriceCards />
 				<Blog />
 				<MeetTheTeamComponent />
