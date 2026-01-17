@@ -18,12 +18,7 @@ const VideoComponent = (props: Props) => {
 	// Play/pause handlers
 	const toggleFitnessVideo = async () => {
 		const video = fitnessVideoRef.current;
-		if (!video) return;
-
-		console.log('Fitness video clicked, current state:', fitnessPlaying);
-		console.log('Video ready state:', video.readyState);
-		console.log('Video paused:', video.paused);
-		console.log('Video src:', video.currentSrc);
+		if (!video) return;		
 
 		if (fitnessPlaying) {
 			fitnessUserPausedRef.current = true;
@@ -40,19 +35,19 @@ const VideoComponent = (props: Props) => {
 
 				// Load the video first if it hasn't loaded
 				if (video.readyState < 2) {
-					console.log('Loading video...');
+					
 					video.load();
 					await new Promise((resolve) => {
 						video.addEventListener('loadeddata', resolve, { once: true });
 					});
 				}
 
-				console.log('Attempting to play fitness video...');
+				
 				const playPromise = video.play();
 
 				if (playPromise !== undefined) {
 					await playPromise;
-					console.log('Fitness video playing successfully');
+					
 					setFitnessPlaying(true);
 				}
 			} catch (error) {
@@ -64,12 +59,7 @@ const VideoComponent = (props: Props) => {
 
 	const toggleBeautyVideo = async () => {
 		const video = beautyVideoRef.current;
-		if (!video) return;
-
-		console.log('Beauty video clicked, current state:', beautyPlaying);
-		console.log('Video ready state:', video.readyState);
-		console.log('Video paused:', video.paused);
-		console.log('Video src:', video.currentSrc);
+		if (!video) return;		
 
 		if (beautyPlaying) {
 			beautyUserPausedRef.current = true;
@@ -86,7 +76,7 @@ const VideoComponent = (props: Props) => {
 
 				// Load the video first if it hasn't loaded
 				if (video.readyState < 2) {
-					console.log('Loading video...');
+					
 					video.load();
 					await new Promise((resolve) => {
 						video.addEventListener('loadeddata', resolve, { once: true });
@@ -98,7 +88,7 @@ const VideoComponent = (props: Props) => {
 
 				if (playPromise !== undefined) {
 					await playPromise;
-					console.log('Beauty video playing successfully');
+					
 					setBeautyPlaying(true);
 				}
 			} catch (error) {
@@ -230,7 +220,8 @@ const VideoComponent = (props: Props) => {
 						console.error('Error code:', target.error?.code);
 						console.error('Error message:', target.error?.message);
 					}}>
-					<source src='/videos/vidfitness.webm' type='video/webm' />
+						<source src='/videos/vidfitness.webm' type='video/webm' />
+						<source src='/videos/vidfitness.mp4' type='video/mp4' />
 					Your browser does not support the video tag.
 				</video>
 
@@ -284,7 +275,8 @@ const VideoComponent = (props: Props) => {
 						console.error('Error code:', target.error?.code);
 						console.error('Error message:', target.error?.message);
 					}}>
-					<source src='/videos/vidbeauty.webm' type='video/webm' />
+						<source src='/videos/vidbeauty.webm' type='video/webm' />
+						<source src='/videos/vidbeauty.mp4' type='video/mp4' />
 					Your browser does not support the video tag.
 				</video>
 
