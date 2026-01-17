@@ -210,15 +210,10 @@ const VideoComponent = (props: Props) => {
 					playsInline
 					preload='auto'
 					loop
-					muted={fitnessMuted}
-					onError={(e) => {
-						console.error('Fitness video error:', e);
-						const target = e.target as HTMLVideoElement;
-						console.error('Error code:', target.error?.code);
-						console.error('Error message:', target.error?.message);
-					}}>
-					<source src='/videos/vidfitness.webm' type='video/webm' />
+					muted={fitnessMuted}>
+					{/* Prefer MP4 for iOS/Safari reliability; WebM is an optional fallback. */}
 					<source src='/videos/vidfitness.mp4' type='video/mp4' />
+					<source src='/videos/vidfitness.webm' type='video/webm' />
 					Your browser does not support the video tag.
 				</video>
 
@@ -265,15 +260,10 @@ const VideoComponent = (props: Props) => {
 					playsInline
 					preload='auto'
 					loop
-					muted={beautyMuted}
-					onError={(e) => {
-						console.error('Beauty video error:', e);
-						const target = e.target as HTMLVideoElement;
-						console.error('Error code:', target.error?.code);
-						console.error('Error message:', target.error?.message);
-					}}>
-					<source src='/videos/vidbeauty.webm' type='video/webm' />
+					muted={beautyMuted}>
+					{/* Prefer MP4 for iOS/Safari reliability; WebM is an optional fallback. */}
 					<source src='/videos/vidbeauty.mp4' type='video/mp4' />
+					<source src='/videos/vidbeauty.webm' type='video/webm' />
 					Your browser does not support the video tag.
 				</video>
 

@@ -140,7 +140,7 @@ const Navbar = (props: Props) => {
 							reverse={reverseText}
 							onComplete={handleTextAnimationComplete}>
 							<li
-								className='text-4xl: xl:text-7xl tracking-tight leading-[1.2] text-(--gold)'
+								className='text-4xl xl:text-7xl tracking-tight leading-[1.2] text-(--gold)'
 								key={link.href}>
 								<Link href={link.href}>{link.name}</Link>
 							</li>
