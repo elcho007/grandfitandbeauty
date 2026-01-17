@@ -140,7 +140,7 @@ const StatCardComponent = ({
 					trigger: cardRef.current,
 					start: 'top 90%',
 				},
-			}
+			},
 		);
 
 		// Number count-up animation for standard cards
@@ -184,7 +184,7 @@ const StatCardComponent = ({
 						trigger: cardRef.current,
 						start: 'top 85%',
 					},
-				}
+				},
 			);
 		}
 	}, []);
@@ -196,9 +196,9 @@ const StatCardComponent = ({
 			case 'light':
 				return `${baseStyles} bg-gray-300 flex-col`;
 			case 'dark':
-				return `${baseStyles} bg-[#cebd92] text-(--black) flex-col`;
+				return `${baseStyles} bg-[#b59c6c] text-(--black) flex-col`;
 			case 'darker':
-				return `${baseStyles} bg-[#cebd92] text-(--black) items-start flex-col gap-4`;
+				return `${baseStyles} bg-[#b59c6c] text-(--black) items-start flex-col gap-4`;
 			default:
 				return baseStyles;
 		}
@@ -298,7 +298,7 @@ const StatCardComponent = ({
 								<span className='text-[10px] tracking-widest uppercase text-(--black) font-medium relative top-1'>
 									{new Date().toLocaleDateString('hr-HR', { month: 'long' })}
 								</span>
-								<span className='bg-(--black) p-1 text-[12px] text-[#cebd92] rounded-full flex justify-center items-center h-fit px-2 mt-2'>
+								<span className='bg-(--black) p-1 text-[12px] text-[#b59c6c] rounded-full flex justify-center items-center h-fit px-2 mt-2'>
 									Odlično!
 								</span>
 							</span>
@@ -316,8 +316,8 @@ const StatCardComponent = ({
 												isFuture
 													? 'bg-gray-600'
 													: isMissed
-													? 'bg-(--navyBlue)'
-													: 'bg-gray-300'
+														? 'bg-(--navyBlue)'
+														: 'bg-gray-300'
 											}`}
 											title={`Day ${i + 1}`}
 										/>
@@ -369,7 +369,7 @@ const PowerQuotes = (props: Props) => {
 			imageRef.current,
 			{ opacity: 0, scale: 1.2 },
 			{ opacity: 1, scale: 1, duration: 1.5, ease: 'power2' },
-			0
+			0,
 		);
 
 		tl.from(
@@ -381,7 +381,7 @@ const PowerQuotes = (props: Props) => {
 				stagger: 0.05,
 				ease: 'power2',
 			},
-			0.2
+			0.2,
 		);
 
 		tl.to(
@@ -393,7 +393,7 @@ const PowerQuotes = (props: Props) => {
 				stagger: 0.02,
 				ease: 'power2.in',
 			},
-			'+=5'
+			'+=5',
 		);
 
 		tl.to(
@@ -404,7 +404,7 @@ const PowerQuotes = (props: Props) => {
 				duration: 0.5,
 				ease: 'power2.in',
 			},
-			'<'
+			'<',
 		);
 
 		return () => {
@@ -432,19 +432,19 @@ const PowerQuotes = (props: Props) => {
 			.fromTo(
 				titleRef.current,
 				{ y: 100, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' }
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' },
 			)
 			.fromTo(
 				quoteRef.current,
 				{ y: 100, opacity: 0 },
 				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' },
-				'-=0.5'
+				'-=0.5',
 			)
 			.fromTo(
 				statCardsRef.current,
 				{ y: 100, opacity: 0 },
 				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2.out' },
-				'-=0.5'
+				'-=0.5',
 			);
 
 		return () => {
@@ -459,23 +459,23 @@ const PowerQuotes = (props: Props) => {
 			<div className='w-full h-full flex flex-col md:flex-row gap-2'>
 				<div
 					ref={titleRef}
-					className='flex flex-col w-full gap-4 md:w-1/4 bg-[#cebd92] lg:h-[90vh] p-4 rounded-lg text-(--black)'>
+					className='flex flex-col w-full gap-4 md:w-1/4 bg-[#b59c6c] lg:h-[90vh] p-4 rounded-lg text-(--black)'>
 					<h2
 						className=' text-3xl xl:text-[2vw] tracking-tight max-h-max max-w-sm'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						Mi ćemo se pobrinuti da vaši dani budu ispunjeni napretkom.
 					</h2>
-					<button className='bg-(--black) text-[#cebd92] px-3 py-1.5 max-w-max'>
+					<button className='bg-(--black) text-[#b59c6c] px-3 py-1.5 max-w-max'>
 						Rezervišite svoj termin
 					</button>
 				</div>
 				<div
 					ref={quoteRef}
-					className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#cebd92] rounded-lg p-4 h-96 lg:h-[90vh]'>
+					className='flex flex-col w-full md:w-2/4 flex-1 items-center justify-between border border-[#b59c6c] rounded-lg p-4 h-96 lg:h-[90vh]'>
 					<div className='h-1/3 w-full flex justify-center items-center'>
 						<h1
 							ref={headingRef}
-							className='text-xl md:text-4xl lg:text-5xl text-[#cebd92] text-center leading-tight tracking-tight max-w-[18ch] md:max-w-[22ch]'
+							className='text-xl md:text-4xl lg:text-5xl text-[#b59c6c] text-center leading-tight tracking-tight max-w-[18ch] md:max-w-[22ch]'
 							style={{ fontFamily: 'Anton, sans-serif' }}>
 							{motivationalQuotes[currentIndex]}
 						</h1>
@@ -492,7 +492,7 @@ const PowerQuotes = (props: Props) => {
 				</div>
 				<div
 					ref={statCardsRef}
-					className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#cebd92] px-2 py-2 lg:py-0 rounded-lg justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
+					className='flex w-full md:w-1/4 items-center content-center border border-dashed border-[#b59c6c] px-2 py-2 lg:py-0 rounded-lg justify-between flex-wrap gap-2 bg-gray-950 lg:h-[90vh]'>
 					{statsCards.map((card, index) => (
 						<StatCardComponent key={card.id} card={card} index={index} />
 					))}

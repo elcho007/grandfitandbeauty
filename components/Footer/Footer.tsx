@@ -6,7 +6,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
 	return (
-		<div className='px-[5vw] pt-5 lg:pt-5 pb-10 min-h-[70vh] bg-[#cebd92] text-black relative before:content-[""] before:absolute before:-top-20 before:left-0 before:w-full before:h-32 before:bg-[#cebd92] before:z-0'>
+		<div className='px-[5vw] pt-5 lg:pt-5 pb-10 min-h-[70vh] bg-(--gold) text-black relative before:content-[""] before:absolute before:-top-20 before:left-0 before:w-full before:h-32 before:bg-(--gold) before:z-0'>
 			<footer className='w-full h-full py-8 grid grid-cols-1 md:grid-cols-2 gap-6'>
 				<div className='flex flex-col justify-start gap-4 h-full'>
 					<div className='location text-xs flex gap-2 col-span-2 font-mono opacity-85 text-[#916d24]'>

@@ -53,7 +53,7 @@ const HeroComponent = (props: Props) => {
 		if (typeof window !== 'undefined') {
 			CustomEase.create(
 				'hop',
-				'M0,0 C0.071,0.505 0.192,0.726 0.318,0.852 0.45,0.984 0.504,1 1,1'
+				'M0,0 C0.071,0.505 0.192,0.726 0.318,0.852 0.45,0.984 0.504,1 1,1',
 			);
 			setIsMounted(true);
 		}
@@ -79,6 +79,12 @@ const HeroComponent = (props: Props) => {
 	useGSAP(() => {
 		if (!isMounted || !carouselRef.current || !carouselImagesRef.current)
 			return;
+
+		// Prevent any initial flash of controls before GSAP has a chance to run.
+		gsap.set('.slider-controls', {
+			autoAlpha: 0,
+			pointerEvents: 'none',
+		});
 
 		// Create initial slide
 		const initialSlideImgContainer = document.createElement('div');
@@ -176,6 +182,15 @@ const HeroComponent = (props: Props) => {
 					ease: 'power3.out',
 					delay: 0.5,
 				});
+
+				// Show controls once the first-slide text starts animating.
+				gsap.to('.slider-controls', {
+					autoAlpha: 1,
+					pointerEvents: 'auto',
+					duration: 0.25,
+					ease: 'power1.out',
+					delay: 0.6,
+				});
 			}
 		};
 
@@ -258,7 +273,7 @@ const HeroComponent = (props: Props) => {
 			setIsAnimating(true);
 
 			const currentSlide = carouselImagesRef.current.querySelector(
-				'.img:last-child'
+				'.img:last-child',
 			) as HTMLElement;
 			const currentSlideImage = currentSlide?.querySelector('img');
 
@@ -313,7 +328,7 @@ const HeroComponent = (props: Props) => {
 						}
 						setIsAnimating(false);
 					},
-				}
+				},
 			);
 
 			// Animate incoming image
@@ -325,7 +340,7 @@ const HeroComponent = (props: Props) => {
 
 			updateActiveTextSlide(newIndex);
 		},
-		[isAnimating, slideOffset, updateActiveTextSlide]
+		[isAnimating, slideOffset, updateActiveTextSlide],
 	);
 
 	const handleNext = React.useCallback(() => {
@@ -385,7 +400,7 @@ const HeroComponent = (props: Props) => {
 					ref={prevBtnRef}
 					onClick={handlePrev}
 					disabled={isAnimating}>
-					<ArrowLeft size={32} className='stroke-[#ffebc4]' />
+					<ArrowLeft size={32} className='stroke-[#b59c6c]' />
 				</button>
 
 				<button
@@ -393,7 +408,7 @@ const HeroComponent = (props: Props) => {
 					ref={nextBtnRef}
 					onClick={handleNext}
 					disabled={isAnimating}>
-					<ArrowRight size={32} className='stroke-[#ffebc4]' />
+					<ArrowRight size={32} className='stroke-[#b59c6c]' />
 				</button>
 			</div>
 		</div>

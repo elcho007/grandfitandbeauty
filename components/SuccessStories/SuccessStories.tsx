@@ -88,7 +88,7 @@ const SuccessStories = (props: Props) => {
 		tl.fromTo(
 			el,
 			{ y: -12, opacity: 0 },
-			{ y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' }
+			{ y: 0, opacity: 1, duration: 0.35, ease: 'power2.out' },
 		);
 		return tl;
 	};
@@ -101,7 +101,7 @@ const SuccessStories = (props: Props) => {
 		const container = imageContainerRef.current;
 		if (container) {
 			const currentImg = container.querySelector(
-				'.current-image'
+				'.current-image',
 			) as HTMLElement;
 			const nextImg = container.querySelector('.next-image') as HTMLElement;
 
@@ -159,7 +159,7 @@ const SuccessStories = (props: Props) => {
 						ease: 'expo.inOut',
 						zIndex: 100,
 					},
-					0
+					0,
 				);
 
 				// Ensure current stays below during the wipe
@@ -172,10 +172,10 @@ const SuccessStories = (props: Props) => {
 					const startEl = statsRoot.querySelector('.stat-start') as HTMLElement;
 					const endEl = statsRoot.querySelector('.stat-end') as HTMLElement;
 					const durationEl = statsRoot.querySelector(
-						'.stat-duration'
+						'.stat-duration',
 					) as HTMLElement;
 					const muscleEl = statsRoot.querySelector(
-						'.stat-muscle'
+						'.stat-muscle',
 					) as HTMLElement;
 					const fatEl = statsRoot.querySelector('.stat-fat') as HTMLElement;
 
@@ -217,7 +217,7 @@ const SuccessStories = (props: Props) => {
 					opacity: 1,
 					duration: 1,
 					ease: 'expo.out',
-				}
+				},
 			)
 			.fromTo(
 				imageContainerRef.current,
@@ -231,7 +231,7 @@ const SuccessStories = (props: Props) => {
 					scale: 1,
 					opacity: 1,
 				},
-				'-=0.75'
+				'-=0.75',
 			);
 	});
 
@@ -244,7 +244,7 @@ const SuccessStories = (props: Props) => {
 				<div className='grid grid-cols-[5vw_repeat(3,minmax(0,1fr))_5vw] w-full overflow-hidden'>
 					<div
 						ref={textContainerRef}
-						className='col-start-2 col-span-3 md:col-start-2 md:col-span-1 w-full flex flex-col px-[4vw] py-8 md:py-24 bg-[#cebd92] rounded-xl'>
+						className='col-start-2 col-span-3 md:col-start-2 md:col-span-1 w-full flex flex-col px-[4vw] pt-8 md:pt-24 pb-4 bg-(--gold) rounded-xl'>
 						<GSAPSplitTextComponent
 							ease={'expo'}
 							start={'top bottom'}
@@ -261,7 +261,7 @@ const SuccessStories = (props: Props) => {
 							izdvojili samo neke od njih. A već sutra, i vi možete ispisati
 							svoju priču i napraviti vidljive promjene u vrlo kratkom roku.
 						</p>
-						<button className='bg-(--black) text-[#cebd92] font-medium max-w-max text-base px-3 py-2 z-10 relative mb-4'>
+						<button className='bg-(--black) text-[#b59c6c] font-medium max-w-max text-base px-3 py-2 z-10 relative mb-4'>
 							Ispiši svoju priču
 						</button>
 						<p
@@ -293,42 +293,44 @@ const SuccessStories = (props: Props) => {
 						<div
 							ref={statsRef}
 							className='story-stats absolute z-100 bottom-20 md:bottom-0 left-0 w-full mt-auto flex flex-col gap-2 p-4'>
-							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex max-w-max text-lg'>
+							<div className='stat-item bg-(--black) text-[#b59c6c] px-4 py-2 w-full flex max-w-max text-lg'>
 								<span className='stat-title font-semibold tracking-tight'>
 									{stories[activeStoryIndex].title}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
-								<span>Početna kilaža: </span>
+							<div className='stat-item bg-(--black) text-[#b59c6c] px-4 py-2 w-full flex gap-1 max-w-max text-xs lg:text-sm'>
+								<span>Početna kilaža:</span>
 								<span className='stat-start'>
 									{stories[activeStoryIndex].startWeight}
 								</span>
+								<span>kg</span>
 							</div>
-							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
-								<span>Kilaža nakon programa: </span>
+							<div className='stat-item bg-(--black) text-[#b59c6c] px-4 py-2 w-full flex gap-1 max-w-max text-xs lg:text-sm'>
+								<span>Kilaža nakon programa:</span>
 								<span className='stat-end'>
 									{stories[activeStoryIndex].endWeight}
 								</span>
+								<span>kg</span>
 							</div>
-							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
-								<span>Trajanje programa: </span>
+							<div className='stat-item bg-(--black) text-[#b59c6c] px-4 py-2 w-full flex gap-1 max-w-max text-xs lg:text-sm'>
+								<span>Trajanje programa:</span>
 								<span className='stat-duration'>
 									{stories[activeStoryIndex].duration}
 								</span>
 							</div>
-							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
-								<span>Povećanje mišićne mase: </span>
+							<div className='stat-item bg-(--black) text-[#b59c6c] px-4 py-2 w-full flex gap-1 max-w-max text-xs lg:text-sm'>
+								<span>Povećanje mišićne mase:</span>
 								<span className='stat-muscle'>
 									{stories[activeStoryIndex].misicnaMasa}
 								</span>
-								<span> kg</span>
+								<span>kg</span>
 							</div>
-							<div className='stat-item bg-(--black) text-[#cebd92] px-4 py-2 w-full flex gap-4 max-w-max text-xs lg:text-sm'>
-								<span>Gubitak masnog tkiva: </span>
+							<div className='stat-item bg-(--black) text-[#b59c6c] px-4 py-2 w-full flex gap-1 max-w-max text-xs lg:text-sm'>
+								<span>Gubitak masnog tkiva:</span>
 								<span className='stat-fat'>
 									{Math.abs(stories[activeStoryIndex].fatLoss)}
 								</span>
-								<span> kg</span>
+								<span>kg</span>
 							</div>
 						</div>
 						<div className='grid w-full grid-cols-[5vw_repeat(4,1fr)_5vw] absolute bottom-4 right-0 z-100'>
@@ -339,7 +341,7 @@ const SuccessStories = (props: Props) => {
 									<Image
 										src={'/images/story1.jpg'}
 										fill
-										alt='Transformacija Tijela Ivana'
+										alt='Ivanova transformacija'
 										className='object-cover'
 									/>
 								</div>
@@ -349,7 +351,7 @@ const SuccessStories = (props: Props) => {
 									<Image
 										src={'/images/story2.jpg'}
 										fill
-										alt='Transformacija Tijela Ivana'
+										alt='Ivanina transformacija'
 										className='object-cover'
 									/>
 								</div>

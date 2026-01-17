@@ -9,7 +9,7 @@
 	--green: #03a554;
 	--darkGreen: #00554b;
 	--red: #ce3333;
-	--gold: #cebd92;
+	--gold: #b59c6c;
 	--white: #f0f0f0;
 	--navyBlue: #10214b;
 
@@ -35,6 +35,27 @@
 body {
 	background: var(--black);
 	color: var(--foreground);
+}
+
+/*
+  Prevent FOUC for GSAP-controlled elements.
+  These elements are revealed via GSAP after mount/font-ready.
+*/
+.nav-links {
+	visibility: hidden;
+	opacity: 0;
+	transform: translate3d(0, -110%, 0);
+}
+
+.slide-title-container {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.slider-controls {
+	visibility: hidden;
+	opacity: 0;
+	pointer-events: none;
 }
 
 h1,
@@ -123,7 +144,7 @@ h3 {
 
 .title,
 .subTitle {
-	color: #cebd92;
+	color: #b59c6c;
 }
 
 .heading-span {
@@ -132,7 +153,7 @@ h3 {
 
 .slide-title-container p {
 	max-width: 45ch;
-	color: #cebd92;
+	color: #b59c6c;
 	line-height: 1.45;
 	letter-spacing: -0.025em;
 }
@@ -150,7 +171,7 @@ h3 {
 
 .slide-description {
 	font-size: 1rem;
-	color: #cebd92;
+	color: #b59c6c;
 	letter-spacing: -0.015em;
 	max-width: 40ch;
 }
@@ -162,7 +183,7 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	background-color: transparent;
-	border: 1px solid #cebd92;
+	border: 1px solid #b59c6c;
 	cursor: pointer;
 	transition: all 200ms ease-in-out;
 }
@@ -186,7 +207,7 @@ h3 {
 
 @media (hover: hover) {
 	.control-btn:hover {
-		background-color: #cebd92;
+		background-color: #b59c6c;
 	}
 }
 
@@ -219,7 +240,7 @@ h3 {
 	}
 
 	.control-btn:hover svg {
-		stroke: #cebd92;
+		stroke: #b59c6c;
 	}
 
 	.control-btn {
@@ -244,7 +265,7 @@ h3 {
 .marquee {
 	position: relative;
 	background: var(--black);
-	color: #b39a67;
+	color: #b59c6c;
 	padding: 32px 0;
 	font-size: 40px;
 	text-transform: uppercase;

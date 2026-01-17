@@ -7,6 +7,8 @@ type Props = {};
 const VideoComponent = (props: Props) => {
 	const fitnessVideoRef = React.useRef<HTMLVideoElement>(null);
 	const beautyVideoRef = React.useRef<HTMLVideoElement>(null);
+	const fitnessUserPausedRef = React.useRef(false);
+	const beautyUserPausedRef = React.useRef(false);
 
 	const [fitnessPlaying, setFitnessPlaying] = React.useState(false);
 	const [beautyPlaying, setBeautyPlaying] = React.useState(false);
@@ -24,10 +26,12 @@ const VideoComponent = (props: Props) => {
 		console.log('Video src:', video.currentSrc);
 
 		if (fitnessPlaying) {
+			fitnessUserPausedRef.current = true;
 			video.pause();
 			setFitnessPlaying(false);
 		} else {
 			try {
+				fitnessUserPausedRef.current = false;
 				// Pause beauty video when fitness plays
 				if (beautyVideoRef.current && beautyPlaying) {
 					beautyVideoRef.current.pause();
@@ -68,10 +72,12 @@ const VideoComponent = (props: Props) => {
 		console.log('Video src:', video.currentSrc);
 
 		if (beautyPlaying) {
+			beautyUserPausedRef.current = true;
 			video.pause();
 			setBeautyPlaying(false);
 		} else {
 			try {
+				beautyUserPausedRef.current = false;
 				// Pause fitness video when beauty plays
 				if (fitnessVideoRef.current && fitnessPlaying) {
 					fitnessVideoRef.current.pause();
@@ -141,16 +147,82 @@ const VideoComponent = (props: Props) => {
 		};
 	}, []);
 
+	// Auto play/pause based on viewport visibility
+	React.useEffect(() => {
+		const fitnessVid = fitnessVideoRef.current;
+		const beautyVid = beautyVideoRef.current;
+		if (!fitnessVid || !beautyVid) return;
+
+		if (typeof IntersectionObserver === 'undefined') return;
+
+		const tryPlay = async (
+			videoEl: HTMLVideoElement,
+			setPlaying: React.Dispatch<React.SetStateAction<boolean>>,
+		) => {
+			try {
+				if (videoEl.readyState < 2) {
+					videoEl.load();
+				}
+				await videoEl.play();
+				setPlaying(true);
+			} catch {
+				// Autoplay can be blocked (e.g. unmuted) — silently ignore.
+				setPlaying(false);
+			}
+		};
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					const target = entry.target as HTMLVideoElement;
+					const visible =
+						entry.isIntersecting && entry.intersectionRatio >= 0.5;
+
+					if (target === fitnessVid) {
+						if (visible) {
+							if (!fitnessUserPausedRef.current) {
+								void tryPlay(fitnessVid, setFitnessPlaying);
+							}
+						} else {
+							fitnessUserPausedRef.current = false;
+							fitnessVid.pause();
+							setFitnessPlaying(false);
+						}
+					}
+
+					if (target === beautyVid) {
+						if (visible) {
+							if (!beautyUserPausedRef.current) {
+								void tryPlay(beautyVid, setBeautyPlaying);
+							}
+						} else {
+							beautyUserPausedRef.current = false;
+							beautyVid.pause();
+							setBeautyPlaying(false);
+						}
+					}
+				}
+			},
+			{ threshold: [0, 0.5, 1] },
+		);
+
+		observer.observe(fitnessVid);
+		observer.observe(beautyVid);
+
+		return () => observer.disconnect();
+	}, []);
+
 	return (
-		<div className='relative w-full h-svh grid grid-cols-[5vw_repeat(4,1fr)_5vw] bg-(--black) overflow-hidden'>
+		<div className='relative w-full h-[200svh] xl:h-svh grid grid-cols-[5vw_repeat(4,1fr)_5vw] bg-(--black) overflow-hidden'>
 			{/* Fitness Video */}
-			<div className='relative col-start-1 col-span-3 w-full bg-black overflow-hidden group'>
+			<div className='relative col-span-6 xl:col-start-1 xl:col-span-3 w-full bg-black overflow-hidden group'>
 				<video
 					ref={fitnessVideoRef}
 					className='w-full h-full object-cover'
-					controls
+					/* controls */
 					playsInline
 					preload='auto'
+					loop
 					muted={fitnessMuted}
 					onError={(e) => {
 						console.error('Fitness video error:', e);
@@ -197,13 +269,14 @@ const VideoComponent = (props: Props) => {
 			</div>
 
 			{/* Beauty Video */}
-			<div className='relative col-start-4 col-span-3 w-full bg-black overflow-hidden group'>
+			<div className='relative col-start-1 col-span-6 xl:col-start-4 xl:col-span-3 w-full bg-black overflow-hidden group'>
 				<video
 					ref={beautyVideoRef}
 					className='w-full h-full object-cover'
-					controls
+					/* controls */
 					playsInline
 					preload='auto'
+					loop
 					muted={beautyMuted}
 					onError={(e) => {
 						console.error('Beauty video error:', e);

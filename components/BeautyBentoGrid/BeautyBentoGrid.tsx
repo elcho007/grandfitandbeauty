@@ -92,7 +92,7 @@ const bentoItems = [
 
 const BeautyBentoGrid = (props: Props) => {
 	return (
-		<div className='w-full min-h-screen bg-[#f8ead1] px-4 py-20'>
+		<div className='w-full min-h-screen bg-[#b59c6c] px-4 py-20'>
 			<div className='w-full xl:max-w-[80vw] mx-auto'>
 				<div className='mb-12'>
 					<h4
@@ -135,7 +135,8 @@ const BeautyBentoGrid = (props: Props) => {
 								<p
 									style={{ fontFamily: 'var(--font-lora)' }}
 									className='relative z-10 text-xl text-white max-w-full text-center leading-[1.2] tracking-tighter'>
-									Zdrava koža je uvijek IN — kada se njeguje na pravi način!{' '}
+									Zdrava koža je uvijek IN — kada se njeguje na pravi
+									način!{' '}
 								</p>
 							</div>
 						</div>
@@ -166,7 +167,7 @@ const BeautyBentoGrid = (props: Props) => {
 					</FadeIn>
 
 					<FadeIn className='col-start-1 xl:col-start-4 flex flex-col gap-2 xl:gap-4'>
-						<div className=' bg-(--gold) h-50 rounded-2xl w-full flex flex-col items-center justify-center p-6 text-(--black) gap-4 '>
+						<div className='border border-(--black) border-dashed bg-(--gold) h-50 rounded-2xl w-full flex flex-col items-center justify-center p-6 text-(--black) gap-4 '>
 							<div>
 								<p
 									style={{ fontFamily: 'Lora, serif' }}
@@ -180,7 +181,7 @@ const BeautyBentoGrid = (props: Props) => {
 								</p>
 							</div>
 						</div>
-						<div className=' bg-(--gold) h-25 rounded-2xl w-full flex flex-col items-center justify-center p-6 text-(--black) gap-4 '>
+						<div className=' bg-(--gold) border border-(--black) border-dashed h-25 rounded-2xl w-full flex flex-col items-center justify-center p-6 text-(--black) gap-4 '>
 							<div>
 								<p
 									style={{ fontFamily: 'Lora, serif' }}

@@ -56,13 +56,13 @@ const BeautyMarquee = (props: Props) => {
 				gsap.ticker.remove(ticker);
 			};
 		},
-		{ scope: marqueeRef, dependencies: [] }
+		{ scope: marqueeRef, dependencies: [] },
 	);
 
 	return (
 		<div
 			ref={marqueeRef}
-			className='w-full h-[70vh] bg-(--gold) overflow-hidden relative'>
+			className='w-full h-[60vh] bg-(--gold) overflow-hidden relative'>
 			<div className='marquee-wrapper absolute left-0 top-0 flex h-full'>
 				<div
 					className='marquee-content flex h-full'

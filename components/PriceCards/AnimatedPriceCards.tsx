@@ -11,12 +11,12 @@ type Props = {
 const colorsForBeautyPriceCards = [
 	{ bgColor: '#ebbfbc', color: '#000000' },
 	{ bgColor: '#f3e5cf', color: '#000000' },
-	{ bgColor: '#cebd92', color: '#000000' },
+	{ bgColor: '#b59c6c', color: '#000000' },
 ];
 const colorsForFitnessPriceCards = [
 	{ bgColor: '#dbd6c3', color: '#000000' },
 	{ bgColor: '#9d9d9d', color: '#000000' },
-	{ bgColor: '#cebd92', color: '#000000' },
+	{ bgColor: '#b59c6c', color: '#000000' },
 ];
 
 const beautyPriceCards = [
@@ -169,13 +169,13 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 
 	const handleNext = () => {
 		setMobileActiveIndex((prev) =>
-			prev === currentCards.length - 1 ? 0 : prev + 1
+			prev === currentCards.length - 1 ? 0 : prev + 1,
 		);
 	};
 
 	const handlePrev = () => {
 		setMobileActiveIndex((prev) =>
-			prev === 0 ? currentCards.length - 1 : prev - 1
+			prev === 0 ? currentCards.length - 1 : prev - 1,
 		);
 	};
 
@@ -257,7 +257,7 @@ const AnimatedPriceCards = ({ activeIndex }: Props) => {
 			previousCardsRef.current = currentCards;
 			previousMobileActiveIndexRef.current = mobileActiveIndex;
 		},
-		{ dependencies: [mobileActiveIndex, currentCards] }
+		{ dependencies: [mobileActiveIndex, currentCards] },
 	);
 
 	return (

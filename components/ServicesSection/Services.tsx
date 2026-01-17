@@ -357,7 +357,7 @@ const Services = () => {
 
 		CustomEase.create(
 			'hop',
-			'M0,0 C0.071,0.505 0.192,0.726 0.318,0.852 0.45,0.984 0.504,1 1,1'
+			'M0,0 C0.071,0.505 0.192,0.726 0.318,0.852 0.45,0.984 0.504,1 1,1',
 		);
 
 		const cards = wheelRef.current.querySelectorAll('.card');
@@ -409,7 +409,7 @@ const Services = () => {
 							x: 0,
 							duration: duration,
 							ease: ease,
-						}
+						},
 					);
 				}
 
@@ -425,7 +425,7 @@ const Services = () => {
 						clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
 						duration: duration,
 						ease: ease,
-					}
+					},
 				);
 
 				splitTexts.forEach((split, idx) => {
@@ -442,7 +442,7 @@ const Services = () => {
 							stagger: { amount: 0.25 },
 							ease: ease,
 							delay: 0.4 + idx * 0.1,
-						}
+						},
 					);
 				});
 				gsap.fromTo(
@@ -458,7 +458,7 @@ const Services = () => {
 						stagger: { amount: 0.15 },
 						ease: ease,
 						delay: 0.3,
-					}
+					},
 				);
 			} else if (index === prevCardIndex) {
 				// Animate out the previous active card with clip path
@@ -511,7 +511,7 @@ const Services = () => {
 							x: 0,
 							duration: duration,
 							ease: ease,
-						}
+						},
 					);
 				}
 
@@ -527,7 +527,7 @@ const Services = () => {
 						clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
 						duration: duration,
 						ease: ease,
-					}
+					},
 				);
 			} else if (index === prevCardIndex) {
 				const smallCardImage = smallCard.querySelector('img');
@@ -581,13 +581,13 @@ const Services = () => {
 			.fromTo(
 				contentRef.current,
 				{ y: 100, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2' }
+				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2' },
 			)
 			.fromTo(
 				wheelRef.current,
 				{ y: 100, opacity: 0 },
 				{ y: 0, opacity: 1, duration: 0.75, ease: 'power2' },
-				'-=0.5'
+				'-=0.5',
 			);
 
 		return () => {
@@ -606,12 +606,12 @@ const Services = () => {
 					duration={1}
 					className='col-span-12'>
 					<h2
-						className='text-5xl xl:text-[3vw] tracking-tight leading-snug mb-2 max-h-max text-[#cebd92] max-w-2xl row-start-1'
+						className='text-5xl xl:text-[3vw] tracking-tight leading-snug mb-2 max-h-max text-[#b59c6c] max-w-2xl row-start-1'
 						style={{ fontFamily: 'Anton, sans-serif' }}>
 						GrandFit&Beauty usluge
 					</h2>
 				</GSAPSplitTextComponent>
-				<p className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#cebd92] mb-4'>
+				<p className='col-span-12 md:col-span-5 row-auto col-start-1 text-2xl xl:text-3xl tracking-tighter font-medium max-w-[35ch] max-h-max text-[#b59c6c] mb-4'>
 					U{' '}
 					<span className='font-semibold'>
 						{' '}
@@ -620,20 +620,20 @@ const Services = () => {
 					nudimo vam širok spektar usluga i tretmana koji će vam pomoći da
 					izgledate i osjećate se najbolje.
 				</p>
-				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#cebd92]'>
+				<p className='text-base md:text-xl col-span-12 col-start-1 tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b59c6c]'>
 					Naše osoblje posjeduje savremena znanja i iskustva iz ovih oblasti, te
 					vam garantujemo najviši nivo usluge i profesionalnosti.
 				</p>
-				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#cebd92]'>
+				<p className='col-span-12 md:col-span-5 text-base md:text-xl tracking-tight leading-[1.45] max-w-[40ch] xl:max-w-[55ch] max-h-max text-[#b59c6c]'>
 					Izaberite uslugu koja Vam najviše odgovara, a ostalo prepustite nama.
 				</p>
 				<div className='col-span-12 col-start-1 mt-4 lg:mt-16 flex flex-col md:flex-row bg-transparent w-full h-vh lg:h-[90vh] justify-between overflow-hidden relative'>
 					<div
 						ref={contentRef}
-						className='flex flex-col justify-start gap-0 xl:gap-4 min-h-[450px] lg:min-h-[650px] w-full md:w-1/2 border border-[#cebd92] border-dashed text-[#cebd92] rounded-xl p-6 md:p-8 relative'>
+						className='flex flex-col justify-start gap-0 xl:gap-4 min-h-[450px] lg:min-h-[650px] w-full md:w-1/2 border border-[#b59c6c] border-dashed text-[#b59c6c] rounded-xl p-6 md:p-8 relative'>
 						<div className='relative w-full h-24 flex justify-start mb-0 xl:mb-4'>
 							<span
-								className='hidden lg:flex text-sm md:text-xl absolute text-[#cebd92]/50 z-20 top-0 left-28 lg:left-0'
+								className='hidden lg:flex text-sm md:text-xl absolute text-[#b59c6c]/50 z-20 top-0 left-28 lg:left-0'
 								style={{ fontFamily: 'Anton, sans-serif' }}>
 								{String(activeCardIndex + 1).padStart(2, '0')}/
 								{String(allCards.length).padStart(2, '0')}
@@ -671,7 +671,7 @@ const Services = () => {
 						<div className='more-about-card w-full flex flex-col pb-2'>
 							<div
 								ref={textRef}
-								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-[#cebd92] max-w-[50ch] mb-2'>
+								className='text-sm md:text-xl text-left leading-[1.45] font-normal text-[#b59c6c] max-w-[50ch] mb-2'>
 								{allCards[activeCardIndex].text.map((paragraph, idx) => (
 									<p key={idx} className='text-[13px] md:text-base mt-1 '>
 										{paragraph}
@@ -679,7 +679,7 @@ const Services = () => {
 								)) || 'Trenutno nema dodatnih informacija o ovoj usluzi.'}
 							</div>
 						</div>
-						<div className='hidden card-content absolute z-20 col-start-1 w-36 md:w-68 lg:flex text-[#cebd92] bottom-6 md:bottom-8 justify-between items-center'>
+						<div className='hidden card-content absolute z-20 col-start-1 w-36 md:w-68 lg:flex text-[#b59c6c] bottom-6 md:bottom-8 justify-between items-center'>
 							<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
 								<button
 									aria-label='Previous service'
@@ -695,10 +695,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border border-[#cebd92] group lg:hover:bg-[#cebd92] transition-all duration-300 border-dashed flex items-center justify-center'>
+									className='aspect-square border border-[#b59c6c] group lg:hover:bg-[#b59c6c] transition-all duration-300 border-dashed flex items-center justify-center'>
 									<ArrowLeft
 										size={32}
-										className='stroke-[#cebd92] lg:group-hover:stroke-(--black)'
+										className='stroke-[#b59c6c] lg:group-hover:stroke-(--black)'
 									/>
 								</button>
 								<button
@@ -714,10 +714,10 @@ const Services = () => {
 											);
 										});
 									}}
-									className='aspect-square border group border-dashed lg:hover:bg-[#cebd92] lg:hover:text-(--black) transition-all duration-300 border-[#cebd92] flex items-center justify-center'>
+									className='aspect-square border group border-dashed lg:hover:bg-[#b59c6c] lg:hover:text-(--black) transition-all duration-300 border-[#b59c6c] flex items-center justify-center'>
 									<ArrowRight
 										size={32}
-										className='stroke-[#cebd92] lg:group-hover:stroke-[#0c0c0c] '
+										className='stroke-[#b59c6c] lg:group-hover:stroke-[#0c0c0c] '
 									/>
 								</button>
 							</div>
@@ -748,7 +748,7 @@ const Services = () => {
 						</div>
 					</div>
 				</div>
-				<div className='card-content z-20 col-start-1 w-36 md:w-68 lg:hidden text-[#cebd92] bottom-6 md:bottom-8 justify-between items-center'>
+				<div className='card-content z-20 col-start-1 w-36 md:w-68 lg:hidden text-[#b59c6c] bottom-6 md:bottom-8 justify-between items-center'>
 					<div className='flex gap-2 md:gap-2 h-16 md:h-20 max-w-max'>
 						<button
 							aria-label='Previous service'
@@ -763,10 +763,10 @@ const Services = () => {
 									);
 								});
 							}}
-							className='aspect-square border border-[#cebd92] group lg:hover:bg-[#cebd92] transition-all duration-300 border-dashed flex items-center justify-center'>
+							className='aspect-square border border-[#b59c6c] group lg:hover:bg-[#b59c6c] transition-all duration-300 border-dashed flex items-center justify-center'>
 							<ArrowLeft
 								size={32}
-								className='stroke-[#cebd92] lg:group-hover:stroke-(--black)'
+								className='stroke-[#b59c6c] lg:group-hover:stroke-(--black)'
 							/>
 						</button>
 						<button
@@ -781,10 +781,10 @@ const Services = () => {
 									);
 								});
 							}}
-							className='aspect-square border group border-dashed lg:hover:bg-[#cebd92] lg:hover:text-(--black) transition-all duration-300 border-[#cebd92] flex items-center justify-center'>
+							className='aspect-square border group border-dashed lg:hover:bg-[#b59c6c] lg:hover:text-(--black) transition-all duration-300 border-[#b59c6c] flex items-center justify-center'>
 							<ArrowRight
 								size={32}
-								className='stroke-[#cebd92] lg:group-hover:stroke-[#0c0c0c] '
+								className='stroke-[#b59c6c] lg:group-hover:stroke-[#0c0c0c] '
 							/>
 						</button>
 					</div>

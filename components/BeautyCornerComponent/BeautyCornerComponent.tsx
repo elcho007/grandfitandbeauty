@@ -64,7 +64,7 @@ const BeautyCornerComponent: React.FC = () => {
 		(index: number) => (element: HTMLDivElement | null) => {
 			cardRefs.current[index] = element;
 		},
-		[]
+		[],
 	);
 
 	// Compute step size (width + gap of first card)
@@ -165,7 +165,7 @@ const BeautyCornerComponent: React.FC = () => {
 			startAutoplayTimer,
 			isAutoplayEnabled,
 			isPaused,
-		]
+		],
 	);
 
 	const goPrev = React.useCallback(
@@ -191,7 +191,7 @@ const BeautyCornerComponent: React.FC = () => {
 				ease: 'power2',
 				onComplete: () => {
 					setActiveIndex(
-						(i) => (i - 1 + beautyCards.length) % beautyCards.length
+						(i) => (i - 1 + beautyCards.length) % beautyCards.length,
 					);
 					isAnimatingRef.current = false;
 
@@ -208,7 +208,7 @@ const BeautyCornerComponent: React.FC = () => {
 			startAutoplayTimer,
 			isAutoplayEnabled,
 			isPaused,
-		]
+		],
 	);
 
 	// Autoplay effect
@@ -242,11 +242,11 @@ const BeautyCornerComponent: React.FC = () => {
 			observer.observe(track);
 			return () => observer.disconnect();
 		},
-		{ scope: wrapperRef, dependencies: [] }
+		{ scope: wrapperRef, dependencies: [] },
 	);
 
 	return (
-		<section className='bg-[#cebd92] text-(--black) w-full px-[5vw] py-16 flex flex-col gap-4 md:gap-8 items-center'>
+		<section className='bg-[#b59c6c] text-(--black) w-full px-[5vw] py-16 flex flex-col gap-4 md:gap-8 items-center'>
 			<header className='w-full max-w-6xl flex flex-col gap-3 items-center'>
 				<p className='text-sm uppercase tracking-[0.4em] text-(--black)'>
 					GrandFit&Beauty
@@ -273,7 +273,7 @@ const BeautyCornerComponent: React.FC = () => {
 						<article
 							key={card.title}
 							ref={registerCard(index)}
-							className={`beauty-card ${cardWidth} cursor-pointer aspect-square w-64 md:w-32 rounded-xs border border-dashed border-gray-800 bg-[#cebd92] px-6 py-8  transition-all duration-300 ease-out ${
+							className={`beauty-card ${cardWidth} cursor-pointer aspect-square w-64 md:w-32 rounded-xs border border-dashed border-gray-800 bg-[#b59c6c] px-6 py-8  transition-all duration-300 ease-out ${
 								activeIndex === index
 									? 'ring-2 ring-offset-3 ring-offset-gray-800 ring-gray-950'
 									: ''
@@ -314,13 +314,13 @@ const BeautyCornerComponent: React.FC = () => {
 						<button
 							type='button'
 							onClick={() => goPrev(true)}
-							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-(--black) px-4 py-2 text-sm font-medium text-(--black) transition hover:bg-(--black) hover:text-[#cebd92] duration-300'>
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-(--black) px-4 py-2 text-sm font-medium text-(--black) transition hover:bg-(--black) hover:text-[#b59c6c] duration-300'>
 							<ArrowLeft size={32} />
 						</button>
 						<button
 							type='button'
 							onClick={() => goNext(true)}
-							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-(--black) text-(--black) px-4 py-2 text-sm font-medium transition hover:bg-(--black) duration-300 hover:text-[#cebd92]'>
+							className='w-16 md:w-20 aspect-square flex items-center justify-center border border-dashed border-(--black) text-(--black) px-4 py-2 text-sm font-medium transition hover:bg-(--black) duration-300 hover:text-[#b59c6c]'>
 							<ArrowRight size={32} />
 						</button>
 					</div>

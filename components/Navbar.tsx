@@ -67,7 +67,7 @@ const Navbar = (props: Props) => {
 					transformOrigin: 'center center',
 					duration: 0.3,
 				},
-				'<'
+				'<',
 			)
 			.to(
 				'.nav-links',
@@ -86,7 +86,7 @@ const Navbar = (props: Props) => {
 						setShowText(false);
 					},
 				},
-				'<'
+				'<',
 			);
 
 		const toggleMenu = () => {
@@ -114,7 +114,7 @@ const Navbar = (props: Props) => {
 
 	return (
 		<div className='absolute h-20 w-full z-30'>
-			<nav className='flex items-center justify-between px-[5vw] mx-auto h-20 bg-transparent  text-white z-20 relative w-full'>
+			<nav className='flex items-center justify-between px-[5vw] mx-auto h-20 bg-transparent text-white z-20 relative w-full'>
 				<div>
 					<Link href='/'>
 						<Image src={Logo} alt='Logo' width={50} height={50} />
@@ -124,8 +124,8 @@ const Navbar = (props: Props) => {
 				<button
 					ref={hamburgerRef}
 					className='hamburger-menuToggle flex flex-col justify-center items-center gap-1 w-8 h-8 ml-4'>
-					<span className='w-full h-0.5 bg-[#cebd92]'></span>
-					<span className='w-full h-0.5 bg-[#cebd92]'></span>
+					<span className='w-full h-0.5 bg-(--gold)'></span>
+					<span className='w-full h-0.5 bg-(--gold)'></span>
 				</button>
 			</nav>
 			<div className='nav-links absolute right-0 top-0 w-full bg-black text-white px-[5vw] pt-[5vw] z-0 overflow-hidden'>
@@ -140,7 +140,7 @@ const Navbar = (props: Props) => {
 							reverse={reverseText}
 							onComplete={handleTextAnimationComplete}>
 							<li
-								className='text-4xl tracking-tight leading-[1.2] text-[#cebd92]'
+								className='text-4xl: xl:text-7xl tracking-tight leading-[1.2] text-(--gold)'
 								key={link.href}>
 								<Link href={link.href}>{link.name}</Link>
 							</li>
