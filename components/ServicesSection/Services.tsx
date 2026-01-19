@@ -8,14 +8,14 @@ import GSAPSplitTextComponent from '../GSAPSplitTextComponent/GSAPSplitTextCompo
 const treninziCards = [
 	{
 		title: 'Grupne vježbe',
-		image: '',
+		image: '/images/gfboriginal/group.webp',
 		text: [
 			'U Grand Fit & Beauty nudimo intenzivne i motivirajuće grupne treninge u malim skupinama do 6 osoba, prilagođene i muškarcima i ženama. Naši treninzi kombiniraju snagu, izdržljivost i funkcionalne vježbe, stvarajući idealan balans za sve koji žele vidljive rezultate i podršku trenera uz prijateljsku atmosferu.',
 		],
 	},
 	{
 		title: 'Individualni trening',
-		image: '',
+		image: '/images/gfboriginal/deadlift.webp',
 		text: [
 			'Individualni treninzi pružaju potpuno personaliziran pristup, prilagođen vašim ciljevima, mogućnostima i životnom ritmu. Rad 1 na 1 s osobnim trenerom omogućuje maksimalnu učinkovitost svakog treninga, pravilnu tehniku i kontinuiranu motivaciju.',
 			'Bilo da želite izgraditi snagu, oblikovati tijelo, poboljšati kondiciju ili jednostavno uvesti zdravu rutinu, vaš trener kreira program isključivo za vas, prateći vaš napredak iz treninga u trening.',
@@ -23,14 +23,14 @@ const treninziCards = [
 	},
 	{
 		title: 'Trening za djecu',
-		image: '',
+		image: '/images/gfboriginal/kids.webp',
 		text: [
 			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio accusamus ad adipisci praesentium at neque ea quasi, quis modi optio, error facere recusandae alias iure?',
 		],
 	},
 	{
 		title: 'Rehabilitacija',
-		image: '',
+		image: '/images/gfboriginal/rehab.webp',
 		text: [
 			'Rehabilitacija u Grand Fit-u osmišljena je za sve koji se oporavljaju od ozljeda, operativnih zahvata ili dugotrajnijih bolnih stanja. Naš stručni tim pristupa svakom klijentu individualno, kombinirajući ciljane vježbe, mobilizaciju i kontrolirane pokrete kako bi se povratila funkcija, snaga i stabilnost tijela.',
 			'Kroz pažljivo vođen proces fokusiramo se na siguran oporavak, pravilne obrasce kretanja i postupno vraćanje u svakodnevne aktivnosti ili sport. Cilj nam je smanjiti bol, poboljšati mobilnost i spriječiti ponovne ozljede uz stalni nadzor i podršku trenera.',
@@ -54,7 +54,7 @@ const treninziCards = [
 	},
 	{
 		title: 'Bodyspace sistem treninga',
-		image: '',
+		image: '/images/gfboriginal/bodyspace.webp',
 		text: [
 			'Kombinira vakuum tehnologiju i infracrveno grijanje kako bi potaknuo ubrzano topljenje masnih naslaga, oblikovanje tijela i poboljšanje cirkulacije. Idealno za ubrzavanje metabolizma, smanjenje celulita i vidljive rezultate u kraćem vremenu.',
 		],
@@ -73,7 +73,7 @@ const beautyCards = [
 	},
 	{
 		title: 'Maderoterapija',
-		image: '',
+		image: '/images/gfboriginal/tools.webp',
 		text: [
 			'Maderoterapija je prirodna tehnika oblikovanja tijela koja drvenim valjcima potiče cirkulaciju, limfnu drenažu i smanjenje celulita. Rezultat je zategnutija, glađa i oblikovanija figura.',
 			'Idealna je za poboljšanje tonusa kože, eliminaciju toksina i vidljivo smanjenje celulita — uz ugodan osjećaj opuštanja.',
@@ -81,7 +81,7 @@ const beautyCards = [
 	},
 	{
 		title: 'Linfomodeling',
-		image: '/images/linfomodeling.png',
+		image: '/images/gfboriginal/lipo.webp',
 		text: [
 			'Linfomodeling je napredna tehnika limfne drenaže i oblikovanja tijela koja kombinira precizne, ritmične pokrete za poticanje cirkulacije i eliminaciju toksina. Tretman smanjuje otekline, zadržavanje vode i celulit, dok istovremeno definira linije tijela.',
 			'Rezultat je laganije tijelo, vidljivo bolja tekstura kože i osjećaj potpune lakoće i detoksa',
@@ -97,7 +97,7 @@ const beautyCards = [
 	},
 	{
 		title: 'Tesla',
-		image: '/images/tesla.png',
+		image: '/images/gfboriginal/tesla.webp',
 		text: [
 			'Funkcionira tako da elektromagnetsko polje prolazi krozcijelu kožu i masnoću područja koje se tretira, da bi se učinkovito stimulirali mišići pružajući najintenzivnije kontinuirane kontrakcije, što je idealno za rast mišića, ali i umiranje masnih stanica.',
 			'Tretman je ugodan i nema nelagode. Traje 30 minuta i ne zahtijeva oporavak, a dvado tri tretmana tjedno trebaju biti dovoljna da većinaljudi postigne sjajan rezultat. Obično se preporučuješest tretmana uslijed kojih se već vide promjene naizgledu mišića.',
@@ -105,7 +105,7 @@ const beautyCards = [
 	},
 	{
 		title: 'Radiofrekvencija',
-		image: '',
+		image: '/images/gfboriginal/rf.webp',
 		text: [
 			'Radiofrekvencija je neinvazivni tretman koji zagrijavanjem dubljih slojeva kože potiče stvaranje kolagena, zateže kožu i smanjuje vidljivost bora. Poboljšava tonus, elastičnost i teksturu kože, uz trenutni “lifting” efekt.',
 			'Rezultat je čvršća, zaglađenija i pomlađena koža — bez boli i bez vremena oporavka.',
@@ -116,14 +116,14 @@ const beautyCards = [
 const generalCards = [
 	{
 		title: 'Vodena oaza',
-		image: '/images/bazen.png',
+		image: '/images/gfboriginal/pool.webp',
 		text: [
 			'Naša Vodena oaza idealno je mjesto za opuštanje i lagano vježbanje u vodi. Bazen pruža savršenu kombinaciju relaksacije, rasterećenja mišića i nježnog pokreta koji obnavlja tijelo i um.',
 		],
 	},
 	{
 		title: 'Teretana',
-		image: '',
+		image: '/images/gfboriginal/gym1.webp',
 		text: [
 			'Naša teretana opremljena je modernim spravama i slobodnim utezima, idealna za snagu, kondiciju i funkcionalni trening. Prostor je prilagođen početnicima i naprednima, uz fokus na kvalitetan trening u ugodnom, motivirajućem okruženju.',
 		],

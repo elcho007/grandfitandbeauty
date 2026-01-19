@@ -22,7 +22,7 @@ const equipment = [
 		id: 3,
 		name: 'TechnoGym Treadmill',
 		brand: 'Technogym',
-		imgUrl: '/images/equipment/equipment3.png',
+		imgUrl: '/images/treadmill.webp',
 	},
 	{
 		id: 4,
@@ -96,7 +96,7 @@ const Equipment = () => {
 
 			return () => mm.revert();
 		},
-		{ scope: dragBoundsRef }
+		{ scope: dragBoundsRef },
 	);
 
 	return (

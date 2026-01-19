@@ -144,7 +144,7 @@ const BeautyBentoGrid = (props: Props) => {
 					<FadeIn className='col-start1 xl:col-start-2 col-span-2 overflow-hidden'>
 						<div className='relative rounded-2xl overflow-hidden flex w-full h-140 xl:h-full before:absolute before:inset-0 before:bg-(--black) before:opacity-10 before:z-10 before:content-[""]'>
 							<Image
-								src='/images/wellness3.webp'
+								src='/images/gfboriginal/facial2.webp'
 								fill
 								alt='Beauty Bento Grid Top'
 								className=' rounded-2xl object-cover'

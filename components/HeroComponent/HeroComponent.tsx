@@ -10,22 +10,22 @@ const carouselSlides = [
 	{
 		title:
 			'Nudimo personalizirane i grupne treninge, masaže i tretmane uz aparate najnovije tehnologije.',
-		image: '/images/gfb1.jpg',
+		image: '/images/gfboriginal/kids.webp',
 	},
 	{
 		title:
 			'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, ut. Iusto dolores facilis dolorem accusamus repudiandae magnam quas rerum numquam eius. Beatae, officia. Repellat, quisquam.',
-		image: '/images/gfb2.jpg',
+		image: '/images/gfboriginal/gym1.webp',
 	},
 	{
 		title:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste accusamus voluptate sequi eum repellendus exercitationem magni? Nobis, possimus.',
-		image: '/images/gfb3.jpg',
+		image: '/images/gfboriginal/pool.webp',
 	},
 	{
 		title:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis ullam temporibus, tempore saepe eum adipisci aut delectus expedita aspernatur. Laudantium, dolore consequatur.',
-		image: '/images/gfb4.jpg',
+		image: '/images/gfboriginal/kids3.webp',
 	},
 ];
 
