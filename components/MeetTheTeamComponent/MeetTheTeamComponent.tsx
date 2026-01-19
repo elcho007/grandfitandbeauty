@@ -30,22 +30,22 @@ const teamMembers = [
 	},
 	{
 		id: 3,
-		name: 'Uroš',
+		name: 'Damir Saric',
 		role: 'Trener u GF&B',
 		image: '/images/gfboriginal/coachmale.webp',
 		bio: [
-			'Uroš je mladi i energični trener koji donosi svježinu i inovativnost u GFB tim. Njegov entuzijazam je zarazan i motiviše klijente da daju maksimum.',
-			'Fokusiran je na funkcionalni trening i rad sa mladim sportistima koji žele poboljšati svoje performanse.',
+			'Dado je iskusni trener koji kombinuje tradicionalne metode sa modernim pristupima. Njegova posvećenost klijentima je nepokolebljiva.',
+			'Specijaliziran je za rehabilitaciju, rad sa starijim klijentima i postizanje dugoročnih zdravstvenih ciljeva.',
 		],
 	},
 	{
 		id: 4,
-		name: 'Dado',
-		role: 'Trener u GF&B',
+		name: 'Trenerica',
+		role: 'Trenerica u GF&B',
 		image: '/images/gfboriginal/coachfemale.webp',
 		bio: [
-			'Dado je iskusni trener koji kombinuje tradicionalne metode sa modernim pristupima. Njegova posvećenost klijentima je nepokolebljiva.',
-			'Specijaliziran je za rehabilitaciju, rad sa starijim klijentima i postizanje dugoročnih zdravstvenih ciljeva.',
+			'Trenerica je mlada i energična trenerica koja donosi svježinu i inovativnost u GFB tim. Njen entuzijazam je zarazan i motiviše klijente da daju maksimum.',
+			'Fokusirana je na funkcionalni trening i rad sa mladim sportistima koji žele poboljšati svoje performanse.',
 		],
 	},
 ];
