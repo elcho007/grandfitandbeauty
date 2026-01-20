@@ -27,19 +27,19 @@ export default function Home() {
 				<HeroComponent />
 				{/* <Coach /> */}
 				<Services />
-				<EquipmentComponent />
-				<TrainingSpaceComponent />
-				<AdditionalServices />
-				<ClientTestimonialsAlternative />
-				<SuccessStories />
-				{/* <ClientTestimonials /> */}
-				<VideoComponent />
-				<TwoImageClipComponent />
-				<PowerQuotes />
 				<BeautyCornerComponent />
 				<BeautyMarquee />
 				<BeautyBentoGrid />
 				<PriceCards />
+				{/* <EquipmentComponent />
+				<TrainingSpaceComponent />
+				<AdditionalServices /> */}
+				<VideoComponent />
+				<ClientTestimonialsAlternative />
+				<SuccessStories />
+				{/* <ClientTestimonials /> */}
+				{/* <TwoImageClipComponent /> */}
+				{/* <PowerQuotes /> */}
 				<Blog />
 				<MeetTheTeamComponent />
 				<Faq />

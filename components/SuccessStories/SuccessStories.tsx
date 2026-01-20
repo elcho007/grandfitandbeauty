@@ -240,7 +240,7 @@ const SuccessStories = (props: Props) => {
 			{/* <GFBMarquee /> */}
 			<div
 				ref={containerRef}
-				className='w-full min-h-[120vh] bg-(--black) pt-20 pb-[5vw] flex flex-col justify-center'>
+				className='w-full min-h-svh bg-(--black) pt-20 pb-[5vw] flex flex-col justify-center'>
 				<div className='grid grid-cols-[5vw_repeat(3,minmax(0,1fr))_5vw] w-full overflow-hidden'>
 					<div
 						ref={textContainerRef}
