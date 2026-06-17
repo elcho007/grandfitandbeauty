@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { ClientLenisProvider } from '@/components/Lenis/ClientLenisProvider';
 import Footer from '@/components/Footer/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 const anton = Anton({
 	subsets: ['latin'],
@@ -45,6 +46,7 @@ export default function RootLayout({
 				<Navbar />
 				<ClientLenisProvider>{children}</ClientLenisProvider>
 				<Footer />
+				<Analytics />
 			</body>
 		</html>
 	);
